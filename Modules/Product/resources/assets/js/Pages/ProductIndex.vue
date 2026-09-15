@@ -18,13 +18,13 @@
     </Head>
 
     <app-layout>
-        <div class="page-header">
+        <section class="page-header">
             <div class="page-header__bg"
                  :style="{ backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)` }">
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>{{ trans('Products') }}</h1>
+                    <h2>{{ trans('Products') }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <section class="blog-page products-page">
             <div class="products-page__bg" aria-hidden="true">

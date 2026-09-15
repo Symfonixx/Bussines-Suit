@@ -9,6 +9,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
+                    <h2>{{ blog.title }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -28,6 +29,9 @@
 
         <!--Blog Details Start-->
         <section class="blog-details">
+            <div class="blog-details__shape-1">
+                <img :src="asset_path + 'images/shapes/blog-details-shape-1.png'" alt="" aria-hidden="true">
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">

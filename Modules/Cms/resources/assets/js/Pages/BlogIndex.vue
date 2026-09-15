@@ -17,13 +17,13 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <div class="page-header">
+        <section class="page-header">
             <div class="page-header__bg"
                  :style="{ backgroundImage: `url(${asset_path}images/backgrounds/blogs-bg.jpg)`}">
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>{{ trans("Our Blogs") }}</h1>
+                    <h2>{{ trans("Our Blogs") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -35,10 +35,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!--Blog Page Start-->
-        <section class="blog-page mt-25 pb-90">
+        <section class="blog-page">
+            <div class="blog-page__shape-1"></div>
+            <div class="blog-page__shape-2"></div>
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">

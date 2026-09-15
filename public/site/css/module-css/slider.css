@@ -1242,3 +1242,25 @@
 /*--------------------------------------------------------------
 # End
 --------------------------------------------------------------*/
+
+/* Home 1 static hero (no Swiper dependency) */
+.main-slider-two > .swiper-slide.main-slider-two__static,
+.main-slider-two > .main-slider-two__static {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 780px;
+}
+.main-slider-two > .swiper-slide.main-slider-two__static .main-slider-two__bg,
+.main-slider-two > .main-slider-two__static .main-slider-two__bg {
+    opacity: 1;
+    transform: none;
+}
+.main-slider-two > .swiper-slide.main-slider-two__static .main-slider-two__sub-title-box,
+.main-slider-two > .swiper-slide.main-slider-two__static .main-slider-two__title,
+.main-slider-two > .swiper-slide.main-slider-two__static .main-slider-two__text,
+.main-slider-two > .swiper-slide.main-slider-two__static .main-slider-two__btns-box {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}

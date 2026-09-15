@@ -17,13 +17,13 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <div class="page-header">
+        <section class="page-header">
             <div class="page-header__bg"
                  :style="{ backgroundImage: `url(${asset_path}images/backgrounds/services-bg.jpg)`}">
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>{{ trans("Our Services") }}</h1>
+                    <h2>{{ trans("Our Services") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -39,10 +39,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Services Two Start -->
         <section class="services-two">
+            <div class="services-two__shape-1"></div>
 
             <div class="container">
                 <div class="services-two__top">

@@ -25,7 +25,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>{{ trans('Our Members') }}</h1>
+                    <h2>{{ trans('Our Members') }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -46,7 +46,10 @@
         <!--Page Header End-->
 
         <!--Team Page Start-->
-        <section class="team-page my-5">
+        <section class="team-page">
+            <div class="team-page__shape-1">
+                <img :src="asset_path + 'images/shapes/team-page-shape-1.png'" alt="" aria-hidden="true">
+            </div>
             <div class="container">
                 <div class="row" v-if="teams && teams.length > 0">
                     <!--Team One Single Start-->
@@ -77,9 +80,13 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="team-one__content">
                                 <div class="team-one__title-box">
-                                    <h3><span>{{ translateField(team.name) }}</span></h3>
-                                    <p>{{ translateField(team.position) }}</p>
+                                    <p class="team-one__sub-title"><span></span>{{ translateField(team.position) }}</p>
+                                    <h3 class="team-one__title">
+                                        <span>{{ translateField(team.name) }}</span>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
