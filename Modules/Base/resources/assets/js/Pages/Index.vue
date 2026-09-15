@@ -16,144 +16,171 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <!--Banner One Start -->
-        <section class="banner-one">
-            <div class="banner-one__bg" aria-hidden="true">
-                <img :src="asset_path + 'images/home/banner-bg.webp'"
-                     alt=""
-                     width="1920"
-                     height="1080"
-                     fetchpriority="high"
-                     decoding="async"
-                     class="banner-one__bg-img">
-            </div>
-
-            <div
-                class="banner-one__shape-bg float-bob-y"
-                :style="{
-            backgroundImage: `url(${asset_path}images/shapes/banner-one-shape-bg.png)`
-        }"
-            ></div>
-
-            <div class="container">
-                <div class="banner-one__inner">
-                    <h1 class="banner-one__title px-4">
-                        {{ trans('Transform complex technical ideas into intelligent systems') }} <br/>
-                        <span>{{
-                                trans('Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability')
-                            }}</span>
-                    </h1>
-
-                    <div class="banner-one__btn-box mb-5">
-                        <Link :href="route('contact-us')" class="thm-btn contact-btn mx-2">
-                            <span :class="locale === 'ar' ? 'icon-message ms-2' : 'icon-message me-2'"></span>
-                            {{ trans('Book your free consultation') }}
-                        </Link>
-                        <Link :href="route('services.index')" class="thm-btn  ">
-                            <span :class="locale === 'ar' ? 'icon-search ms-2' : 'icon-search me-2'"></span>
-                            {{ trans('Explore Our Services') }}
-                        </Link>
+        <!--Main Slider Two Start-->
+        <section class="main-slider-two">
+            <div class="swiper-slide swiper-slide-active main-slider-two__static">
+                <div class="main-slider-two__bg"
+                     :style="{ backgroundImage: `url(${asset_path}images/home/banner-bg.webp)` }"></div>
+                <ul class="list-unstyled main-slider-two__menu">
+                    <li><Link :href="route('about-us')">{{ trans('About') }}</Link></li>
+                    <li><Link :href="route('contact-us')">{{ trans('Support') }}</Link></li>
+                    <li><Link :href="route('faq')">{{ trans('FAQs') }}</Link></li>
+                </ul>
+                <div class="main-slider-two__social-box" v-if="settings.facebook || settings.linkedin || settings.twitter">
+                    <h4 class="main-slider-two__social-title">{{ trans('Follow Us') }}:</h4>
+                    <div class="main-slider-two__social-box-inner">
+                        <a v-if="settings.facebook" :href="settings.facebook" target="_blank" rel="noopener noreferrer" :aria-label="trans('Facebook')"><span class="icon-facebook"></span></a>
+                        <a v-if="settings.linkedin" :href="settings.linkedin" target="_blank" rel="noopener noreferrer" :aria-label="trans('LinkedIn')"><span class="icon-linkedin"></span></a>
+                        <a v-if="settings.twitter" :href="settings.twitter" target="_blank" rel="noopener noreferrer" :aria-label="trans('Twitter')"><span class="icon-twitter"></span></a>
                     </div>
                 </div>
-            </div>
-        </section>
 
-
-        <!--About Three Start -->
-        <section class="about-three">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div :class="`about-three__left wow slideIn${locale !== 'ar' ? 'Left' : 'Right'}`"
-                             data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <div class="about-three__img-box">
-                                <div class="about-three__img">
-                                    <picture>
-                                        <source :srcset="asset_path + 'images/home/about_us-640.webp'" type="image/webp">
-                                        <img :src="asset_path + 'images/home/about_us.jpg'"
-                                             :alt="trans('About us')"
-                                             width="640"
-                                             height="640"
-                                             loading="lazy"
-                                             decoding="async">
-                                    </picture>
+                <div class="brand-two" v-if="clients && clients.length">
+                    <div class="brand-two__wrapper">
+                        <div class="brand-two__inner">
+                            <div class="brand-two__left">
+                                <div class="main-slider__trustpilot-box">
+                                    <div class="main-slider__trustpilot-content-box">
+                                        <div class="main-slider__trustpilot-rating-review">
+                                            <p class="main-slider__trustpilot-rating">{{ trans('Trusted by businesses') }}</p>
+                                            <p class="main-slider__trustpilot-review">{{ clients.length }}+ {{ trans('Clients') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="brand-two__right">
+                                <div class="brand-two__carousel owl-theme owl-carousel">
+                                    <div class="item" v-for="client in clients" :key="client.id">
+                                        <div class="brand-two__single">
+                                            <div class="brand-two__img">
+                                                <a v-if="client.url" :href="client.url" target="_blank" rel="noopener noreferrer">
+                                                    <img :src="client.logo_link" :alt="client.name" width="140" height="60" loading="lazy" decoding="async">
+                                                </a>
+                                                <img v-else :src="client.logo_link" :alt="client.name" width="140" height="60" loading="lazy" decoding="async">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="main-slider-two__shape-1"></div>
+                <div class="main-slider-two__shape-2 float-bob-x">
+                    <img :src="asset_path + 'images/shapes/main-slider-two-shape-2.png'" alt="" width="120" height="120" aria-hidden="true">
+                </div>
+                <div class="main-slider-two__shape-3 float-bob-y">
+                    <img :src="asset_path + 'images/shapes/main-slider-two-shape-3.png'" alt="" width="120" height="120" aria-hidden="true">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="main-slider-two__content">
+                                <div class="main-slider-two__sub-title-box">
+                                    <p class="main-slider-two__sub-title">{{ trans('IT Solutions Designed for Your Success') }}</p>
+                                </div>
+                                <h1 class="main-slider-two__title">
+                                    {{ trans('Transform complex technical ideas into intelligent systems') }}
+                                </h1>
+                                <p class="main-slider-two__text">
+                                    {{ trans('Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability') }}
+                                </p>
+                                <div class="main-slider-two__btns-box">
+                                    <div class="main-slider-two__btn-box-1">
+                                        <Link :href="route('contact-us')" class="thm-btn">
+                                            {{ trans('Book your free consultation') }}
+                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                                        </Link>
+                                    </div>
+                                    <div class="main-slider-two__btn-box-2">
+                                        <Link :href="route('services.index')" class="thm-btn">
+                                            {{ trans('Explore Our Services') }}
+                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Main Slider Two End-->
+
+        <!--About Two Start -->
+        <section class="about-two">
+            <div class="about-two__shape-2"></div>
+            <div class="about-two__shape-3">
+                <img :src="asset_path + 'images/shapes/about-two-shape-3.png'" :alt="trans('Decorative shape')" width="120" height="120" loading="lazy" decoding="async" aria-hidden="true">
+            </div>
+            <div class="container">
+                <div class="row">
                     <div class="col-xl-6">
-                        <div class="about-three__right">
-                            <div class="section-title  sec-title-animation animation-style1">
+                        <div class="about-two__left">
+                            <div class="about-two__img-box">
+                                <div class="about-two__img">
+                                    <picture>
+                                        <source :srcset="asset_path + 'images/home/about_us-640.webp'" type="image/webp">
+                                        <img :src="asset_path + 'images/home/about_us.jpg'" :alt="trans('About us')" width="640" height="640" loading="lazy" decoding="async">
+                                    </picture>
+                                </div>
+                                <div class="about-two__shape-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about-two__right">
+                            <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
                                     <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Our Tech Solutions') }}</span>
+                                    <span class="section-title__tagline">{{ trans('About Us') }}</span>
                                     <div class="section-title__tagline-shape-2"></div>
                                 </div>
                                 <h2 class="section-title__title title-animation">
                                     {{ trans('Why Choose Symfonix for Web, AI, and Cloud') }}
                                 </h2>
                             </div>
-
-                            <p class="about-three__text">
-                                {{
-                                    trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.")
-                                }}
+                            <p class="about-two__text">
+                                {{ trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.") }}
                             </p>
-
-                            <ul class="about-three__points list-unstyled">
-                                            <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('Developing Secure & Scalable Systems') }}</h2>
-                                        <!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('Innovative IT Solutions Expert') }}</h2>
-                                        <!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('Cloud Solutions for Modern') }}</h2>
-                                        <!--                                        <p>{{ trans('Enterprises') }}</p>-->
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick-inside-circle"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h2 class="h3">{{ trans('AI-Driven Business Automation') }}</h2>
-                                        <!--                                        <p>{{ trans('AI-Driven Business Automation') }}</p>-->
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="about-three__btn-and-call-box">
-                                <div class="about-three__btn-box">
-                                    <a :href="route('about-us')" class="thm-btn">
-                                        {{ trans('Get in Touch') }}
-                                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                                    </a>
-                                </div>
-                                <div class="about-three__call-box">
-                                    <div class="icon">
+                            <div class="about-two__points-box">
+                                <ul class="about-two__points-list list-unstyled">
+                                    <li>
+                                        <div class="icon"><span class="icon-tick-inside-circle"></span></div>
+                                        <p>{{ trans('Developing Secure & Scalable Systems') }}</p>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><span class="icon-tick-inside-circle"></span></div>
+                                        <p>{{ trans('Innovative IT Solutions Expert') }}</p>
+                                    </li>
+                                </ul>
+                                <ul class="about-two__points-list list-unstyled">
+                                    <li>
+                                        <div class="icon"><span class="icon-tick-inside-circle"></span></div>
+                                        <p>{{ trans('Cloud Solutions for Modern') }}</p>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><span class="icon-tick-inside-circle"></span></div>
+                                        <p>{{ trans('AI-Driven Business Automation') }}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="about-two__experience-contact-and-btn">
+                                <div class="about-two__call-box">
+                                    <div class="about-two__call-icon">
                                         <span class="icon-customer-service-headset"></span>
                                     </div>
-                                    <div class="content">
+                                    <div class="about-two__call-content">
                                         <span>{{ trans('Call Any Time') }}</span>
                                         <p><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></p>
                                     </div>
+                                </div>
+                                <div class="about-two__btn-box">
+                                    <Link :href="route('about-us')" class="thm-btn">
+                                        {{ trans('Learn More') }}
+                                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -161,48 +188,69 @@
                 </div>
             </div>
         </section>
-        <!--About Three End -->
+        <!--About Two End -->
 
-        <!--Services Three Start -->
-        <section class="services-three" v-if="servicesCategories && servicesCategories.length">
-
+        <!-- Services Two Start -->
+        <section class="services-two" v-if="servicesCategories && servicesCategories.length">
+            <div class="services-two__shape-1"></div>
             <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Our Services') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
+                <div class="services-two__top">
+                    <div class="section-title text-left sec-title-animation animation-style2">
+                        <div class="section-title__tagline-box">
+                            <div class="section-title__tagline-shape-1"></div>
+                            <span class="section-title__tagline">{{ trans('Our Services') }}</span>
+                            <div class="section-title__tagline-shape-2"></div>
+                        </div>
+                        <h2 class="section-title__title title-animation core-services-title">
+                            {{ trans('What We Do') }}! <span>{{ trans('Core Services') }}</span>
+                        </h2>
                     </div>
-                    <h2 class="section-title__title title-animation core-services-title">
-                        {{ trans('What We Do') }}! <span>{{ trans('Core Services') }}</span>
-                    </h2>
-                </div>
-                <div class="services-three__carousel owl-theme owl-carousel">
-                    <div
-                        v-for="servicesCategory in servicesCategories"
-                        :key="servicesCategory.id"
-                        class="item"
-                    >
-                        <ServiceCardThree
-                            :title="translateField(servicesCategory.title)"
-                            :short-desc="translateField(servicesCategory.description)"
-                            :description="translateField(servicesCategory.description)"
-                            :highlights="getCategoryHighlights(servicesCategory)"
-                            :link="route('services.index', { category: servicesCategory.slug })"
-                            :image="servicesCategory.image_link"
-                            :is-rtl="locale === 'ar'"
-                        />
-                    </div>
-                </div>
-                <div class="text-center mt-4">
-                    <Link :href="route('services.index')" class="thm-btn">
-                        {{ trans('View All Services') }}
-                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
+                    <Link :href="route('services.index')" class="services-two__round-text-box">
+                        <div class="services-two__round-text-box-outer">
+                            <div class="services-two__round-text-box-inner">
+                                <div class="services-two__curved-circle">
+                                    {{ trans('View All Services') }}
+                                </div>
+                                <div class="services-two__round-icon">
+                                    <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                                </div>
+                            </div>
+                        </div>
                     </Link>
+                </div>
+                <div class="services-two__bottom">
+                    <div class="services-two__services-list">
+                        <div
+                            v-for="(servicesCategory, index) in servicesCategories.slice(0, 4)"
+                            :key="servicesCategory.id"
+                            :class="['services-two__services-list-single', index === 0 ? 'services-two__services-list-single-1' : '']"
+                        >
+                            <div class="services-two__count-and-title">
+                                <div class="services-two__count"></div>
+                                <h3 class="services-two__title">
+                                    <Link :href="route('services.index', { category: servicesCategory.slug })">
+                                        {{ translateField(servicesCategory.title) }}
+                                    </Link>
+                                </h3>
+                            </div>
+                            <div class="services-two__service-list-box">
+                                <ul class="services-two__services-list-inner list-unstyled">
+                                    <li v-for="(chunk, cIdx) in chunkHighlights(getCategoryHighlights(servicesCategory))" :key="cIdx">
+                                        <p v-for="(item, iIdx) in chunk" :key="iIdx">
+                                            <span class="icon-plus"></span>{{ item }}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="services-two__hover-img" v-if="servicesCategory.image_link">
+                                <img :src="servicesCategory.image_link" :alt="translateField(servicesCategory.title)" width="400" height="300" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <!--Services Three End -->
+        <!-- Services Two End -->
 
         <!-- Products Start -->
         <section class="home-products products-page" v-if="products && products.length">
@@ -225,7 +273,6 @@
                         {{ trans('Discover enterprise-ready platforms and services designed to grow with your business.') }}
                     </p>
                 </div>
-
                 <div class="home-products__grid">
                     <div class="row g-4">
                         <div
@@ -238,16 +285,170 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="text-center home-products__cta">
                     <Link :href="route('product.index')" class="thm-btn">
                         {{ trans('View All Products') }}
-                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
+                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
                     </Link>
                 </div>
             </div>
         </section>
         <!-- Products End -->
+
+        <!--Why Choose One Start -->
+        <section class="why-choose-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <div class="why-choose-one__left">
+                            <div class="section-title text-left sec-title-animation animation-style2">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-shape-1"></div>
+                                    <span class="section-title__tagline">{{ trans('Why Choose Us') }}</span>
+                                    <div class="section-title__tagline-shape-2"></div>
+                                </div>
+                                <h2 class="section-title__title title-animation">
+                                    {{ trans('How do we deliver reliable, future-ready IT solutions?') }}
+                                </h2>
+                            </div>
+                            <p class="why-choose-one__text">
+                                {{ trans('We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.') }}
+                            </p>
+                            <ul class="list-unstyled why-choose-two__points">
+                                <li>
+                                    <div class="icon"><span class="icon-quality"></span></div>
+                                    <div class="content">
+                                        <h3 class="h4">{{ trans('Unmatched Quality') }}</h3>
+                                        <p>{{ trans('We deliver exceptional products and services that exceed expectations every time.') }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon"><span class="icon-team"></span></div>
+                                    <div class="content">
+                                        <h3 class="h4">{{ trans('Trusted Expertise') }}</h3>
+                                        <p>{{ trans('Backed by years of experience and a proven track record, we are your reliable partner for success.') }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon"><span class="icon-customer-centricity"></span></div>
+                                    <div class="content">
+                                        <h3 class="h4">{{ trans('User-Centric Approach') }}</h3>
+                                        <p>{{ trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.') }}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="why-choose-one__btn-and-client-info mt-4">
+                                <div class="why-choose-one__btn-box">
+                                    <Link :href="route('about-us')" class="thm-btn">
+                                        {{ trans('About Us') }}
+                                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-7">
+                        <div :class="`why-choose-one__right wow slideIn${locale !== 'ar' ? 'Right' : 'Left'}`"
+                             data-wow-delay="100ms"
+                             data-wow-duration="2500ms">
+                            <div class="why-choose-one__img">
+                                <picture>
+                                    <source :srcset="asset_path + 'images/home/why_choose_us-640.webp'" type="image/webp">
+                                    <img :src="asset_path + 'images/home/why_choose_us.jpg'"
+                                         :alt="trans('Why choose us')"
+                                         width="640"
+                                         height="640"
+                                         loading="lazy"
+                                         decoding="async">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why Choose One End -->
+
+        <!-- Sliding Text Three Start -->
+        <section class="sliding-text-three">
+            <div class="sliding-text-three__wrap">
+                <ul class="sliding-text-three__list list-unstyled marquee_mode">
+                    <li>
+                        <h2 data-hover="Web Development" class="sliding-text-three__title">{{ trans('Web Development') }}</h2>
+                        <span class="icon-star"></span>
+                    </li>
+                    <li>
+                        <h2 data-hover="Mobile Development" class="sliding-text-three__title">{{ trans('Mobile Development') }}</h2>
+                        <span class="icon-star"></span>
+                    </li>
+                    <li>
+                        <h2 data-hover="AI Agents" class="sliding-text-three__title">{{ trans('AI Agents & Automation') }}</h2>
+                        <span class="icon-star"></span>
+                    </li>
+                    <li>
+                        <h2 data-hover="Cloud" class="sliding-text-three__title">{{ trans('Cloud & Infrastructure') }}</h2>
+                        <span class="icon-star"></span>
+                    </li>
+                    <li>
+                        <h2 data-hover="Web Development" class="sliding-text-three__title">{{ trans('Web Development') }}</h2>
+                        <span class="icon-star"></span>
+                    </li>
+                    <li>
+                        <h2 data-hover="Mobile Development" class="sliding-text-three__title">{{ trans('Mobile Development') }}</h2>
+                        <span class="icon-star"></span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Sliding Text Three End -->
+
+        <!-- Process Two Start -->
+        <section class="process-two">
+            <div class="process-two__bg-shape float-bob-y"
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/process-two-bg-shape.png)` }"></div>
+            <div class="container">
+                <div class="section-title text-center sec-title-animation animation-style1">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-1"></div>
+                        <span class="section-title__tagline">{{ trans('Our Process') }}</span>
+                        <div class="section-title__tagline-shape-2"></div>
+                    </div>
+                    <h2 class="section-title__title title-animation">
+                        {{ trans('How We Deliver') }}
+                    </h2>
+                </div>
+                <ul class="row list-unstyled">
+                    <li class="col-xl-4 col-lg-4">
+                        <div class="process-two__single">
+                            <div class="process-two__count"></div>
+                            <h3 class="process-two__title">{{ trans('Web Development') }}</h3>
+                            <p class="process-two__text">{{ trans('Custom web solutions built with cutting-edge technology to drive your business forward.') }}</p>
+                        </div>
+                    </li>
+                    <li class="col-xl-4 col-lg-4">
+                        <div class="process-two__single">
+                            <div class="process-two__shape-1 float-bob-x">
+                                <img :src="asset_path + 'images/shapes/process-two-shape-1.png'" alt="" width="80" height="80" aria-hidden="true">
+                            </div>
+                            <div class="process-two__shape-2 float-bob-x">
+                                <img :src="asset_path + 'images/shapes/process-two-shape-2.png'" alt="" width="80" height="80" aria-hidden="true">
+                            </div>
+                            <div class="process-two__count"></div>
+                            <h3 class="process-two__title">{{ trans('Mobile Development') }}</h3>
+                            <p class="process-two__text">{{ trans('Native and cross-platform mobile applications that deliver exceptional user experiences.') }}</p>
+                        </div>
+                    </li>
+                    <li class="col-xl-4 col-lg-4">
+                        <div class="process-two__single">
+                            <div class="process-two__count"></div>
+                            <h3 class="process-two__title">{{ trans('Cloud & Infrastructure') }}</h3>
+                            <p class="process-two__text">{{ trans('Secure, scalable, and efficient cloud services to power your growth and digital transformation.') }}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Process Two End -->
 
         <!-- Case Studies Start -->
         <section class="home-case-studies use-cases-page" v-if="useCases && useCases.length">
@@ -263,13 +464,12 @@
                         <div class="section-title__tagline-shape-2"></div>
                     </div>
                     <h2 class="section-title__title title-animation">
-                        {{ trans('How We\'ve Empowered Businesses with Innovative Tech Solutions') }}
+                        {{ trans("How We've Empowered Businesses with Innovative Tech Solutions") }}
                     </h2>
                     <p class="home-case-studies__intro">
-                        {{ trans('Explore our success stories and real-world solutions we\'ve delivered for businesses.') }}
+                        {{ trans("Explore our success stories and real-world solutions we've delivered for businesses.") }}
                     </p>
                 </div>
-
                 <div class="use-cases-page__grid">
                     <div class="row g-4">
                         <div
@@ -282,313 +482,16 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="text-center home-case-studies__cta">
                     <Link :href="route('use-cases.index')" class="thm-btn">
                         {{ trans('View All Case Studies') }}
-                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
+                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
                     </Link>
                 </div>
             </div>
         </section>
         <!-- Case Studies End -->
 
-        <!--Why Choose Two Start -->
-        <section class="why-choose-two">
-            <div class="why-choose-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'images/shapes/why-choose-two-shape-1.png'"
-                     :alt="trans('Decorative shape')"
-                     width="120"
-                     height="120"
-                     loading="lazy"
-                     decoding="async"
-                     aria-hidden="true">
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div :class="`why-choose-two__left wow ${locale !== 'ar' ? 'Left' : 'Right'}`"
-                             data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <div class="why-choose-two__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/why_choose_us-640.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/why_choose_us.jpg'"
-                                         :alt="trans('Why choose us')"
-                                         width="640"
-                                         height="640"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="why-choose-two__right">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Why Choose Us') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('How do we deliver reliable, future-ready IT solutions?') }}
-                                </h2>
-                            </div>
-                            <p class="why-choose-one__text">
-                                {{
-                                    trans('We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.')
-                                }}
-                            </p>
-                            <ul class="list-unstyled why-choose-two__points">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-quality"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('Unmatched Quality') }}</h3>
-                                        <p>
-                                            {{
-                                                trans('We deliver exceptional products and services that exceed expectations every time.')
-                                            }}
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-team"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('Trusted Expertise') }}</h3>
-                                        <p>
-                                            {{
-                                                trans('Backed by years of experience and a proven track record, we are your reliable partner for success.')
-                                            }}
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-customer-centricity"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="h4">{{ trans('User-Centric Approach') }}</h3>
-                                        <p>
-                                            {{
-                                                trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.')
-                                            }}
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Why Choose Two End -->
-
-        <!-- Team Two Start -->
-        <section class="team-two d-none" v-if="teams && teams.length > 0">
-            <div class="team-two__bg-shape float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5">
-                        <div class="team-two__left">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Our Members') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('Meet Our Team.') }} <span>{{ trans('Get to') }}</span><br>
-                                    <span>{{ trans('Know the Talented') }}</span>
-                                    {{ trans('Minds Behind Our Team') }}
-                                </h2>
-                            </div>
-                            <p class="team-two__text">
-                                {{
-                                    trans('Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xl-7">
-                        <div class="team-two__right">
-                            <div class="team-two__carousel owl-theme owl-carousel">
-                                <!--Team Two Single Start-->
-                                <div class="item" v-for="team in teams" :key="team.id">
-                                    <div class="team-two__single">
-                                        <div class="team-two__img-box">
-                                            <div class="team-two__img">
-                                                <img :src="team.avatar_link"
-                                                     :alt="translateField(team.name)"
-                                                     width="200"
-                                                     height="200"
-                                                     loading="lazy"
-                                                     decoding="async">
-                                            </div>
-                                            <div class="team-two__social">
-                                                <a v-if="team.facebook" :href="team.facebook" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} Facebook`">
-                                                    <span class="icon-facebook"></span>
-                                                </a>
-                                                <a v-if="team.behance" :href="team.behance" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} Behance`">
-                                                    <span class="icon-dribble"></span>
-                                                </a>
-                                                <a v-if="team.linked_in" :href="team.linked_in" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} LinkedIn`">
-                                                    <span class="icon-linkedin"></span>
-                                                </a>
-                                                <a v-if="team.github" :href="team.github" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} GitHub`">
-                                                    <span class="icon-github"></span>
-                                                </a>
-                                            </div>
-                                            <div class="team-two__title-box">
-                                                <h3><span>{{ translateField(team.name) }}</span></h3>
-                                                <p>{{ translateField(team.position) }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Team Two Single End-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Team Two End -->
-
-        <!--Feature One Start -->
-        <section class="feature-one">
-
-            <div class="feature-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'images/shapes/feature-one-shape-2.png'"
-                     :alt="trans('Decorative shape')"
-                     width="120"
-                     height="120"
-                     loading="lazy"
-                     decoding="async"
-                     aria-hidden="true">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/website.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/website.png'"
-                                         :alt="trans('Web Development')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('Web Development') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Custom web solutions built with cutting-edge technology to drive your business forward.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/app-development.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/app-development.png'"
-                                         :alt="trans('Mobile Development')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('Mobile Development') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Native and cross-platform mobile applications that deliver exceptional user experiences.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/microchip.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/microchip.png'"
-                                         :alt="trans('AI Agents & Automation')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('AI Agents & Automation') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Intelligent automation solutions powered by AI to streamline your business processes.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                    <!--Feature One Single Start -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms">
-                        <div class="feature-one__single">
-                            <div class="feature-one__img">
-                                <picture>
-                                    <source :srcset="asset_path + 'images/home/cloud.webp'" type="image/webp">
-                                    <img :src="asset_path + 'images/home/cloud.png'"
-                                         :alt="trans('Cloud & Infrastructure')"
-                                         width="80"
-                                         height="80"
-                                         loading="lazy"
-                                         decoding="async">
-                                </picture>
-                            </div>
-                            <h3 class="feature-one__title">
-                                <a :href="route('services.index')">
-                                    {{ trans('Cloud & Infrastructure') }}
-                                </a>
-                            </h3>
-                            <p class="feature-one__text">
-                                {{
-                                    trans('Secure, scalable, and efficient cloud services to power your growth and digital transformation.')
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                    <!--Feature One Single End -->
-                </div>
-            </div>
-        </section>
-        <!--Feature One End -->
         <!--CTA One Start -->
         <section class="cta-one">
             <div class="cta-one__shape-bg float-bob-y"
@@ -613,137 +516,94 @@
         </section>
         <!--CTA One End -->
 
-        <!-- Testimonial One Start -->
-        <section class="testimonial-one pb-5" v-if="testimonials && testimonials.length">
-
-            <div class="testimonial-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'"
-                     :alt="trans('Decorative shape')"
-                     width="120"
-                     height="120"
-                     loading="lazy"
-                     decoding="async"
-                     aria-hidden="true">
-            </div>
+        <!-- Testimonial Two Start -->
+        <section class="testimonial-two pb-5" v-if="testimonials && testimonials.length">
+            <div class="testimonial-two__shape-1"></div>
+            <div class="testimonial-two__shape-2"></div>
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-3"></div>
-                    <div class="col-xl-9">
-                        <div class="testimonial-one__content-box">
-                            <div class="section-title text-left sec-title-animation animation-style2">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
+                <div class="section-title text-center sec-title-animation animation-style1">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-1"></div>
+                        <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
+                        <div class="section-title__tagline-shape-2"></div>
+                    </div>
+                    <h2 class="section-title__title title-animation">
+                        {{ trans('What Our Clients Say') }}
+                    </h2>
+                </div>
+                <div class="testimonial-two__carousel owl-theme owl-carousel">
+                    <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
+                        <div class="testimonial-two__single">
+                            <div class="testimonial-two__single-inner">
+                                <div class="testimonial-two__star">
+                                    <span class="icon-pointed-star"></span>
+                                    <span class="icon-pointed-star"></span>
+                                    <span class="icon-pointed-star"></span>
+                                    <span class="icon-pointed-star"></span>
+                                    <span class="icon-pointed-star"></span>
                                 </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('What Our Clients Say') }}
-                                </h2>
+                                <p class="testimonial-two__text">“{{ translateField(testimonial.quote) }}”</p>
                             </div>
-                            <div class="testimonial-one__carousel owl-theme owl-carousel">
-                                <!-- Testimonial One Single Start -->
-                                <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
-                                    <div class="testimonial-one__single">
-                                        <div class="testimonial-one__img-box">
-                                            <div class="testimonial-one__img">
-                                                <img :src="testimonial.avatar_link"
-                                                     :alt="translateField(testimonial.name)"
-                                                     width="180"
-                                                     height="180"
-                                                     loading="lazy"
-                                                     decoding="async">
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-one__content">
-
-                                            <p class="testimonial-one__text">
-                                                “{{ translateField(testimonial.quote) }}”
-                                            </p>
-                                            <div class="testimonial-one__bottom">
-                                                <div class="testimonial-one__quote-and-client-info">
-                                                    <div class="testimonial-one__quote">
-                                                        <span class="icon-left"></span>
-                                                    </div>
-                                                    <div class="testimonial-one__client-info">
-                                                        <p class="testimonial-one__client-sub-title">
-                                                            {{ translateField(testimonial.position) }}
-                                                        </p>
-                                                        <h3 class="testimonial-one__client-name">
-                                                            {{ translateField(testimonial.name) }}
-                                                        </h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="testimonial-two__client-info">
+                                <div class="testimonial-two__client-img">
+                                    <img :src="testimonial.avatar_link"
+                                         :alt="translateField(testimonial.name)"
+                                         width="80"
+                                         height="80"
+                                         loading="lazy"
+                                         decoding="async">
                                 </div>
-                                <!-- Testimonial One Single End -->
+                                <div class="testimonial-two__client-content">
+                                    <h4 class="testimonial-two__client-name">
+                                        <Link :href="route('testimonials')">{{ translateField(testimonial.name) }}</Link>
+                                    </h4>
+                                    <p class="testimonial-two__sub-title">{{ translateField(testimonial.position) }}</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-two__quote">
+                                <span class="icon-right-quote"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Testimonial One End -->
+        <!-- Testimonial Two End -->
 
         <!-- Blog Two Start -->
         <section class="blog-two blog-three" v-if="posts && posts.length">
             <div class="container">
+                <div class="section-title text-center sec-title-animation animation-style1">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-1"></div>
+                        <span class="section-title__tagline">{{ trans('Our Blog') }}</span>
+                        <div class="section-title__tagline-shape-2"></div>
+                    </div>
+                    <h2 class="section-title__title title-animation">
+                        {{ trans('Latest Insights & Articles') }}
+                    </h2>
+                </div>
                 <div class="row">
+                    <div class="col-xl-6" v-if="featuredPost">
+                        <HomeBlogCard :post="featuredPost" variant="featured" />
+                    </div>
                     <div class="col-xl-6">
-                        <div :class="`blog-two__left wow fadeIn${locale !== 'ar' ? 'Left' : 'Right'}`"
-                             data-wow-delay="100ms">
-                            <div class="section-title text-left sec-title-animation animation-style1">
-                                <div class="section-title__tagline-box">
-                                    <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">{{ trans('Our Blogs') }}</span>
-                                    <div class="section-title__tagline-shape-2"></div>
-                                </div>
-                                <h2 class="section-title__title title-animation">
-                                    {{ trans('Explore Our Latest Blogs for Expert Insights') }}
-                                </h2>
-                            </div>
-                            <p class="blog-two-text">
-                                {{
-                                    trans('Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry')
-                                }}
-                            </p>
-                            <div class="blog-two__top-btn-box">
-                                <Link :href="route('blogs.index')" class="thm-btn">
-                                    {{ trans('View All Blogs') }}
-                                    <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                                </Link>
-                            </div>
-
-                            <!-- Featured blog (left) -->
-                            <div class="blog-two__left-content-box d-none d-md-block" v-if="featuredPost">
-                                <HomeBlogCard
-                                    :post="featuredPost"
-                                    variant="featured"
-                                    :locale="locale"
-                                    :asset-path="asset_path"
-                                    :image-fallback-index="1"
-                                />
+                        <div class="row">
+                            <div
+                                class="col-xl-12"
+                                v-for="post in sidePosts"
+                                :key="post.id"
+                            >
+                                <HomeBlogCard :post="post" />
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <div class="blog-two__right">
-                            <!-- Right-side compact posts -->
-                            <HomeBlogCard
-                                v-for="(post, idx) in sidePosts"
-                                :key="post.id || idx"
-                                :post="post"
-                                variant="compact"
-                                :locale="locale"
-                                :asset-path="asset_path"
-                                :image-fallback-index="idx + 2"
-                                :animation-class="idx % 2 === 0 ? 'fadeInLeft' : 'fadeInRight'"
-                                :animation-delay="`${(idx + 1) * 100}ms`"
-                            />
-                        </div>
-                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <Link :href="route('blogs.index')" class="thm-btn">
+                        {{ trans('View All Posts') }}
+                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                    </Link>
                 </div>
             </div>
         </section>
@@ -751,24 +611,6 @@
 
         <!-- Contact Two Start -->
         <section class="contact-two">
-            <div class="contact-two__sliding-text-list marquee_mode-2">
-                <div class="contact-two__sliding-text-item">
-                    <h2 data-hover="Branding" class="contact-two__sliding-text-title">
-                        {{ trans('GET IN TOUCH *') }}
-                    </h2>
-                </div>
-                <div class="contact-two__sliding-text-item">
-                    <h2 data-hover="Branding" class="contact-two__sliding-text-title">
-                        {{ trans('GET IN TOUCH *') }}
-                    </h2>
-                </div>
-                <div class="contact-two__sliding-text-item">
-                    <h2 data-hover="Branding" class="contact-two__sliding-text-title">
-                        {{ trans('GET IN TOUCH *') }}
-                    </h2>
-                </div>
-            </div>
-
             <div class="contact-two__shape-1 float-bob-y">
                 <img :src="asset_path + 'images/shapes/contact-two-shape-1.png'"
                      :alt="trans('Decorative shape')"
@@ -778,7 +620,6 @@
                      decoding="async"
                      aria-hidden="true">
             </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
@@ -786,49 +627,33 @@
                             <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
                                     <div class="section-title__tagline-shape-1"></div>
-                                    <span class="section-title__tagline">
-                                        {{ trans('Get In Touch') }}
-                                    </span>
+                                    <span class="section-title__tagline">{{ trans('Contact Us') }}</span>
                                     <div class="section-title__tagline-shape-2"></div>
                                 </div>
                                 <h2 class="section-title__title title-animation">
-                                    {{ trans('Contact Us') }}
+                                    {{ trans('Get in Touch With Our Team') }}
                                 </h2>
                             </div>
                             <p class="contact-two__text">
-                                {{ trans("Fill out the form below and we'll get back to you as soon as possible") }}
+                                {{ trans('Have a project in mind? Reach out and our experts will help you turn your ideas into reality.') }}
                             </p>
                             <ul class="contact-two__contact-list list-unstyled">
                                 <li v-if="settings.email">
-                                    <div class="icon">
-                                        <span class="icon-mail"></span>
-                                    </div>
+                                    <div class="icon"><span class="icon-mail"></span></div>
                                     <div class="content">
                                         <h3 class="h4">{{ trans('Email') }}</h3>
-                                        <p>
-                                            <a dir="ltr" :href="`mailto:${settings.email}`">
-                                                {{ settings.email }}
-                                            </a>
-                                        </p>
+                                        <p><a dir="ltr" :href="`mailto:${settings.email}`">{{ settings.email }}</a></p>
                                     </div>
                                 </li>
                                 <li v-if="settings.phone">
-                                    <div class="icon">
-                                        <span class="icon-phone-call"></span>
-                                    </div>
+                                    <div class="icon"><span class="icon-phone-call"></span></div>
                                     <div class="content">
                                         <h3 class="h4">{{ trans('Phone') }}</h3>
-                                        <p>
-                                            <a dir="ltr" :href="`tel:${settings.phone}`">
-                                                {{ settings.phone }}
-                                            </a>
-                                        </p>
+                                        <p><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></p>
                                     </div>
                                 </li>
                                 <li v-if="settings.address">
-                                    <div class="icon">
-                                        <span class="icon-pin"></span>
-                                    </div>
+                                    <div class="icon"><span class="icon-pin"></span></div>
                                     <div class="content">
                                         <h3 class="h4">{{ trans('Our Location') }}</h3>
                                         <p>{{ settings.address }}</p>
@@ -847,9 +672,7 @@
                                     <div class="col-xl-6 col-lg-6">
                                         <h3 class="h4 contact-one__input-title">{{ trans("Full Name") }}</h3>
                                         <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-user-1"></span>
-                                            </div>
+                                            <div class="contact-one__input-icon"><span class="icon-user-1"></span></div>
                                             <input
                                                 v-model="contactForm.name"
                                                 type="text"
@@ -859,18 +682,12 @@
                                                 :disabled="contactForm.processing"
                                                 required>
                                         </div>
-                                        <div v-if="contactForm.errors.name" class="text-danger mt-1 small">
-                                            {{ contactForm.errors.name }}
-                                        </div>
+                                        <div v-if="contactForm.errors.name" class="text-danger mt-1 small">{{ contactForm.errors.name }}</div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
-                                        <h3 class="h4 contact-one__input-title">
-                                            {{ trans('Email') }}
-                                        </h3>
+                                        <h3 class="h4 contact-one__input-title">{{ trans('Email') }}</h3>
                                         <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-email"></span>
-                                            </div>
+                                            <div class="contact-one__input-icon"><span class="icon-email"></span></div>
                                             <input
                                                 type="email"
                                                 name="email"
@@ -878,19 +695,14 @@
                                                 :placeholder="trans('Email')"
                                                 :disabled="contactForm.processing"
                                                 :class="{ 'error': contactForm.errors.email }"
-                                                required
-                                            >
-                                            <div v-if="contactForm.errors.email" class="text-danger mt-1 small">
-                                                {{ contactForm.errors.email }}
-                                            </div>
+                                                required>
+                                            <div v-if="contactForm.errors.email" class="text-danger mt-1 small">{{ contactForm.errors.email }}</div>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
                                         <h3 class="h4 contact-one__input-title">{{ trans("Phone Number") }}</h3>
                                         <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-phone-call"></span>
-                                            </div>
+                                            <div class="contact-one__input-icon"><span class="icon-phone-call"></span></div>
                                             <input
                                                 v-model="contactForm.mobile"
                                                 type="text"
@@ -900,18 +712,12 @@
                                                 :disabled="contactForm.processing"
                                                 required>
                                         </div>
-                                        <div v-if="contactForm.errors.mobile" class="text-danger mt-1 small">
-                                            {{ contactForm.errors.mobile }}
-                                        </div>
+                                        <div v-if="contactForm.errors.mobile" class="text-danger mt-1 small">{{ contactForm.errors.mobile }}</div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
-                                        <h3 class="h4 contact-one__input-title">
-                                            {{ trans('Subject') }}
-                                        </h3>
+                                        <h3 class="h4 contact-one__input-title">{{ trans('Subject') }}</h3>
                                         <div class="contact-one__input-box">
-                                            <div class="contact-one__input-icon">
-                                                <span class="icon-edit"></span>
-                                            </div>
+                                            <div class="contact-one__input-icon"><span class="icon-edit"></span></div>
                                             <input
                                                 type="text"
                                                 name="subject"
@@ -919,20 +725,15 @@
                                                 :placeholder="trans('Subject')"
                                                 :disabled="contactForm.processing"
                                                 :class="{ 'error': contactForm.errors.subject }"
-                                                required
-                                            >
-                                            <div v-if="contactForm.errors.subject" class="text-danger mt-1 small">
-                                                {{ contactForm.errors.subject }}
-                                            </div>
+                                                required>
+                                            <div v-if="contactForm.errors.subject" class="text-danger mt-1 small">{{ contactForm.errors.subject }}</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <h3 class="h4 contact-one__input-title">{{ trans("Message") }}</h3>
                                     <div class="contact-one__input-box text-message-box">
-                                        <div class="contact-one__input-icon">
-                                            <span class="icon-edit"></span>
-                                        </div>
+                                        <div class="contact-one__input-icon"><span class="icon-edit"></span></div>
                                         <textarea
                                             v-model="contactForm.message"
                                             name="message"
@@ -941,9 +742,7 @@
                                             :disabled="contactForm.processing"
                                             required></textarea>
                                     </div>
-                                    <div v-if="contactForm.errors.message" class="text-danger mt-1 small">
-                                        {{ contactForm.errors.message }}
-                                    </div>
+                                    <div v-if="contactForm.errors.message" class="text-danger mt-1 small">{{ contactForm.errors.message }}</div>
                                     <div class="contact-one__btn-box">
                                         <button
                                             type="submit"
@@ -951,13 +750,11 @@
                                             :disabled="contactForm.processing"
                                             :class="{ 'opacity-50': contactForm.processing }">
                                             <span v-if="contactForm.processing">
-                                                <i class="fa-solid fa-spinner fa-spin me-2"></i>{{
-                                                    trans("Sending...")
-                                                }}
+                                                <i class="fa-solid fa-spinner fa-spin me-2"></i>{{ trans("Sending...") }}
                                             </span>
                                             <span v-else>
-                                                <span>{{ trans("Submit") }}</span> <i
-                                                :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow mx-1`"></i>
+                                                <span>{{ trans("Submit") }}</span>
+                                                <i :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow mx-1`"></i>
                                             </span>
                                         </button>
                                     </div>
@@ -975,8 +772,6 @@
             </div>
         </section>
         <!-- Contact Two End -->
-
-        <ClientsSection :clients="clients" />
     </app-layout>
 </template>
 
@@ -984,8 +779,6 @@
 import {computed, onMounted, nextTick, ref} from 'vue'
 import {usePage, useForm, Link, Head} from '@inertiajs/vue3'
 import HomeBlogCard from '@/Components/HomeBlogCard.vue'
-import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
-import ClientsSection from '@/Components/ClientsSection.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
@@ -1055,6 +848,15 @@ const getCategoryHighlights = (category) => {
     return category.services
         .map((service) => translateField(service.title))
         .filter(Boolean);
+};
+
+const chunkHighlights = (items, size = 2) => {
+    const list = Array.isArray(items) ? items.slice(0, 6) : [];
+    const chunks = [];
+    for (let i = 0; i < list.length; i += size) {
+        chunks.push(list.slice(i, i + size));
+    }
+    return chunks.length ? chunks : [[]];
 };
 
 
@@ -1132,64 +934,35 @@ onMounted(() => {
         });
 
         const initHomeWidgets = () => {
-        // Initialize Services Owl Carousel
-        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.services-three__carousel').length) {
-            const $servicesCarousel = $('.services-three__carousel');
-            if (!$servicesCarousel.hasClass('owl-loaded')) {
-            $servicesCarousel.owlCarousel({
-                loop: servicesCategories.value.length > 3,
-                margin: 30,
-                nav: false,
-                dots: true,
-                smartSpeed: 500,
-                autoplay: true,
-                autoplayTimeout: 7000,
-                rtl: isRTL,
-                responsive: {
-                    0: {items: 1},
-                    768: {items: 2},
-                    992: {items: 3},
-                    1200: {items: 3}
-                }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
-                applyOwlDotAriaLabels($(this));
-            });
-            applyOwlDotAriaLabels($servicesCarousel);
+        // Brand carousel in hero
+        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.brand-two__carousel').length) {
+            const $brandCarousel = $('.brand-two__carousel');
+            if (!$brandCarousel.hasClass('owl-loaded')) {
+                $brandCarousel.owlCarousel({
+                    loop: clients.value.length > 4,
+                    margin: 20,
+                    nav: false,
+                    dots: false,
+                    smartSpeed: 500,
+                    autoplay: true,
+                    autoplayTimeout: 4000,
+                    rtl: isRTL,
+                    responsive: {
+                        0: {items: 2},
+                        576: {items: 3},
+                        992: {items: 4},
+                        1200: {items: 5}
+                    }
+                });
             }
         }
 
-        // Initialize Team Owl Carousel
-        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.team-two__carousel').length && teams.value.length > 0) {
-            const $teamCarousel = $('.team-two__carousel');
-            if (!$teamCarousel.hasClass('owl-loaded')) {
-            $teamCarousel.owlCarousel({
-                loop: teams.value.length > 3,
-                margin: 30,
-                nav: false,
-                dots: true,
-                smartSpeed: 500,
-                autoplay: true,
-                autoplayTimeout: 7000,
-                rtl: isRTL,
-                responsive: {
-                    0: {items: 1},
-                    768: {items: 2},
-                    992: {items: 2},
-                    1200: {items: 3}
-                }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
-                applyOwlDotAriaLabels($(this));
-            });
-            applyOwlDotAriaLabels($teamCarousel);
-            }
-        }
-
-        // Initialize Testimonials Owl Carousel
-        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.testimonial-one__carousel').length) {
-            const $testimonialCarousel = $('.testimonial-one__carousel');
+        // Initialize Testimonials Owl Carousel (Home 1)
+        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.testimonial-two__carousel').length) {
+            const $testimonialCarousel = $('.testimonial-two__carousel');
             if (!$testimonialCarousel.hasClass('owl-loaded')) {
             $testimonialCarousel.owlCarousel({
-                loop: testimonials.value.length > 1,
+                loop: testimonials.value.length > 2,
                 margin: 30,
                 nav: false,
                 dots: true,
@@ -1200,14 +973,33 @@ onMounted(() => {
                 responsive: {
                     0: {items: 1},
                     768: {items: 1},
-                    992: {items: 1},
-                    1200: {items: 1}
+                    992: {items: 2},
+                    1200: {items: 3}
                 }
             }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
                 applyOwlDotAriaLabels($(this));
             });
             applyOwlDotAriaLabels($testimonialCarousel);
             }
+        }
+
+        // Marquee sliding text
+        if (typeof $ !== 'undefined' && typeof $.fn?.marquee === 'function' && $('.marquee_mode').length) {
+            $('.marquee_mode').each(function () {
+                const $el = $(this);
+                if ($el.data('marquee-initialized')) {
+                    return;
+                }
+                $el.marquee({
+                    speed: 50,
+                    gap: 50,
+                    delayBeforeStart: 0,
+                    direction: isRTL ? 'right' : 'left',
+                    duplicated: true,
+                    pauseOnHover: true,
+                });
+                $el.data('marquee-initialized', true);
+            });
         }
 
         // Initialize WOW animations

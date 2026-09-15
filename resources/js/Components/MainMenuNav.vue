@@ -21,7 +21,14 @@
                     <MainMenuList />
                 </div>
                 <div class="main-menu-two__right d-none d-md-flex align-items-center">
-                    <div v-if="!auth" class="main-menu-two__btn-box">
+                    <div class="main-menu-two__btn-box me-2">
+                        <Link :href="route('contact-us')" class="thm-btn">
+                            {{ trans('Get in Touch') }}
+                            <span class="icon-right-arrow"></span>
+                        </Link>
+                    </div>
+
+                    <div v-if="!auth" class="main-menu-two__btn-box me-2">
                         <Link :href="loginUrl" class="thm-btn">
                             {{ trans('Login') }}
                         </Link>

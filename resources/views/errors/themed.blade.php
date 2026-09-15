@@ -22,6 +22,9 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#2189ca">
     <title>{{ $title }} | {{ config('app.name', 'Symfonix') }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">

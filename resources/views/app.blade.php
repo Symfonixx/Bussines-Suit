@@ -152,11 +152,11 @@ Developed By: Hadi Hilal
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Slim font request: common weights only (full variable italic axis is huge) --}}
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    {{-- TechGuru Home 1 fonts: Space Grotesk (body) + Marcellus (display) --}}
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Marcellus&display=swap"
           rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
     </noscript>
 
     @inertiaHead
@@ -208,6 +208,8 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/shop.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/error.css') }}" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
@@ -228,6 +230,8 @@ Developed By: Hadi Hilal
         <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
         <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}"/>
         <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/shop.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/error.css') }}"/>
     </noscript>
     <style>
         #symfonixbot-launcher-wrap {
@@ -407,7 +411,7 @@ Developed By: Hadi Hilal
             flex-direction: column;
             overflow: hidden;
             z-index: 9999;
-            font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             font-size: 14px;
             transition: all .25s ease;
         }

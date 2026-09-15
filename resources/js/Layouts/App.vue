@@ -144,7 +144,7 @@
                                 <i class="icon-search-mail"></i>
                             </div>
                             <div class="text">
-                                <p><a dir="ltr" :href="`mailto::${settings.email}`">{{ settings.email }}</a>
+                                <p><a dir="ltr" :href="`mailto:${settings.email}`">{{ settings.email }}</a>
                                 </p>
                             </div>
                         </li>
@@ -253,6 +253,9 @@
 
         <!--Site Footer Two Start-->
         <footer v-if="!isPortalPage" class="site-footer-two">
+            <div class="site-footer-two__shape-1"></div>
+            <div class="site-footer-two__shape-2"></div>
+            <div class="site-footer-two__shape-3"></div>
             <div class="site-footer-two__top">
                 <div class="container">
                     <div class="row">
