@@ -47,7 +47,7 @@
 
         <!--Team Page Start-->
         <section class="team-page">
-            <div class="team-page__shape-1" v-if="asset_path">
+            <div class="team-page__shape-1">
                 <img :src="asset_path + 'images/shapes/team-page-shape-1.png'" alt="" aria-hidden="true">
             </div>
             <div class="container">
