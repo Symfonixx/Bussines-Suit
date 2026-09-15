@@ -12,7 +12,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>{{ custom_page.title[locale] }}</h1>
+                    <h2>{{ custom_page.title[locale] }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>

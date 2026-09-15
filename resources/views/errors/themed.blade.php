@@ -51,7 +51,7 @@
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
                                 <a href="{{ $homeUrl }}">
-                                    <i class="fas fa-home"></i>Home
+                                    <i class="fas fa-home"></i>{{ __('Home') }}
                                 </a>
                             </li>
                             <li>
@@ -91,7 +91,7 @@
                                 </a>
                             @endif
                             <a class="thm-btn" href="{{ $homeUrl }}">
-                                Back To Home
+                                {{ __('Back To Home') }}
                                 <span class="icon-{{ $isRtl ? 'left' : 'right' }}-arrow"></span>
                             </a>
                         </div>

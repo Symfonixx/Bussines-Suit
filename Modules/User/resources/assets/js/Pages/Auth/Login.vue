@@ -26,7 +26,9 @@
                     <h2>{{ trans("Login") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="/"><i class="fas fa-home"></i>{{ trans("Home") }}</a></li>
+                            <li>
+                                <Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link>
+                            </li>
                             <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Login") }}</li>
                         </ul>

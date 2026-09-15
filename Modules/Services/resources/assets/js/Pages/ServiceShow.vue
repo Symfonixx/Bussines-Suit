@@ -4,12 +4,13 @@
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
     </Head>
     <app-layout>
-        <div class="page-header">
+        <section class="page-header">
             <div class="page-header__bg"
                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/services-bg.jpg)`}">
             </div>
             <div class="container">
                 <div class="page-header__inner">
+                    <h2>{{ getServiceTitle(service) }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -27,7 +28,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Service Details Start -->
         <section class="services-details">

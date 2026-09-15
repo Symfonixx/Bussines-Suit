@@ -18,13 +18,13 @@
     </Head>
 
     <app-layout>
-        <div class="page-header">
+        <section class="page-header">
             <div class="page-header__bg"
                  :style="{ backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)` }">
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>{{ trans('Case Studies') }}</h1>
+                    <h2>{{ trans('Case Studies') }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <section class="blog-page use-cases-page">
             <div class="use-cases-page__bg" aria-hidden="true">
