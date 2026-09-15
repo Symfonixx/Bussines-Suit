@@ -21,9 +21,9 @@ use Modules\CRM\Models\MarketingCampaign;
 use Modules\CRM\Models\PipelineStage;
 use Modules\CRM\Models\Subscription;
 use Modules\Finance\Database\Seeders\ExpenseCategorySeeder;
+use Modules\Product\Database\Seeders\MediaProductSeeder;
 use Modules\Product\Database\Seeders\ProductCategorySeeder;
 use Modules\Product\Database\Seeders\ProductSaleScenarioSeeder;
-use Modules\Product\Database\Seeders\TechProductSeeder;
 use Modules\Product\Models\Product;
 use Modules\Project\Database\Seeders\ProjectStatusSeeder;
 use Modules\Project\Models\Project;
@@ -42,6 +42,7 @@ use Modules\Testimonial\Models\Testimonial;
 use Modules\User\Database\Seeders\AdminScenarioSeeder;
 use Modules\User\Database\Seeders\EmployeeScenarioSeeder;
 use Modules\User\Database\Seeders\LeaveScenarioSeeder;
+use Modules\User\Database\Seeders\RecruitmentScenarioSeeder;
 use Modules\User\Database\Seeders\RoleScenarioSeeder;
 use Modules\User\Models\Employee;
 
@@ -67,7 +68,7 @@ class SystemDummyDataSeeder extends Seeder
         $this->seedProductSales();
         $this->seedMultiCurrencyFinance();
 
-        $this->command?->info('All modules seeded with dummy data and images.');
+        $this->command?->info('All modules seeded with media-company dummy data and stock images.');
     }
 
     private function seedReferenceData(): void
@@ -88,6 +89,7 @@ class SystemDummyDataSeeder extends Seeder
             EmployeeScenarioSeeder::class,
             AdminScenarioSeeder::class,
             LeaveScenarioSeeder::class,
+            RecruitmentScenarioSeeder::class,
         ]);
 
         User::query()->admins()->each(function (User $user) {
@@ -128,12 +130,12 @@ class SystemDummyDataSeeder extends Seeder
     private function seedTeam(): void
     {
         $members = [
-            ['name' => 'Layla Mansour', 'position' => 'CEO & Founder', 'skills' => 'Leadership, Strategy, Product'],
-            ['name' => 'Karim Haddad', 'position' => 'CTO', 'skills' => 'Architecture, Laravel, Cloud'],
-            ['name' => 'Nadine Salim', 'position' => 'Head of Design', 'skills' => 'UI/UX, Branding, Figma'],
-            ['name' => 'Rami Khouri', 'position' => 'Lead Developer', 'skills' => 'PHP, Vue, DevOps'],
-            ['name' => 'Salma Aziz', 'position' => 'Marketing Lead', 'skills' => 'Growth, Content, SEO'],
-            ['name' => 'Omar Farid', 'position' => 'Customer Success', 'skills' => 'Support, Onboarding, CRM'],
+            ['name' => 'Layla Mansour', 'position' => 'Creative Director', 'skills' => 'Brand Strategy, Art Direction, Storytelling'],
+            ['name' => 'Karim Haddad', 'position' => 'Head of Production', 'skills' => 'Film Production, Budgets, Crew Management'],
+            ['name' => 'Nadine Salim', 'position' => 'Lead Cinematographer', 'skills' => 'Lighting, Camera, Visual Language'],
+            ['name' => 'Rami Khouri', 'position' => 'Senior Video Editor', 'skills' => 'Premiere, After Effects, Color Grade'],
+            ['name' => 'Salma Aziz', 'position' => 'Content Strategy Lead', 'skills' => 'Social, SEO Content, Campaigns'],
+            ['name' => 'Omar Farid', 'position' => 'Client Producer', 'skills' => 'Accounts, Scheduling, Delivery'],
         ];
 
         foreach ($members as $member) {
@@ -145,11 +147,11 @@ class SystemDummyDataSeeder extends Seeder
                     'name' => ['en' => $member['name'], 'ar' => $member['name'], 'tr' => $member['name']],
                     'position' => ['en' => $member['position'], 'ar' => $member['position'], 'tr' => $member['position']],
                     'facebook' => 'https://facebook.com/'.$slug,
-                    'github' => 'https://github.com/'.$slug,
-                    'behance' => null,
+                    'github' => null,
+                    'behance' => 'https://behance.net/'.$slug,
                     'resume' => null,
                     'key_skills' => $member['skills'],
-                    'avatar' => $this->images->storeAvatar($member['name'], 'teams'),
+                    'avatar' => $this->images->store('teams', $member['name'], 400, 400, 'teams'),
                     'status' => 'Published',
                 ]
             );
@@ -159,9 +161,9 @@ class SystemDummyDataSeeder extends Seeder
     private function seedCms(): void
     {
         $categories = [
-            ['name' => 'Product Updates', 'slug' => 'product-updates'],
-            ['name' => 'Engineering', 'slug' => 'engineering'],
-            ['name' => 'Company News', 'slug' => 'company-news'],
+            ['name' => 'Production Notes', 'slug' => 'production-notes'],
+            ['name' => 'Creative Insights', 'slug' => 'creative-insights'],
+            ['name' => 'Studio News', 'slug' => 'studio-news'],
         ];
 
         foreach ($categories as $category) {
@@ -181,40 +183,40 @@ class SystemDummyDataSeeder extends Seeder
 
         $posts = [
             [
-                'slug' => 'introducing-symfonix-crm',
-                'category' => 'product-updates',
-                'title' => 'Introducing Symfonix CRM',
-                'description' => 'A closer look at our all-in-one CRM built for growing tech teams.',
+                'slug' => 'behind-the-lens-brand-films',
+                'category' => 'production-notes',
+                'title' => 'Behind the Lens: Brand Films That Convert',
+                'description' => 'How cinematic storytelling turns product launches into memorable brand moments.',
             ],
             [
-                'slug' => 'scaling-laravel-apps',
-                'category' => 'engineering',
-                'title' => 'Scaling Laravel Applications',
-                'description' => 'Practical patterns we use to keep Laravel apps fast and reliable.',
+                'slug' => 'color-grading-for-social',
+                'category' => 'creative-insights',
+                'title' => 'Color Grading for Social-First Content',
+                'description' => 'A practical grade workflow that keeps Reels and YouTube looking on-brand.',
             ],
             [
-                'slug' => 'design-system-refresh',
-                'category' => 'company-news',
-                'title' => 'Design System Refresh',
-                'description' => 'How we rebuilt our design language for clarity and speed.',
+                'slug' => 'studio-expansion-dubai',
+                'category' => 'studio-news',
+                'title' => 'Studio Expansion in Dubai',
+                'description' => 'New sound stage, podcast suite, and post bay now open for regional productions.',
             ],
             [
-                'slug' => 'api-first-integrations',
-                'category' => 'engineering',
-                'title' => 'API-First Integrations',
-                'description' => 'Why we design every product feature with integrations in mind.',
+                'slug' => 'podcast-to-video-pipeline',
+                'category' => 'production-notes',
+                'title' => 'From Podcast to Video Series',
+                'description' => 'Our multi-camera podcast pipeline that feeds YouTube, Shorts, and LinkedIn.',
             ],
             [
-                'slug' => 'customer-success-playbook',
-                'category' => 'company-news',
-                'title' => 'Customer Success Playbook',
-                'description' => 'The onboarding rituals that help new clients see value fast.',
+                'slug' => 'event-coverage-playbook',
+                'category' => 'creative-insights',
+                'title' => 'Live Event Coverage Playbook',
+                'description' => 'Crew roles, shot lists, and same-day edit tips for conferences and festivals.',
             ],
             [
-                'slug' => 'roadmap-highlights',
-                'category' => 'product-updates',
-                'title' => 'Roadmap Highlights',
-                'description' => 'Upcoming features across CRM, finance, and project delivery.',
+                'slug' => 'client-spotlight-fashion-week',
+                'category' => 'studio-news',
+                'title' => 'Client Spotlight: Fashion Week Recap Films',
+                'description' => 'How we delivered 48-hour turnaround highlight films across three runway days.',
             ],
         ];
 
@@ -226,15 +228,15 @@ class SystemDummyDataSeeder extends Seeder
                     'title' => ['en' => $post['title'], 'ar' => $post['title'], 'tr' => $post['title']],
                     'description' => ['en' => $post['description'], 'ar' => $post['description'], 'tr' => $post['description']],
                     'content' => [
-                        'en' => '<p>'.$post['description'].'</p><p>This is seeded demo content for Symfonix.</p>',
+                        'en' => '<p>'.$post['description'].'</p><p>Seeded demo article for a media production studio.</p>',
                         'ar' => '<p>'.$post['description'].'</p>',
                         'tr' => '<p>'.$post['description'].'</p>',
                     ],
-                    'keywords' => ['en' => 'symfonix, demo, blog', 'ar' => 'symfonix', 'tr' => 'symfonix'],
+                    'keywords' => ['en' => 'media, film, production, studio', 'ar' => 'media', 'tr' => 'media'],
                     'image' => $this->images->store('blogs', $post['title'], 1200, 675),
                     'status' => CmsStatus::PUBLISHED->value,
                     'featured' => $index < 3 ? 1 : 0,
-                    'visits' => random_int(20, 500),
+                    'visits' => random_int(40, 900),
                 ]
             );
         }
@@ -242,29 +244,29 @@ class SystemDummyDataSeeder extends Seeder
         $pages = [
             [
                 'slug' => 'about-us',
-                'title' => 'About Us',
-                'description' => 'Learn more about the Symfonix team and mission.',
+                'title' => 'About the Studio',
+                'description' => 'A full-service media company crafting film, photo, podcast, and brand content.',
                 'nav' => true,
                 'footer' => true,
             ],
             [
                 'slug' => 'careers',
                 'title' => 'Careers',
-                'description' => 'Join a product-minded team building business software.',
+                'description' => 'Join producers, editors, and creatives shipping work for global brands.',
                 'nav' => true,
                 'footer' => true,
             ],
             [
                 'slug' => 'privacy-policy',
                 'title' => 'Privacy Policy',
-                'description' => 'How we collect, use, and protect your data.',
+                'description' => 'How we collect, use, and protect client and audience data.',
                 'nav' => false,
                 'footer' => true,
             ],
             [
                 'slug' => 'terms-of-service',
                 'title' => 'Terms of Service',
-                'description' => 'The terms that govern use of Symfonix products.',
+                'description' => 'Usage terms for studio services, licensing, and deliverables.',
                 'nav' => false,
                 'footer' => true,
             ],
@@ -277,28 +279,28 @@ class SystemDummyDataSeeder extends Seeder
                     'title' => ['en' => $page['title'], 'ar' => $page['title'], 'tr' => $page['title']],
                     'description' => ['en' => $page['description'], 'ar' => $page['description'], 'tr' => $page['description']],
                     'content' => [
-                        'en' => '<p>'.$page['description'].'</p><p>Seeded page content for demonstration purposes.</p>',
+                        'en' => '<p>'.$page['description'].'</p><p>Seeded page content for a media company demo.</p>',
                         'ar' => '<p>'.$page['description'].'</p>',
                         'tr' => '<p>'.$page['description'].'</p>',
                     ],
-                    'keywords' => ['en' => 'symfonix, '.$page['slug'], 'ar' => 'symfonix', 'tr' => 'symfonix'],
+                    'keywords' => ['en' => 'media studio, '.$page['slug'], 'ar' => 'media', 'tr' => 'media'],
                     'image' => $this->images->store('pages', $page['title'], 1400, 700),
                     'status' => CmsStatus::PUBLISHED->value,
                     'featured' => 0,
                     'add_to_nav' => $page['nav'],
                     'add_to_footer' => $page['footer'],
                     'add_to_top_bar' => false,
-                    'visits' => random_int(10, 200),
+                    'visits' => random_int(20, 350),
                 ]
             );
         }
 
         $faqs = [
-            ['q' => 'What is Symfonix?', 'a' => 'Symfonix is an all-in-one business platform covering CRM, projects, finance, and CMS.'],
-            ['q' => 'Can I try demo data?', 'a' => 'Yes. Run php artisan app:seed-dummy to populate a full demo environment.'],
-            ['q' => 'Does it support multiple languages?', 'a' => 'Yes. Content models support English, Arabic, and Turkish translations.'],
-            ['q' => 'How do I contact support?', 'a' => 'Open a ticket from the customer portal or email support@symfonix.com.'],
-            ['q' => 'Is billing included?', 'a' => 'Finance modules cover invoices, expenses, commissions, and subscription renewals.'],
+            ['q' => 'What does the studio produce?', 'a' => 'Brand films, commercials, photography, podcasts, social content, and live event coverage.'],
+            ['q' => 'Can I try demo data?', 'a' => 'Yes. Run php artisan app:seed-dummy to populate a full media-company demo environment.'],
+            ['q' => 'Do you license footage?', 'a' => 'Yes. Packages include usage licenses for web, social, and broadcast depending on the scope.'],
+            ['q' => 'How do I contact the studio?', 'a' => 'Open a ticket from the client portal or email studio@symfonix.com.'],
+            ['q' => 'Is post-production included?', 'a' => 'Most retainers include edit, color, sound design, and delivery masters.'],
         ];
 
         foreach ($faqs as $index => $faq) {
@@ -318,22 +320,22 @@ class SystemDummyDataSeeder extends Seeder
     {
         $categories = [
             [
-                'slug' => 'software-development',
-                'title' => 'Software Development',
-                'description' => 'Custom web and mobile application development.',
-                'color' => '#2563eb',
+                'slug' => 'film-video-production',
+                'title' => 'Film & Video Production',
+                'description' => 'Commercials, brand films, and documentary storytelling.',
+                'color' => '#0f766e',
             ],
             [
-                'slug' => 'cloud-devops',
-                'title' => 'Cloud & DevOps',
-                'description' => 'Infrastructure, CI/CD, and managed cloud services.',
-                'color' => '#059669',
+                'slug' => 'photography-content',
+                'title' => 'Photography & Content',
+                'description' => 'Campaign stills, product shoots, and social asset libraries.',
+                'color' => '#b45309',
             ],
             [
-                'slug' => 'digital-consulting',
-                'title' => 'Digital Consulting',
-                'description' => 'Strategy, discovery, and digital transformation.',
-                'color' => '#d97706',
+                'slug' => 'audio-live-experiences',
+                'title' => 'Audio & Live Experiences',
+                'description' => 'Podcasts, sound design, and multi-camera event coverage.',
+                'color' => '#7c3aed',
             ],
         ];
 
@@ -353,40 +355,40 @@ class SystemDummyDataSeeder extends Seeder
 
         $services = [
             [
-                'slug' => 'web-application-development',
-                'category' => 'software-development',
-                'title' => 'Web Application Development',
-                'description' => 'End-to-end Laravel and Vue web platforms.',
+                'slug' => 'brand-film-production',
+                'category' => 'film-video-production',
+                'title' => 'Brand Film Production',
+                'description' => 'End-to-end cinematic films for launches and corporate storytelling.',
             ],
             [
-                'slug' => 'mobile-app-development',
-                'category' => 'software-development',
-                'title' => 'Mobile App Development',
-                'description' => 'Native and cross-platform mobile experiences.',
+                'slug' => 'commercial-shoot',
+                'category' => 'film-video-production',
+                'title' => 'TV & Digital Commercials',
+                'description' => 'High-impact commercials optimized for broadcast and paid social.',
             ],
             [
-                'slug' => 'managed-cloud-hosting',
-                'category' => 'cloud-devops',
-                'title' => 'Managed Cloud Hosting',
-                'description' => 'Secure, monitored hosting with backups and scaling.',
+                'slug' => 'campaign-photography',
+                'category' => 'photography-content',
+                'title' => 'Campaign Photography',
+                'description' => 'Studio and location photography for seasonal campaigns.',
             ],
             [
-                'slug' => 'devops-automation',
-                'category' => 'cloud-devops',
-                'title' => 'DevOps Automation',
-                'description' => 'CI/CD pipelines, containers, and observability.',
+                'slug' => 'social-content-factory',
+                'category' => 'photography-content',
+                'title' => 'Social Content Factory',
+                'description' => 'Batch-produced Reels, carousels, and always-on creative assets.',
             ],
             [
-                'slug' => 'product-discovery',
-                'category' => 'digital-consulting',
-                'title' => 'Product Discovery',
-                'description' => 'Workshops that turn ideas into actionable roadmaps.',
+                'slug' => 'podcast-studio-production',
+                'category' => 'audio-live-experiences',
+                'title' => 'Podcast Studio Production',
+                'description' => 'Multi-mic recording, video podcast capture, and episode delivery.',
             ],
             [
-                'slug' => 'ux-audit',
-                'category' => 'digital-consulting',
-                'title' => 'UX Audit',
-                'description' => 'Usability reviews with prioritized improvement plans.',
+                'slug' => 'live-event-coverage',
+                'category' => 'audio-live-experiences',
+                'title' => 'Live Event Coverage',
+                'description' => 'Multi-camera capture, highlight edits, and same-day social cuts.',
             ],
         ];
 
@@ -398,15 +400,15 @@ class SystemDummyDataSeeder extends Seeder
                     'title' => ['en' => $service['title'], 'ar' => $service['title'], 'tr' => $service['title']],
                     'description' => ['en' => $service['description'], 'ar' => $service['description'], 'tr' => $service['description']],
                     'content' => [
-                        'en' => '<p>'.$service['description'].'</p><p>Seeded service offering for demo environments.</p>',
+                        'en' => '<p>'.$service['description'].'</p><p>Seeded media-studio service offering for demo environments.</p>',
                         'ar' => '<p>'.$service['description'].'</p>',
                         'tr' => '<p>'.$service['description'].'</p>',
                     ],
-                    'keywords' => ['en' => 'service, demo', 'ar' => 'service', 'tr' => 'service'],
+                    'keywords' => ['en' => 'media, production, studio', 'ar' => 'media', 'tr' => 'media'],
                     'image' => $this->images->store('services', $service['title'], 1100, 700),
                     'status' => CmsStatus::PUBLISHED->value,
                     'featured' => $index < 3 ? 1 : 0,
-                    'visits' => random_int(15, 350),
+                    'visits' => random_int(25, 500),
                 ]
             );
         }
@@ -416,7 +418,7 @@ class SystemDummyDataSeeder extends Seeder
     {
         $this->call([
             ProductCategorySeeder::class,
-            TechProductSeeder::class,
+            MediaProductSeeder::class,
         ]);
 
         Product::query()->each(function (Product $product) {
@@ -441,17 +443,17 @@ class SystemDummyDataSeeder extends Seeder
 
         $companies = [
             [
-                'name' => 'Nova Tech Labs',
-                'activity_type' => Company::ACTIVITY_TECHNOLOGY,
-                'email' => 'hello@novatech.demo',
+                'name' => 'Lumen Fashion House',
+                'activity_type' => Company::ACTIVITY_RETAIL,
+                'email' => 'hello@lumenfashion.demo',
                 'phone' => '+201000000101',
                 'country' => 'Egypt',
                 'city' => 'Cairo',
             ],
             [
-                'name' => 'Green Retail Co',
-                'activity_type' => Company::ACTIVITY_RETAIL,
-                'email' => 'ops@greenretail.demo',
+                'name' => 'Pulse Streaming',
+                'activity_type' => Company::ACTIVITY_TECHNOLOGY,
+                'email' => 'ops@pulsestream.demo',
                 'phone' => '+201000000102',
                 'country' => 'UAE',
                 'city' => 'Dubai',
@@ -465,25 +467,25 @@ class SystemDummyDataSeeder extends Seeder
                 'city' => 'Riyadh',
             ],
             [
-                'name' => 'Finora Capital',
+                'name' => 'Aether Bank',
                 'activity_type' => Company::ACTIVITY_FINANCE,
-                'email' => 'contact@finora.demo',
+                'email' => 'contact@aetherbank.demo',
                 'phone' => '+201000000104',
                 'country' => 'Egypt',
                 'city' => 'Alexandria',
             ],
             [
-                'name' => 'EduSpark Academy',
+                'name' => 'Horizon University',
                 'activity_type' => Company::ACTIVITY_EDUCATION,
-                'email' => 'team@eduspark.demo',
+                'email' => 'team@horizonuni.demo',
                 'phone' => '+201000000105',
                 'country' => 'Turkey',
                 'city' => 'Istanbul',
             ],
             [
-                'name' => 'Atlas Consulting',
+                'name' => 'Northstar Agency',
                 'activity_type' => Company::ACTIVITY_CONSULTING,
-                'email' => 'hello@atlasconsult.demo',
+                'email' => 'hello@northstar.demo',
                 'phone' => '+201000000106',
                 'country' => 'Jordan',
                 'city' => 'Amman',
@@ -504,8 +506,8 @@ class SystemDummyDataSeeder extends Seeder
                     'phone' => $company['phone'],
                     'country' => $company['country'],
                     'city' => $company['city'],
-                    'address' => $company['city'].' Business District',
-                    'notes' => 'Seeded demo company for Symfonix.',
+                    'address' => $company['city'].' Creative District',
+                    'notes' => 'Seeded media-studio client account.',
                     'status' => Company::STATUS_ACTIVE,
                 ]
             );
@@ -517,11 +519,11 @@ class SystemDummyDataSeeder extends Seeder
                 [
                     'company_id' => $model->id,
                     'user_id' => $customer?->id,
-                    'name' => ($customer?->name ?? 'Primary Contact').' ('.$model->name.')',
+                    'name' => ($customer?->name ?? 'Brand Manager').' ('.$model->name.')',
                     'phone' => $company['phone'],
                     'source' => Lead::SOURCES[$index % count(Lead::SOURCES)],
-                    'job_title' => 'Decision Maker',
-                    'notes' => 'Primary seeded contact.',
+                    'job_title' => 'Brand / Marketing Lead',
+                    'notes' => 'Primary seeded marketing contact.',
                     'is_primary' => true,
                 ]
             );
@@ -536,7 +538,7 @@ class SystemDummyDataSeeder extends Seeder
                 [
                     'name' => 'Lead '.$company->name,
                     'phone' => $company->phone,
-                    'job_title' => 'Procurement Manager',
+                    'job_title' => 'Marketing Director',
                     'company_name' => $company->name,
                     'company_id' => $company->id,
                     'city' => $company->city,
@@ -546,10 +548,10 @@ class SystemDummyDataSeeder extends Seeder
                     'assigned_to' => $assignee?->id,
                     'source' => Lead::SOURCES[$index % count(Lead::SOURCES)],
                     'status' => Lead::STATUSES[$index % count(Lead::STATUSES)],
-                    'project_budget' => 5000 + ($index * 2500),
+                    'project_budget' => 8000 + ($index * 3500),
                     'service_interest' => $service?->getTranslation('title', 'en'),
                     'service_id' => $service?->id,
-                    'problem_statement' => 'Looking for a scalable digital platform.',
+                    'problem_statement' => 'Needs a media partner for campaign film and always-on content.',
                     'locale' => 'en',
                     'blocked' => false,
                 ]
@@ -567,17 +569,17 @@ class SystemDummyDataSeeder extends Seeder
             Deal::query()->updateOrCreate(
                 [
                     'company_id' => $company->id,
-                    'title' => $company->name.' Platform Deal',
+                    'title' => $company->name.' Media Retainer',
                 ],
                 [
                     'pipeline_stage_id' => $stage?->id,
                     'assigned_to' => $assignee?->id,
-                    'value' => 8000 + ($index * 4500),
+                    'value' => 12000 + ($index * 6500),
                     'currency' => $currencies[$index % count($currencies)],
                     'probability' => $stage?->probability ?? 25,
                     'expected_close_date' => now()->addDays(14 + ($index * 7))->toDateString(),
                     'source' => Lead::SOURCE_WEBSITE,
-                    'description' => 'Seeded demo opportunity.',
+                    'description' => 'Seeded media production opportunity.',
                     'status' => $stage?->is_won ? Deal::STATUS_WON : Deal::STATUS_OPEN,
                     'won_at' => $stage?->is_won ? now()->subDays(3) : null,
                     'closed_at' => $stage?->is_won ? now()->subDays(3) : null,
@@ -603,13 +605,13 @@ class SystemDummyDataSeeder extends Seeder
                 [
                     'status' => Subscription::STATUS_ACTIVE,
                     'billing_cycle' => Subscription::BILLING_MONTHLY,
-                    'amount' => 1200 + ($index * 300),
+                    'amount' => 2500 + ($index * 750),
                     'currency' => $subscriptionCurrencies[$index % count($subscriptionCurrencies)],
                     'starts_at' => now()->subMonths(2)->toDateString(),
                     'ends_at' => null,
                     'renewal_at' => now()->addMonth()->toDateString(),
                     'auto_renew' => true,
-                    'notes' => 'Seeded active subscription.',
+                    'notes' => 'Seeded active media retainer.',
                 ]
             );
         }
@@ -618,10 +620,10 @@ class SystemDummyDataSeeder extends Seeder
 
         if ($admin) {
             MarketingCampaign::query()->updateOrCreate(
-                ['subject' => 'Welcome to Symfonix Demo'],
+                ['subject' => 'New season media packages'],
                 [
                     'user_id' => $admin->id,
-                    'body' => '<p>Thanks for exploring Symfonix. This campaign was seeded for demo purposes.</p>',
+                    'body' => '<p>Explore our brand film, podcast, and social content packages for Q4 campaigns.</p>',
                     'recipients_count' => $customers->count(),
                     'status' => MarketingCampaign::STATUS_FINISHED,
                     'recipient_sources' => ['customers'],
@@ -642,11 +644,11 @@ class SystemDummyDataSeeder extends Seeder
         }
 
         $projects = [
-            ['title' => 'CRM Rollout', 'budget' => 25000, 'currency' => 'USD', 'payment' => Project::PAYMENT_PARTIALLY_PAID],
-            ['title' => 'E-Commerce Rebuild', 'budget' => 44000, 'currency' => 'EUR', 'payment' => Project::PAYMENT_UNPAID],
-            ['title' => 'Patient Portal', 'budget' => 32000, 'currency' => 'GBP', 'payment' => Project::PAYMENT_FULLY_PAID],
-            ['title' => 'Learning Platform', 'budget' => 41000, 'currency' => 'USD', 'payment' => Project::PAYMENT_PARTIALLY_PAID],
-            ['title' => 'Analytics Dashboard', 'budget' => 620000, 'currency' => 'TRY', 'payment' => Project::PAYMENT_UNPAID],
+            ['title' => 'Autumn Brand Film', 'budget' => 48000, 'currency' => 'USD', 'payment' => Project::PAYMENT_PARTIALLY_PAID],
+            ['title' => 'Streaming Launch Trailer', 'budget' => 62000, 'currency' => 'EUR', 'payment' => Project::PAYMENT_UNPAID],
+            ['title' => 'Healthcare Awareness Spots', 'budget' => 35000, 'currency' => 'GBP', 'payment' => Project::PAYMENT_FULLY_PAID],
+            ['title' => 'Campus Open Day Coverage', 'budget' => 28000, 'currency' => 'USD', 'payment' => Project::PAYMENT_PARTIALLY_PAID],
+            ['title' => 'Banking App Social Series', 'budget' => 890000, 'currency' => 'TRY', 'payment' => Project::PAYMENT_UNPAID],
         ];
 
         foreach ($projects as $index => $item) {
@@ -661,7 +663,7 @@ class SystemDummyDataSeeder extends Seeder
                     'company_id' => $company->id,
                 ],
                 [
-                    'description' => 'Seeded demo project for '.$company->name.'.',
+                    'description' => 'Seeded media production project for '.$company->name.'.',
                     'project_status_id' => $status->id,
                     'deal_id' => $deal?->id,
                     'budget' => $item['budget'],
@@ -680,10 +682,10 @@ class SystemDummyDataSeeder extends Seeder
                         'employee_id' => $employees[$index % $employees->count()]->id,
                     ],
                     [
-                        'role' => $index % 2 === 0 ? 'Project Lead' : 'Developer',
+                        'role' => $index % 2 === 0 ? 'Producer' : 'Editor',
                         'started_at' => $project->start_date,
                         'ended_at' => null,
-                        'notes' => 'Seeded assignment.',
+                        'notes' => 'Seeded crew assignment.',
                     ]
                 );
             }
@@ -695,39 +697,39 @@ class SystemDummyDataSeeder extends Seeder
                     'title' => ['en' => $item['title'].' Case Study', 'ar' => $item['title'], 'tr' => $item['title']],
                     'client_name' => ['en' => $company->name, 'ar' => $company->name, 'tr' => $company->name],
                     'summary' => [
-                        'en' => 'How '.$company->name.' modernized operations with Symfonix.',
-                        'ar' => 'How '.$company->name.' modernized operations with Symfonix.',
-                        'tr' => 'How '.$company->name.' modernized operations with Symfonix.',
+                        'en' => 'How '.$company->name.' elevated their brand with cinematic media.',
+                        'ar' => 'How '.$company->name.' elevated their brand with cinematic media.',
+                        'tr' => 'How '.$company->name.' elevated their brand with cinematic media.',
                     ],
                     'challenge' => [
-                        'en' => 'Legacy tools made collaboration and reporting difficult.',
-                        'ar' => 'Legacy tools made collaboration and reporting difficult.',
-                        'tr' => 'Legacy tools made collaboration and reporting difficult.',
+                        'en' => 'Fragmented creative assets and slow turnaround limited campaign impact.',
+                        'ar' => 'Fragmented creative assets and slow turnaround limited campaign impact.',
+                        'tr' => 'Fragmented creative assets and slow turnaround limited campaign impact.',
                     ],
                     'solution' => [
-                        'en' => 'We delivered a tailored platform covering CRM, delivery, and finance.',
-                        'ar' => 'We delivered a tailored platform covering CRM, delivery, and finance.',
-                        'tr' => 'We delivered a tailored platform covering CRM, delivery, and finance.',
+                        'en' => 'We delivered a production package spanning film, stills, and social edits.',
+                        'ar' => 'We delivered a production package spanning film, stills, and social edits.',
+                        'tr' => 'We delivered a production package spanning film, stills, and social edits.',
                     ],
                     'results' => [
-                        'en' => 'Faster sales cycles and clearer project visibility.',
-                        'ar' => 'Faster sales cycles and clearer project visibility.',
-                        'tr' => 'Faster sales cycles and clearer project visibility.',
+                        'en' => 'Stronger brand recall and faster content velocity across channels.',
+                        'ar' => 'Stronger brand recall and faster content velocity across channels.',
+                        'tr' => 'Stronger brand recall and faster content velocity across channels.',
                     ],
                     'content' => [
-                        'en' => '<p>Full case study content seeded for demo.</p>',
-                        'ar' => '<p>Full case study content seeded for demo.</p>',
-                        'tr' => '<p>Full case study content seeded for demo.</p>',
+                        'en' => '<p>Full media case study content seeded for demo.</p>',
+                        'ar' => '<p>Full media case study content seeded for demo.</p>',
+                        'tr' => '<p>Full media case study content seeded for demo.</p>',
                     ],
                     'image' => $this->images->store('project-use-cases', $item['title'], 1200, 800),
-                    'technologies' => ['Laravel', 'Vue', 'MySQL', 'Redis'],
-                    'category_tag' => 'Product Delivery',
+                    'technologies' => ['Cinema Camera', 'Premiere Pro', 'DaVinci Resolve', 'After Effects'],
+                    'category_tag' => 'Media Production',
                     'project_url' => 'https://example.com/'.Str::slug($item['title']),
                     'completed_year' => (int) now()->year,
                     'featured' => $index < 3,
                     'status' => CmsStatus::PUBLISHED->value,
                     'sort_order' => $index + 1,
-                    'visits' => random_int(25, 400),
+                    'visits' => random_int(40, 700),
                 ]
             );
         }
@@ -743,10 +745,10 @@ class SystemDummyDataSeeder extends Seeder
         }
 
         $quotes = [
-            'Symfonix helped us centralize sales and delivery in one place.',
-            'The onboarding was smooth and the team understood our workflow quickly.',
-            'We finally have clear visibility across projects, invoices, and customer success.',
-            'A practical platform that feels built for real agency operations.',
+            'The brand film captured our story better than any previous campaign.',
+            'Their crew was calm on set and the edit turnaround was exceptional.',
+            'We finally have a content engine for social, events, and launch films.',
+            'A true media partner — strategy, production, and delivery in one studio.',
         ];
 
         foreach ($quotes as $index => $quote) {
@@ -777,10 +779,10 @@ class SystemDummyDataSeeder extends Seeder
         }
 
         $tickets = [
-            ['subject' => 'Cannot access analytics dashboard', 'priority' => Ticket::PRIORITY_HIGH, 'status' => Ticket::STATUS_OPEN],
-            ['subject' => 'Invoice PDF download fails', 'priority' => Ticket::PRIORITY_MEDIUM, 'status' => Ticket::STATUS_IN_PROGRESS],
-            ['subject' => 'Need help inviting team members', 'priority' => Ticket::PRIORITY_LOW, 'status' => Ticket::STATUS_RESOLVED],
-            ['subject' => 'API rate limit questions', 'priority' => Ticket::PRIORITY_MEDIUM, 'status' => Ticket::STATUS_CLOSED],
+            ['subject' => 'Need revised cut of brand film', 'priority' => Ticket::PRIORITY_HIGH, 'status' => Ticket::STATUS_OPEN],
+            ['subject' => 'Invoice for podcast studio days', 'priority' => Ticket::PRIORITY_MEDIUM, 'status' => Ticket::STATUS_IN_PROGRESS],
+            ['subject' => 'Share usage rights for campaign stills', 'priority' => Ticket::PRIORITY_LOW, 'status' => Ticket::STATUS_RESOLVED],
+            ['subject' => 'Request raw footage access', 'priority' => Ticket::PRIORITY_MEDIUM, 'status' => Ticket::STATUS_CLOSED],
         ];
 
         foreach ($tickets as $index => $item) {
@@ -796,7 +798,7 @@ class SystemDummyDataSeeder extends Seeder
                     'ticket_category_id' => $category->id,
                     'assigned_to' => $assignee?->id,
                     'subject' => $item['subject'],
-                    'description' => $item['subject'].'. Seeded support ticket for demo purposes.',
+                    'description' => $item['subject'].'. Seeded support ticket for media studio demo.',
                     'priority' => $item['priority'],
                     'status' => $item['status'],
                     'closed_at' => in_array($item['status'], [Ticket::STATUS_RESOLVED, Ticket::STATUS_CLOSED], true)
@@ -819,7 +821,7 @@ class SystemDummyDataSeeder extends Seeder
                     [
                         'ticket_id' => $ticket->id,
                         'user_id' => $assignee->id,
-                        'body' => 'Thanks for reaching out. We are looking into this demo ticket.',
+                        'body' => 'Thanks for reaching out. The production team is reviewing this demo ticket.',
                     ],
                     []
                 );

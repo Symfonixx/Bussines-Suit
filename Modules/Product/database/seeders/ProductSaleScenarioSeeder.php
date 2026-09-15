@@ -18,12 +18,12 @@ class ProductSaleScenarioSeeder extends Seeder
         $company = Company::query()->orderBy('id')->first();
 
         $scenarios = [
-            ['sku' => 'SFX-CRM-PRO', 'quantity' => 5, 'days_ago' => 2],
-            ['sku' => 'SFX-API-ENT', 'quantity' => 1, 'days_ago' => 5],
-            ['sku' => 'SFX-DEV-CUSTOM', 'quantity' => 1, 'days_ago' => 10],
-            ['sku' => 'SFX-INF-CLOUD', 'quantity' => 3, 'days_ago' => 14],
-            ['sku' => 'SFX-WL-LIC', 'quantity' => 1, 'days_ago' => 21],
-            ['sku' => 'SFX-SEC-AUDIT', 'quantity' => 1, 'days_ago' => 28],
+            ['sku' => 'MED-FILM-BRAND', 'quantity' => 1, 'days_ago' => 2],
+            ['sku' => 'MED-RET-CONTENT', 'quantity' => 1, 'days_ago' => 5],
+            ['sku' => 'MED-STAGE-DAY', 'quantity' => 3, 'days_ago' => 10],
+            ['sku' => 'MED-POST-FINISH', 'quantity' => 1, 'days_ago' => 14],
+            ['sku' => 'MED-LIC-BCAST', 'quantity' => 1, 'days_ago' => 21],
+            ['sku' => 'MED-SOCIAL-CUT', 'quantity' => 2, 'days_ago' => 28],
         ];
 
         foreach ($scenarios as $scenario) {
@@ -40,7 +40,7 @@ class ProductSaleScenarioSeeder extends Seeder
                 'company_id' => $company?->id,
                 'quantity' => $scenario['quantity'],
                 'sold_at' => $soldAt,
-                'notes' => 'Seeded tech-company product sale scenario.',
+                'notes' => 'Seeded media-company product sale scenario.',
             ]);
         }
     }

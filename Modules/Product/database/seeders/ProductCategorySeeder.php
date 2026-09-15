@@ -9,30 +9,30 @@ use Modules\Product\Models\ProductCategory;
 class ProductCategorySeeder extends Seeder
 {
     /**
-     * Seed product categories tailored for tech companies.
+     * Seed product categories tailored for a media production company.
      */
     public function run(): void
     {
         $categories = [
             [
-                'name' => 'SaaS Platforms',
-                'slug' => 'saas-platforms',
-                'description' => 'Subscription-based software products and cloud applications.',
+                'name' => 'Production Packages',
+                'slug' => 'production-packages',
+                'description' => 'Film, commercial, and branded content production packages.',
             ],
             [
-                'name' => 'Professional Services',
-                'slug' => 'professional-services',
-                'description' => 'Custom development, consulting, implementation, and technical delivery.',
+                'name' => 'Studio & Equipment',
+                'slug' => 'studio-equipment',
+                'description' => 'Studio day rates, camera kits, lighting, and rental bundles.',
             ],
             [
-                'name' => 'API & Integrations',
-                'slug' => 'api-integrations',
-                'description' => 'API access, webhooks, SDKs, and third-party integration packages.',
+                'name' => 'Post & Distribution',
+                'slug' => 'post-distribution',
+                'description' => 'Editing, color, sound, captions, and multi-platform delivery.',
             ],
             [
-                'name' => 'Infrastructure & DevOps',
-                'slug' => 'infrastructure-devops',
-                'description' => 'Cloud hosting, CI/CD, monitoring, and managed infrastructure.',
+                'name' => 'Retainers & Licensing',
+                'slug' => 'retainers-licensing',
+                'description' => 'Monthly creative retainers and usage licensing options.',
             ],
         ];
 

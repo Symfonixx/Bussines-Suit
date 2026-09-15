@@ -12,7 +12,7 @@ class MultiCurrencyTransactionSeeder extends Seeder
 {
     public function run(): void
     {
-        if (JournalEntry::query()->where('description', 'USD retainer payment')->exists()) {
+        if (JournalEntry::query()->where('description', 'USD brand film deposit')->exists()) {
             return;
         }
 
@@ -21,12 +21,12 @@ class MultiCurrencyTransactionSeeder extends Seeder
         $expenseCategory = ExpenseCategory::query()->orderBy('id')->first();
 
         $samples = [
-            ['flow' => 'revenue', 'amount' => 2500, 'currency' => 'USD', 'days_ago' => 2, 'description' => 'USD retainer payment'],
-            ['flow' => 'revenue', 'amount' => 1800, 'currency' => 'EUR', 'days_ago' => 5, 'description' => 'EUR milestone payment'],
-            ['flow' => 'revenue', 'amount' => 1200, 'currency' => 'GBP', 'days_ago' => 8, 'description' => 'GBP consulting invoice'],
-            ['flow' => 'expense', 'amount' => 450, 'currency' => 'USD', 'days_ago' => 3, 'description' => 'USD SaaS tools'],
-            ['flow' => 'expense', 'amount' => 320, 'currency' => 'EUR', 'days_ago' => 6, 'description' => 'EUR contractor invoice'],
-            ['flow' => 'expense', 'amount' => 15000, 'currency' => 'TRY', 'days_ago' => 4, 'description' => 'TRY office expenses'],
+            ['flow' => 'revenue', 'amount' => 8500, 'currency' => 'USD', 'days_ago' => 2, 'description' => 'USD brand film deposit'],
+            ['flow' => 'revenue', 'amount' => 4200, 'currency' => 'EUR', 'days_ago' => 5, 'description' => 'EUR studio day invoice'],
+            ['flow' => 'revenue', 'amount' => 3100, 'currency' => 'GBP', 'days_ago' => 8, 'description' => 'GBP post-production milestone'],
+            ['flow' => 'expense', 'amount' => 1200, 'currency' => 'USD', 'days_ago' => 3, 'description' => 'USD camera kit rental'],
+            ['flow' => 'expense', 'amount' => 780, 'currency' => 'EUR', 'days_ago' => 6, 'description' => 'EUR freelance colorist'],
+            ['flow' => 'expense', 'amount' => 45000, 'currency' => 'TRY', 'days_ago' => 4, 'description' => 'TRY location and catering'],
         ];
 
         foreach ($samples as $index => $sample) {

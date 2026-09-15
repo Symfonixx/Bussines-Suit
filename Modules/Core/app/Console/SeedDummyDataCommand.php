@@ -12,12 +12,12 @@ class SeedDummyDataCommand extends Command
                             {--fresh : Drop all tables, reinstall base data, then seed dummy data}
                             {--force : Skip confirmation prompts}';
 
-    protected $description = 'Seed realistic dummy data with placeholder images across the whole Symfonix system.';
+    protected $description = 'Seed media-company demo data with thematic stock images across the whole Symfonix system.';
 
     public function handle(): int
     {
         if (! $this->option('force') && ! $this->option('no-interaction')) {
-            $this->warn('This will create demo records (users, CRM, CMS, products, projects, etc.) with placeholder images.');
+            $this->warn('This will create media-studio demo records (CMS, services, CRM, products, projects, HR, finance) with stock images.');
 
             if (! $this->confirm('Continue?', true)) {
                 return self::SUCCESS;

@@ -9,18 +9,20 @@ use Modules\Finance\Models\ExpenseCategory;
 class ExpenseCategorySeeder extends Seeder
 {
     /**
-     * Seed default expense categories for the central ledger.
+     * Seed expense categories for a media production studio ledger.
      */
     public function run(): void
     {
         $categories = [
-            'Software',
+            'Talent & Cast',
+            'Crew & Freelancers',
+            'Equipment Rental',
+            'Locations',
+            'Post-Production',
             'Marketing',
-            'Office',
-            'Salaries',
-            'Commissions',
-            'Utilities',
             'Travel',
+            'Studio Overhead',
+            'Software',
             'Other',
         ];
 

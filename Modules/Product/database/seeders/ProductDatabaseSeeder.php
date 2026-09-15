@@ -10,7 +10,7 @@ class ProductDatabaseSeeder extends Seeder
     {
         $this->call([
             ProductCategorySeeder::class,
-            TechProductSeeder::class,
+            MediaProductSeeder::class,
             ProductSaleScenarioSeeder::class,
         ]);
     }
