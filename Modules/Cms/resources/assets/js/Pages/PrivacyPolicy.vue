@@ -1,6 +1,5 @@
-<template>
+﻿<template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -18,31 +17,10 @@
     </Head>
     <app-layout>
 
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/contact-header-bg.jpg)` }">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ trans('Privacy Policy') }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')" v-if="typeof route !== 'undefined'">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}`" v-else>
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </a>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans('Privacy Policy') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
+        <PageHeader
+            :title="trans('Privacy Policy')"
+            :background="asset_path + 'theme/img/main/30.jpg'"
+        />
 
         <!--Privacy Policy Content Start-->
         <section class="privacy-policy my-5">
@@ -129,12 +107,12 @@
                                 <h3 class="privacy-policy__heading">{{ trans('7. Your Rights') }}</h3>
                                 <p>{{ trans('Depending on your location, you may have the following rights regarding your personal information:') }}</p>
                                 <ul>
-                                    <li>{{ trans('The right to access – You have the right to request copies of your personal data') }}</li>
-                                    <li>{{ trans('The right to rectification – You have the right to request that we correct any information you believe is inaccurate') }}</li>
-                                    <li>{{ trans('The right to erasure – You have the right to request that we erase your personal data, under certain conditions') }}</li>
-                                    <li>{{ trans('The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions') }}</li>
-                                    <li>{{ trans('The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions') }}</li>
-                                    <li>{{ trans('The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions') }}</li>
+                                    <li>{{ trans('The right to access â€“ You have the right to request copies of your personal data') }}</li>
+                                    <li>{{ trans('The right to rectification â€“ You have the right to request that we correct any information you believe is inaccurate') }}</li>
+                                    <li>{{ trans('The right to erasure â€“ You have the right to request that we erase your personal data, under certain conditions') }}</li>
+                                    <li>{{ trans('The right to restrict processing â€“ You have the right to request that we restrict the processing of your personal data, under certain conditions') }}</li>
+                                    <li>{{ trans('The right to object to processing â€“ You have the right to object to our processing of your personal data, under certain conditions') }}</li>
+                                    <li>{{ trans('The right to data portability â€“ You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions') }}</li>
                                 </ul>
 
                                 <h3 class="privacy-policy__heading">{{ trans('8. Cookies and Tracking Technologies') }}</h3>
@@ -175,6 +153,7 @@
 <script setup>
 import {computed} from 'vue'
 import {Link, usePage, Head} from '@inertiajs/vue3'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;

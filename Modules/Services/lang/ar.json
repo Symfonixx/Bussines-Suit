@@ -25,5 +25,19 @@
     "All Services": "جميع الخدمات",
     "Scale Your Business Smarter with Next-Gen IT Solutions" : "وسّع نطاق أعمالك بذكاء مع حلول تكنولوجيا المعلومات من الجيل التالي",
     "Discover our IT services designed to scale and modernize your business.": "اكتشف خدماتنا التقنية المصممة لتوسيع عملك وتحديثه.",
-    "IT services, web development, mobile apps, AI solutions, cloud services": "خدمات تقنية المعلومات، تطوير الويب، تطبيقات الموبايل، حلول الذكاء الاصطناعي، الخدمات السحابية"
+    "IT services, web development, mobile apps, AI solutions, cloud services": "خدمات تقنية المعلومات، تطوير الويب، تطبيقات الموبايل، حلول الذكاء الاصطناعي، الخدمات السحابية",
+    "What we do": "ماذا نقدم",
+    "Services Available": "الخدمات المتاحة",
+    "Categories": "الفئات",
+    "Search services...": "ابحث في الخدمات...",
+    "No services found": "لا توجد خدمات",
+    "No services match your filters. Try another category or search term.": "لا توجد خدمات مطابقة. جرّب فئة أو عبارة بحث أخرى.",
+    "Showing": "عرض",
+    "results": "نتائج",
+    "Previous Service": "الخدمة السابقة",
+    "Next Service": "الخدمة التالية",
+    "Request this Service": "اطلب هذه الخدمة",
+    "I would like to learn more about this service.": "أود معرفة المزيد عن هذه الخدمة.",
+    "Tell us about your needs and we will get back to you shortly.": "أخبرنا باحتياجاتك وسنعاود التواصل معك قريباً.",
+    "Service": "الخدمة"
 }

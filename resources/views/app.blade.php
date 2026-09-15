@@ -148,16 +148,9 @@ Developed By: Hadi Hilal
     {{-- Ziggy routes are shared via Inertia props and installed in app.js — do not dump them here. --}}
 
     {{-- jQuery before Vite so header menu bindings always have $ available --}}
-    <script src="{{ asset('site/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('theme/js/jquery-3.3.1.min.js') }}"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    {{-- TechGuru Home 1 fonts: Space Grotesk (body) + Marcellus (display) --}}
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Marcellus&display=swap"
-          rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-    </noscript>
 
     @inertiaHead
 
@@ -179,60 +172,13 @@ Developed By: Hadi Hilal
         @endforeach
     @endif
 
-    {{-- Critical above-the-fold CSS (sync) --}}
-    <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/banner.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/footer.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
-
-    {{-- Non-critical CSS: deferred until after first paint --}}
-    <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/slider.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/shop.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/error.css') }}" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/slider.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/shop.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('site/css/module-css/error.css') }}"/>
-    </noscript>
+    {{-- Concept theme CSS --}}
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('theme/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/swipebox.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/compat.css') }}?v={{ filemtime(public_path('theme/css/compat.css')) }}">
     <style>
         #symfonixbot-launcher-wrap {
             position: fixed;
@@ -411,7 +357,7 @@ Developed By: Hadi Hilal
             flex-direction: column;
             overflow: hidden;
             z-index: 9999;
-            font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             font-size: 14px;
             transition: all .25s ease;
         }
@@ -541,38 +487,34 @@ Developed By: Hadi Hilal
         }
 
         .content > *, .blog-details__text > *, .services-details__text-1 > * {
-            line-height: 2.5rem !important;
-        }
-
-        /* Improve tap targets flagged by Lighthouse */
-        .site-footer-two__social-box-inner a,
-        .mobile-nav__social a,
-        .scroll-to-top {
-            min-width: 44px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            line-height: 1.8 !important;
         }
     </style>
 
 
     @if(app()->getLocale() === "ar")
-        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
-              rel="stylesheet" media="print" onload="this.media='all'">
-        <noscript>
-            <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-        </noscript>
-        <link rel="stylesheet" href="{{ asset('site/css/rtl.css') }}" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="{{ asset('theme/css/rtl.css') }}?v={{ filemtime(public_path('theme/css/rtl.css')) }}">
         <style>
             #symfonixbot-container {
                 font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+            }
+            html[dir="rtl"] .intro.introhalf .intro-body,
+            html[dir="rtl"] .intro.introhalf .intro-body .container,
+            html[dir="rtl"] .intro.introhalf .page-header-copy,
+            html[dir="rtl"] .intro.introhalf h1,
+            html[dir="rtl"] .intro.introhalf .page-breadcrumb {
+                text-align: center !important;
+            }
+            html[dir="rtl"] .intro.introhalf .page-header-copy {
+                display: block !important;
+                width: 100% !important;
+                float: none;
             }
         </style>
     @endif
     {!! $settings->get('header_scripts') !!}
 </head>
-<body class="custom-cursor">
+<body class="top" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <style>
     /* Hide crawl fallback when Inertia SSR already filled #app */
     #main-content:has(#app:not(:empty)) ~ #geo-crawl-fallback {
@@ -591,21 +533,26 @@ Developed By: Hadi Hilal
     #geo-crawl-fallback nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
     #geo-crawl-fallback a { color: #2189ca; }
 
+    .navbar-custom,
+    .navbar-custom a,
+    .navbar-custom .nav li a,
+    .navbar-custom .navbar-brand,
+    .navbar-custom .dropdown-menu li a {
+        font-family: "Cairo", sans-serif !important;
+    }
+
     /* Show desktop nav earlier — theme default only kicks in at 1200px */
     @media (min-width: 992px) {
-        .main-menu .main-menu__list,
-        .stricky-header .main-menu__list {
-            display: flex !important;
-        }
-        .main-menu .mobile-nav__toggler {
-            display: none !important;
+        .navbar-Concept .navbar-collapse.collapse {
+            display: block !important;
+            height: auto !important;
+            padding-bottom: 0;
+            overflow: visible !important;
         }
     }
 </style>
 
-<div class="custom-cursor__cursor"></div>
-<div class="custom-cursor__cursor-two"></div>
-
+<div id="preloader"><div id="status"></div></div>
 
 <main id="main-content">
     @inertia
@@ -670,21 +617,21 @@ Developed By: Hadi Hilal
     </div>
 </div>
 
-<a href="#main-content" data-target="html" class="scroll-to-target scroll-to-top d-none d-lg-flex" aria-label="{{ __('Scroll back to top of page') }}">
-    <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
-    <span class="scroll-to-top__text"> {{__('Go Back Top')}}</span>
-</a>
+<a class="topbtn page-scroll" href="#page-top" aria-label="{{ __('Scroll back to top of page') }}"></a>
 
-<script src="{{ asset('site/js/bootstrap.bundle.min.js') }}" defer></script>
-<script src="{{ asset('site/js/jquery.appear.min.js') }}" defer></script>
-<script src="{{ asset('site/js/wow.js') }}" defer></script>
-<script src="{{ asset('site/js/owl.carousel.min.js') }}" defer></script>
-<script src="{{ asset('site/js/marquee.min.js') }}" defer></script>
-<script src="{{ asset('site/js/gsap/gsap.js') }}" defer></script>
-<script src="{{ asset('site/js/gsap/ScrollTrigger.js') }}" defer></script>
-<script src="{{ asset('site/js/gsap/SplitText.js') }}" defer></script>
-<script>window.__symfonixMobileNavBound = true;</script>
-<script src="{{ asset('site/js/script.js') }}" defer></script>
+<script src="{{ asset('theme/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('theme/js/device.min.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.placeholder.min.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.shuffle.min.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.parallax.min.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.circle-progress.min.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.swipebox.min.js') }}"></script>
+<script src="{{ asset('theme/js/wow.min.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.smartmenus.js') }}"></script>
+<script src="{{ asset('theme/js/text-rotator.min.js') }}"></script>
+<script src="{{ asset('theme/js/main.js') }}"></script>
+<script src="{{ asset('theme/js/concept-inertia.js') }}"></script>
 <script>
     (function () {
         const endpoint = '{{ route('botman.handle') }}?locale={{ app()->getLocale() }}';

@@ -1,51 +1,27 @@
 <template>
     <Head>
         <title>{{ metaTitle }}</title>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
     </Head>
     <app-layout>
+        <PageHeader
+            :title="custom_page.title[locale]"
+            :background="banner || (asset_path + 'theme/img/main/30.jpg')"
+        />
 
-
-                <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${banner})` }">
-            </div>
+        <section class="section-small">
             <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ custom_page.title[locale] }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')" v-if="typeof route !== 'undefined'">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}`" v-else>
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </a>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ custom_page.title[locale] }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
-
-
-        <div class="my-5">
-            <div class="container">
-                <div class="content mb-10">
+                <div class="content">
                   <div v-html="custom_page.content[locale]"></div>
                 </div>
             </div>
-        </div>
+        </section>
      </app-layout>
 </template>
 
 <script setup>
 import {computed} from 'vue'
 import {usePage, Head, Link} from '@inertiajs/vue3'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;

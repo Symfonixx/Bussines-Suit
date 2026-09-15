@@ -265,6 +265,7 @@ class BlogController extends Controller
                     'title' => $blog->title,
                     'slug' => $blog->slug,
                     'image_link' => $blog->image_link,
+                    'description' => $blog->description,
                     'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
                     'comments_count' => 0,
                     'created_at_day' => $blog->created_at->format('d'),

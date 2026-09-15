@@ -1,7 +1,5 @@
-<template>
+﻿<template>
     <Head>
-           <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/shop.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -19,150 +17,49 @@
     </Head>
 
     <app-layout>
-        <section class="page-header">
-            <div class="page-header__bg"  :style="{ backgroundImage: `url(${asset_path}images/backgrounds/login-bg.jpg)`}"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ trans("Register") }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans("Register") }}</li>
-                        </ul>
+        <header class="intro intro-fullscreen" :style="{ backgroundImage: `url(${asset_path}theme/img/main/33.jpg)` }">
+            <div class="overlay"></div>
+            <div class="intro-body">
+                <h2>{{ trans('Register') }}</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div v-if="flash.success" class="alert alert-success">{{ flash.success }}</div>
+                            <div v-if="flash.error" class="alert alert-danger">{{ flash.error }}</div>
+                            <form class="form-signin" @submit.prevent="form.post(route('register'))">
+                                <div class="form-group">
+                                    <input class="form-control input-lg" id="formName" v-model="form.name" type="text" :placeholder="trans('Name')" :disabled="form.processing" required>
+                                    <p v-if="errors.name" class="help-block text-danger">{{ errors.name }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control input-lg" id="formEmail" v-model="form.email" type="email" :placeholder="trans('Email')" :disabled="form.processing" required>
+                                    <p v-if="errors.email" class="help-block text-danger">{{ errors.email }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control input-lg" id="formPhone" v-model="form.mobile" type="text" :placeholder="trans('Phone')" :disabled="form.processing" required>
+                                    <p v-if="errors.mobile" class="help-block text-danger">{{ errors.mobile }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control input-lg" id="formPassword" v-model="form.password" type="password" :placeholder="trans('Password')" :disabled="form.processing" required>
+                                    <p v-if="errors.password" class="help-block text-danger">{{ errors.password }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control input-lg" id="formPasswordConfirm" v-model="form.password_confirmation" type="password" :placeholder="trans('Confirm Password')" :disabled="form.processing" required>
+                                    <p v-if="errors.password_confirmation" class="help-block text-danger">{{ errors.password_confirmation }}</p>
+                                </div>
+                                <button class="btn btn-lg btn-dark btn-block" type="submit" :disabled="form.processing">
+                                    {{ form.processing ? trans('Registering...') : trans('Register') }}
+                                </button>
+                            </form>
+                            <p class="text-center">
+                                {{ trans('Already Have An Account?') }}
+                                <Link :href="route('login')">{{ trans('Login') }}</Link>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="sign-up-one">
-            <div class="container">
-                <div class="sign-up-one__form">
-                    <div class="inner-title text-center">
-                        <h2>{{ trans("Register") }}</h2>
-                    </div>
-
-                    <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
-                        {{ flash.success }}
-                    </div>
-                    <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
-                        {{ flash.error }}
-                    </div>
-
-                    <form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" @submit.prevent="form.post(route('register'))">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formName"
-                                            v-model="form.name"
-                                            type="text"
-                                            name="form_name"
-                                            :placeholder="trans('Name')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
-                                    <div v-if="errors.name" class="text-danger mt-1 small">{{ errors.name }}</div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formEmail"
-                                            v-model="form.email"
-                                            type="email"
-                                            name="form_email"
-                                            :placeholder="trans('Email')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
-                                    <div v-if="errors.email" class="text-danger mt-1 small">{{ errors.email }}</div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formPhone"
-                                            v-model="form.mobile"
-                                            type="text"
-                                            name="form_phone"
-                                            :placeholder="trans('Phone')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
-                                    <div v-if="errors.mobile" class="text-danger mt-1 small">{{ errors.mobile }}</div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formPassword"
-                                            v-model="form.password"
-                                            type="password"
-                                            name="form_password"
-                                            :placeholder="trans('Password')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
-                                    <div v-if="errors.password" class="text-danger mt-1 small">{{ errors.password }}</div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formPasswordConfirm"
-                                            v-model="form.password_confirmation"
-                                            type="password"
-                                            name="password_confirmation"
-                                            :placeholder="trans('Confirm Password')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
-                                    <div v-if="errors.password_confirmation" class="text-danger mt-1 small">{{ errors.password_confirmation }}</div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <button
-                                        class="thm-btn"
-                                        type="submit"
-                                        data-loading-text="Please wait..."
-                                        :disabled="form.processing"
-                                        :class="{ 'opacity-50': form.processing }"
-                                    >
-                                        <span v-if="form.processing">
-                                            <i class="fa-solid fa-spinner fa-spin me-2"></i>{{ trans("Registering...") }}
-                                        </span>
-                                        <span v-else>
-                                            {{ trans("Register") }}
-                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="create-account text-center">
-                            <p>{{ trans("Already Have An Account?") }} <Link :href="route('login')">{{ trans("Login") }}</Link></p>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </section>
+        </header>
     </app-layout>
 </template>
 

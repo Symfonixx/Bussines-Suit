@@ -1,23 +1,12 @@
-<template>
+﻿<template>
     <Head :title="metaTitle">
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
     </Head>
     <AppLayout>
-        <section class="page-header">
-            <div class="page-header__bg" :style="{backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)`}"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ trans('Careers') }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li><Link :href="route('home')"><i class="fas fa-home"></i>{{ trans('Home') }}</Link></li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans('Careers') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <PageHeader
+            :title="trans('Careers')"
+            :subtitle="trans('Join Our Team')"
+            :background="asset_path + 'theme/img/main/30.jpg'"
+        />
 
         <section class="jobs-page py-5">
             <div class="container">
@@ -35,9 +24,8 @@
                                 <span><i class="fas fa-briefcase"></i>{{ formatEmploymentType(position.employment_type) }}</span>
                             </p>
                             <p class="text-muted">{{ trans('Posted') }}: {{ formatDate(position.posted_at) }}</p>
-                            <Link :href="route('jobs.show', position.slug)" class="thm-btn">
+                            <Link :href="route('jobs.show', position.slug)" class="btn btn-dark">
                                 {{ trans('View & Apply') }}
-                                <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
                             </Link>
                         </article>
                     </div>
@@ -54,6 +42,7 @@
 import {computed} from 'vue'
 import {Head, Link, usePage} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const props = defineProps({positions: {type: Object, required: true}})
 const page = usePage()
@@ -67,15 +56,10 @@ const formatEmploymentType = (value) => trans(String(value || '').replaceAll('_'
 </script>
 
 <style scoped>
-.jobs-page { background: #101a2f; color: #f4f7fb; }
+.jobs-page { background: #f7f7f7; color: #222; }
 .jobs-page h2,
-.job-card h3 { color: #fff; }
-.jobs-page > .container > .text-center > p,
-.jobs-page :deep(.text-muted) { color: #aab8d1 !important; }
-.job-card { background: #17233d; border: 1px solid #2a3c60; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 24px rgba(0, 0, 0, .2); }
-.job-card h3 { font-size: 1.35rem; margin: 1rem 0; }
-.job-card__meta { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; color: #d3dded; font-size: .9rem; }
-.job-card__meta span { display: inline-flex; align-items: center; gap: .45rem; }
-.job-card .thm-btn { margin-top: 1.25rem; }
-.job-card__department { color: var(--techguru-base, #5cb0e9); font-weight: 700; text-transform: uppercase; font-size: .8rem; letter-spacing: .08em; }
+.job-card h3 { color: #111; }
+.job-card { background: #fff; border: 1px solid #eee; padding: 24px; margin-bottom: 24px; }
+.job-card .btn, .job-card .thm-btn { margin-top: 16px; }
+.job-card__department { font-weight: 700; text-transform: uppercase; font-size: .8rem; letter-spacing: .08em; }
 </style>

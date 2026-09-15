@@ -1,38 +1,36 @@
 <template>
-    <div class="services-three__single">
-        <div class="services-three__media">
-            <img v-if="image" :src="image" :alt="title" class="services-three__image" width="640" height="420" loading="lazy" decoding="async">
-            <div v-else class="services-three__image-placeholder">
-                <span class="icon-technical-support"></span>
+    <article class="service-card" :class="{ 'service-card--featured': featured }">
+        <Link :href="link" class="service-card__link">
+            <div v-if="hasImage && imageUsable" class="service-card__media">
+                <img :src="image" :alt="title" loading="lazy" decoding="async" @load="onImageLoad">
+                <span v-if="featured" class="service-card__badge">{{ trans('Featured') }}</span>
             </div>
-        </div>
-        <h3 class="services-three__title">
-            <Link :href="link">{{ title }}</Link>
-        </h3>
-        <p v-if="shortDescription" class="services-three__text">{{ shortDescription }}</p>
-        <p v-if="readingTime" class="services-three__meta">
-            <span class="far fa-clock mx-1"></span>{{ readingTime }} {{ readingTimeLabel }}
-        </p>
-        <ul v-if="safeHighlights.length" class="list-unstyled services-three__list">
-            <li v-for="(item, index) in safeHighlights" :key="index">
-                <div class="icon">
-                    <span class="icon-tick-inside-circle"></span>
+            <div class="service-card__body">
+                <p v-if="featured && !(hasImage && imageUsable)" class="service-card__featured-label">{{ trans('Featured') }}</p>
+                <p v-if="categoryLabel" class="service-card__category">{{ categoryLabel }}</p>
+                <h3 class="service-card__title">
+                    <i v-if="!(hasImage && imageUsable)" :class="[iconClass, 'icon-big']" aria-hidden="true"></i>
+                    {{ title }}
+                </h3>
+                <p v-if="excerptText" class="service-card__excerpt">{{ excerptText }}</p>
+                <ul v-if="visibleHighlights.length" class="service-card__tags list-unstyled">
+                    <li v-for="tag in visibleHighlights" :key="tag">{{ tag }}</li>
+                </ul>
+                <div class="service-card__footer">
+                    <span class="btn btn-dark btn-xs">{{ buttonText }}</span>
+                    <span v-if="Number(readingTime)" class="service-card__meta">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        {{ readingTime }} {{ readingTimeLabel }}
+                    </span>
                 </div>
-                <div class="text">
-                    <p>{{ item }}</p>
-                </div>
-            </li>
-        </ul>
-        <Link :href="link" class="services-three__btn" :aria-label="buttonText">
-            {{ buttonText }}
-            <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow-1`"></span>
+            </div>
         </Link>
-    </div>
+    </article>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import {Link, usePage} from '@inertiajs/vue3'
+import { computed, ref } from 'vue'
+import { Link, usePage } from '@inertiajs/vue3'
 
 const page = usePage()
 const trans = (key) => page.props.translations?.[key] || key
@@ -48,113 +46,164 @@ const props = defineProps({
     isRtl: { type: Boolean, default: false },
     readingTime: { type: [Number, String], default: 0 },
     readingTimeLabel: { type: String, default: 'min read' },
+    category: { type: String, default: '' },
+    featured: { type: Boolean, default: false },
+    iconClass: { type: String, default: 'ion-ios-analytics-outline' },
 })
 
-const parseMaybeJson = (value) => {
-    if (typeof value !== 'string') {
-        return value
+const buttonText = computed(() => trans(props.buttonLabel))
+const categoryLabel = computed(() => props.category || '')
+
+const imageUsable = ref(true)
+
+const hasImage = computed(() => {
+    const src = String(props.image || '')
+    return src !== '' && !src.includes('blank.png')
+})
+
+const onImageLoad = (event) => {
+    const img = event?.target
+    if (!img) {
+        return
     }
-    const trimmed = value.trim()
-    if (!trimmed.startsWith('{') && !trimmed.startsWith('[')) {
-        return value
-    }
-    try {
-        return JSON.parse(trimmed)
-    } catch (e) {
-        try {
-            return JSON.parse(trimmed.replace(/'/g, '"'))
-        } catch (err) {
-            return value
-        }
-    }
+    imageUsable.value = img.naturalWidth >= 240 && img.naturalHeight >= 80
 }
 
-const normalizeHighlights = (items) => {
-    if (!items) {
-        return []
-    }
-    const rawItems = Array.isArray(items) ? items : [items]
-    return rawItems
-        .map((item) => parseMaybeJson(item))
-        .flatMap((item) => {
-            if (Array.isArray(item)) {
-                return item
-            }
-            return [item]
-        })
-        .map((item) => {
-            if (typeof item === 'string') {
-                return item
-            }
-            if (item && typeof item === 'object') {
-                if (item.value) {
-                    return item.value
-                }
-                if (item.label) {
-                    return item.label
-                }
-                return JSON.stringify(item)
-            }
-            return ''
-        })
-        .map((item) => String(item).replace(/^\s+|\s+$/g, ''))
-        .filter(Boolean)
-}
-
-const safeHighlights = computed(() => {
-    const normalized = normalizeHighlights(props.highlights)
-    return normalized.slice(0, 3)
-})
-
-const buttonText = computed(() => {
-    const labelTitle = String(props.title || '').trim()
-    if (labelTitle) {
-        return `Explore ${labelTitle} services`
-    }
-    if (props.buttonLabel && props.buttonLabel !== 'Read More') {
-        return props.buttonLabel
-    }
-    return 'Explore our services'
-})
-
-const shortDescription = computed(() => {
-    const source =  props.description
-    if (!source) {
-        return ''
-    }
-    const text = String(source).replace(/\s+/g, ' ').trim()
-    if (text.length <= 75) {
+const excerptText = computed(() => {
+    const raw = props.shortDesc || props.description || ''
+    const text = String(raw).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+    if (text.length <= 140) {
         return text
     }
-    return `${text.slice(0, 75)}...`
+    return `${text.slice(0, 140).trim()}…`
+})
+
+const visibleHighlights = computed(() => {
+    return (props.highlights || [])
+        .map((item) => String(item || '').trim())
+        .filter(Boolean)
+        .slice(0, 3)
 })
 </script>
 
 <style scoped>
-.services-three__media {
-    margin-bottom: 20px;
+.service-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    text-align: left;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
-.services-three__image {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 18px;
+.service-card:hover {
+    border-color: #ccc;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
-
-.services-three__image-placeholder {
-    width: 100%;
-    height: 160px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.08);
+.service-card__link {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+.service-card__link:hover,
+.service-card__link:focus {
+    color: inherit;
+    text-decoration: none;
+}
+.service-card__media {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    background: #f5f5f5;
+}
+.service-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.service-card:hover .service-card__media img {
+    transform: scale(1.06);
+}
+.service-card__badge {
+    position: absolute;
+    top: 12px;
+    inset-inline-start: 12px;
+    padding: 4px 10px;
+    background: #18191B;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.service-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 22px 22px 24px;
+}
+.service-card__category {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #777;
+}
+.service-card__featured-label {
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #18191B;
+}
+.service-card__title {
+    margin: 0 0 12px;
+    font-size: 22px;
+    line-height: 1.3;
+    color: #111;
+    text-transform: none;
+}
+.service-card__title .icon-big {
+    display: block;
+    margin-bottom: 8px;
+}
+.service-card__excerpt {
+    margin: 0 0 16px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+}
+.service-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 18px;
+    padding: 0;
+}
+.service-card__tags li {
+    padding: 4px 10px;
+    background: #f5f5f5;
+    border: 1px solid #eee;
+    font-size: 12px;
+    color: #555;
+}
+.service-card__footer .btn {
+    margin: 0;
+}
+.service-card__meta {
+    font-size: 13px;
+    color: #777;
+    white-space: nowrap;
+}
+.service-card__meta i {
+    margin-inline-end: 6px;
 }
 
-.services-three__meta {
-    margin: 0 0 12px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.75);
+html[dir="rtl"] .service-card {
+    text-align: right;
 }
 </style>

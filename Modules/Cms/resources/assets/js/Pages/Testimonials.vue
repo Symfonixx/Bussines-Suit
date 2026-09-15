@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -18,35 +17,14 @@
     </Head>
     <app-layout>
 
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg"
-                :style="{ backgroundImage: `url(${asset_path}images/contact-header-bg.jpg)` }">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ trans('Testimonials') }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')" v-if="typeof route !== 'undefined'">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}`" v-else>
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </a>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans('Testimonials') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
+        <PageHeader
+            :title="trans('Testimonials')"
+            :subtitle="trans('What clients say')"
+            :background="asset_path + 'theme/img/main/4.jpg'"
+        />
 
         <!--Testimonials Page Start-->
-        <section class="testimonials-page">
+        <section class="section-small" id="testimonials">
             <div class="container">
                 <div class="row" v-if="testimonials && testimonials.length > 0">
                     <!-- Testimonial Two Single Start -->
@@ -97,6 +75,7 @@
 <script setup>
 import { computed } from 'vue'
 import { Link, usePage, Head } from '@inertiajs/vue3'
+import PageHeader from '@/Components/PageHeader.vue'
 
 
 const page = usePage()

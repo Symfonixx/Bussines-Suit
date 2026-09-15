@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -18,51 +17,18 @@
     </Head>
 
     <app-layout>
-        <section class="page-header">
-            <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)` }">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ trans('Products') }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                            </li>
-                            <li>
-                                <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span>
-                            </li>
-                            <li>{{ trans('Products') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <PageHeader
+            :title="trans('Products')"
+            :subtitle="trans('Our Catalog')"
+            :background="asset_path + 'theme/img/main/18.jpg'"
+        />
 
-        <section class="blog-page products-page">
-            <div class="products-page__bg" aria-hidden="true">
-                <div class="products-page__orb products-page__orb--one"></div>
-                <div class="products-page__orb products-page__orb--two"></div>
-                <div class="products-page__orb products-page__orb--three"></div>
-            </div>
-
-            <div class="container position-relative">
-                <div class="section-title text-center sec-title-animation animation-style1 products-page__head">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Our Catalog') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
-                    </div>
-                    <h2 class="section-title__title title-animation">
-                        {{ trans('B2B Solutions Built for Scale') }}
-                    </h2>
-                    <p class="products-page__subtitle">
-                        {{ trans('Discover enterprise-ready platforms and services designed to grow with your business.') }}
-                    </p>
-                </div>
+        <section class="section-small" id="shop">
+            <div class="container text-center">
+                <h2>{{ trans('B2B Solutions Built for Scale') }}</h2>
+                <p class="products-page__subtitle">
+                    {{ trans('Discover enterprise-ready platforms and services designed to grow with your business.') }}
+                </p>
 
                 <div v-if="products.data.length" class="products-page__stats">
                     <div class="products-page__stat">
@@ -128,6 +94,8 @@ import { computed, onMounted, nextTick } from 'vue'
 import { Head, Link, usePage } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
 import CtaTwo from '@/Components/CtaTwo.vue'
+import ProductCard from '@/Components/ProductCard.vue'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key
@@ -171,72 +139,17 @@ export default {
 </script>
 
 <style scoped>
-.products-page {
-    position: relative;
-    overflow: hidden;
+#shop h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
 }
-
-.products-page__bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        145deg,
-        #0b192c 0%,
-        #0f2844 35%,
-        #155a8a 65%,
-        rgba(33, 137, 202, 0.55) 85%,
-        rgba(127, 196, 87, 0.2) 100%
-    );
-    pointer-events: none;
-}
-
-.products-page__orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.45;
-}
-
-.products-page__orb--one {
-    width: 420px;
-    height: 420px;
-    top: -120px;
-    left: -80px;
-    background: #2189ca;
-}
-
-.products-page__orb--two {
-    width: 360px;
-    height: 360px;
-    top: 40%;
-    right: -100px;
-    background: #7fc457;
-}
-
-.products-page__orb--three {
-    width: 280px;
-    height: 280px;
-    bottom: -60px;
-    left: 35%;
-    background: #1a5f8a;
-}
-
-.products-page__head :deep(.section-title__title) {
-    color: #fff;
-}
-
-.products-page__head :deep(.section-title__tagline) {
-    color: rgba(255, 255, 255, 0.85);
-}
-
 .products-page__subtitle {
     max-width: 640px;
-    margin: 16px auto 0;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.72);
+    margin: 0 auto 36px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
 }
-
 .products-page__stats {
     display: flex;
     flex-wrap: wrap;
@@ -244,7 +157,6 @@ export default {
     gap: 16px;
     margin-bottom: 48px;
 }
-
 .products-page__stat {
     display: flex;
     flex-direction: column;
@@ -252,66 +164,32 @@ export default {
     gap: 4px;
     min-width: 140px;
     padding: 16px 28px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(12px);
+    border: 1px solid #eee;
 }
-
 .products-page__stat-value {
-    font-size: 1.75rem;
+    font-size: 28px;
     font-weight: 700;
-    color: #fff;
+    color: #111;
     line-height: 1;
 }
-
 .products-page__stat-label {
-    font-size: 0.8rem;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.65);
+    color: #555;
 }
-
-.blog-page.products-page :deep(.product-card) {
-    margin-bottom: 30px;
-}
-
 .products-page__empty {
     text-align: center;
     padding: 64px 24px;
-    border-radius: 32px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-.products-page__empty-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 72px;
-    height: 72px;
-    margin-bottom: 20px;
-    border-radius: 50%;
-    font-size: 1.75rem;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
 .products-page__empty h3 {
     margin: 0 0 10px;
-    font-size: 1.35rem;
-    color: #fff;
+    font-size: 22px;
+    color: #111;
 }
-
 .products-page__empty p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.65);
-}
-
-.products-page__pagination {
-    position: relative;
-    z-index: 1;
+    font-size: 16px;
+    color: #555;
 }
 </style>
+

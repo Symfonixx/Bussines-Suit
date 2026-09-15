@@ -1,6 +1,5 @@
-<template>
+﻿<template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -18,31 +17,11 @@
     </Head>
 
     <app-layout>
-        <section class="page-header">
-            <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)` }">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ useCase.title }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>
-                                <Link :href="route('use-cases.index')">{{ trans('Case Studies') }}</Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ useCase.title }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <PageHeader
+            :title="useCase.title"
+            :subtitle="trans('Case Studies')"
+            :background="useCase.image_link || (asset_path + 'theme/img/main/30.jpg')"
+        />
 
         <section class="blog-details use-cases-page">
             <div class="use-cases-page__bg" aria-hidden="true">
@@ -211,6 +190,7 @@ import { computed } from 'vue'
 import { Head, Link, usePage } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
 import CtaTwo from '@/Components/CtaTwo.vue'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key

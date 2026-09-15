@@ -20,9 +20,8 @@
             <h3 class="blog-one__title"><Link :href="postUrl">{{ blog.title }}</Link></h3>
             <p v-if="showDescription" class="blog-one__text">{{ blog.description }}</p>
             <div v-if="showReadMore" class="blog-one__btn-box">
-                <Link :href="postUrl" class="thm-btn" :aria-label="readMoreLabel">
+                <Link :href="postUrl" class="btn btn-dark btn-xs" :aria-label="readMoreLabel">
                     {{ readMoreLabel }}
-                    <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                 </Link>
             </div>
         </div>

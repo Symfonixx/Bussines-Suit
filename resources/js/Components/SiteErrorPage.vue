@@ -1,7 +1,5 @@
-<template>
+﻿<template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/error.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -18,81 +16,31 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <section class="page-header">
-            <div
-                class="page-header__bg"
-                :style="{ backgroundImage: `url(${asset_path}images/contact-header-bg.jpg)` }"
-            ></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ title }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="homeUrl">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                            </li>
-                            <li>
-                                <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow-1`"></span>
-                            </li>
-                            <li>{{ title }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="error-page">
-            <div class="container">
-                <div class="error-page__inner text-center">
-                    <div v-if="showImage" class="error-page__img float-bob-y">
-                        <img
-                            :src="asset_path + 'site/images/resources/error-page-img1.png'"
-                            :alt="title"
-                            width="620"
-                            height="420"
-                            decoding="async"
-                        >
-                    </div>
-                    <div v-else class="error-page__code float-bob-y" aria-hidden="true">
-                        {{ status }}
-                    </div>
-
-                    <div class="error-page__content">
-                        <h2>{{ heading }}</h2>
-                        <p>{{ message }}</p>
-
-                        <div
-                            v-if="showDebug && (page?.props?.error || page?.props?.trace)"
-                            class="error-page__debug alert alert-danger text-start"
-                        >
-                            <strong>Debug Error:</strong>
-                            <div v-if="page?.props?.error">{{ page.props.error }}</div>
-                            <details v-if="page?.props?.trace" class="mt-3">
-                                <summary>Stack trace</summary>
-                                <pre class="mt-2">{{ page.props.trace }}</pre>
-                            </details>
-                        </div>
-
-                        <div class="btn-box">
-                            <Link
-                                v-if="secondaryHref"
-                                class="thm-btn error-page__btn-secondary"
-                                :href="secondaryHref"
+        <header class="intro intro-fullscreen" :data-background="asset_path + 'theme/img/main/55.jpg'" :style="{ backgroundImage: `url(${asset_path}theme/img/main/55.jpg)` }">
+            <div class="overlay"></div>
+            <div class="intro-body">
+                <h1 class="big light">{{ status }}</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <h2>{{ heading }}</h2>
+                            <h3>{{ message }}</h3>
+                            <p>
+                                <Link class="btn btn-dark btn-lg" :href="homeUrl">{{ trans('Back To Home') }}</Link>
+                                <Link v-if="secondaryHref" class="btn btn-gray btn-lg" :href="secondaryHref">{{ secondaryLabel }}</Link>
+                            </p>
+                            <div
+                                v-if="showDebug && (page?.props?.error || page?.props?.trace)"
+                                class="alert alert-danger text-left"
                             >
-                                {{ secondaryLabel }}
-                                <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow`"></span>
-                            </Link>
-                            <Link class="thm-btn" :href="homeUrl">
-                                {{ trans('Back To Home') }}
-                                <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow`"></span>
-                            </Link>
+                                <strong>Debug Error:</strong>
+                                <div v-if="page?.props?.error">{{ page.props.error }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
     </app-layout>
 </template>
 

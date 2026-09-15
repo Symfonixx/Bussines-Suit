@@ -1,7 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/faq.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -19,34 +17,14 @@
     </Head>
     <app-layout>
 
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/contact-header-bg.jpg)` }">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2 v-html="trans('FAQs')"></h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')" v-if="typeof route !== 'undefined'">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}`" v-else>
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </a>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li v-html="trans('FAQs')"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
+        <PageHeader
+            :title="trans('FAQs')"
+            :subtitle="trans('Frequently Asked Questions')"
+            :background="asset_path + 'theme/img/main/11.jpg'"
+        />
 
         <!--FAQ Page Start-->
-        <section class="faq-two faq-page">
+        <section>
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
@@ -88,6 +66,7 @@
 import { computed, ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { Link, usePage, Head } from '@inertiajs/vue3'
 import CtaTwo from '@/Components/CtaTwo.vue'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
@@ -296,82 +275,25 @@ export default {
 </script>
 
 <style scoped>
-.faq-page {
-    padding: 100px 0;
-}
-
 .accrodion {
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--techguru-black);
+    margin-bottom: 12px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
 }
-
 .accrodion-title {
-    padding: 20px 30px;
+    padding: 16px 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
 }
-
-.accrodion-title:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
 .accrodion-title h4 {
     margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--techguru-white);
-}
-
-.accrodion.active .accrodion-title {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.accrodion-content {
-    padding: 0 30px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.accrodion.active .accrodion-content {
-    max-height: 1000px;
-    padding: 20px 30px;
-}
-
-.accrodion-content__text-1 {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.8;
     font-size: 16px;
 }
-
-@media (max-width: 768px) {
-    .faq-page {
-        padding: 60px 0;
-    }
-
-    .accrodion-title {
-        padding: 15px 20px;
-    }
-
-    .accrodion-title h4 {
-        font-size: 16px;
-    }
-
-    .accrodion-content {
-        padding: 0 20px;
-    }
-
-    .accrodion.active .accrodion-content {
-        padding: 15px 20px;
-    }
-
-    .accrodion-content__text-1 {
-        font-size: 14px;
-    }
+.accrodion-content {
+    padding: 0 20px 16px;
+}
+.accrodion-content__text-1 {
+    margin: 0;
+    line-height: 1.7;
 }
 </style>
+

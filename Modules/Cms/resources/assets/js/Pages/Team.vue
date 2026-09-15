@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -18,35 +17,14 @@
     </Head>
     <app-layout>
 
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)`}">
-
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ trans('Our Members') }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')" v-if="typeof route !== 'undefined'">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                                <a :href="`/${locale === 'ar' ? 'ar' : ''}`" v-else>
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </a>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans('Our Members') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
+        <PageHeader
+            :title="trans('Our Members')"
+            :subtitle="trans('Meet our leaders')"
+            :background="asset_path + 'theme/img/main/19.jpg'"
+        />
 
         <!--Team Page Start-->
-        <section class="team-page">
+        <section id="team">
             <div class="team-page__shape-1">
                 <img :src="asset_path + 'images/shapes/team-page-shape-1.png'" alt="" aria-hidden="true">
             </div>
@@ -105,6 +83,7 @@
 <script setup>
 import { computed, onMounted, nextTick } from 'vue'
 import { Link, usePage, Head } from '@inertiajs/vue3'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;

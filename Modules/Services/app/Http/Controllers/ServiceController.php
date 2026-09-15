@@ -56,7 +56,8 @@ class ServiceController extends Controller
         }
 
         $totalServicesCount = Service::published()->count();
-        $services = $query->paginate(12)->through(function ($service) use ($locale) {
+        $featuredCount = Service::published()->where('featured', 1)->count();
+        $services = $query->orderByDesc('featured')->latest()->paginate(12)->through(function ($service) use ($locale) {
             return [
                 'id' => $service->id,
                 'title' => $service->title,
@@ -64,6 +65,7 @@ class ServiceController extends Controller
                 'image_link' => $service->image_link,
                 'description' => $service->description,
                 'keywords' => $service->keywords,
+                'featured' => (bool) $service->featured,
                 'reading_time' => $this->getReadingTimeMinutes($service, $locale),
                 'created_at' => $service->created_at->format('d M Y'),
                 'category' => $service->category ? [
@@ -124,6 +126,7 @@ class ServiceController extends Controller
             'categories' => $categories,
             'recentServices' => $recentServices,
             'totalServicesCount' => $totalServicesCount,
+            'featuredCount' => $featuredCount,
             'filters' => [
                 'search' => $request->search,
                 'category' => $request->category,
@@ -274,6 +277,7 @@ class ServiceController extends Controller
                     'image_link' => $service->image_link,
                     'description' => $service->description,
                     'keywords' => $service->keywords,
+                    'featured' => (bool) $service->featured,
                     'reading_time' => $this->getReadingTimeMinutes($service, $locale),
                     'created_at' => $service->created_at->format('d M Y'),
                     'category' => $service->category ? [

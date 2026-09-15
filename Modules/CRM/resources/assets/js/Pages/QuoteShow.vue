@@ -1,6 +1,5 @@
-<template>
+﻿<template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="robots" content="noindex,nofollow">
@@ -9,27 +8,11 @@
     </Head>
 
     <app-layout>
-        <section class="page-header">
-            <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/contact-us-bg.jpg)`}">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ labels.title }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')">
-                                    <i class="fas fa-home"></i>{{ trans('Home') }}
-                                </Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ quote.quote_number }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <PageHeader
+            :title="labels.title"
+            :subtitle="quote.quote_number"
+            :background="asset_path + 'theme/img/main/36.jpg'"
+        />
 
         <section class="quote-show">
             <div class="container">
@@ -53,7 +36,7 @@
                                     <div class="quote-show__total">
                                         {{ formatMoney(quote.total) }} {{ quote.currency }}
                                     </div>
-                                    <a :href="urls.pdf" class="thm-btn quote-show__pdf-btn">
+                                    <a :href="urls.pdf" class="btn btn-dark quote-show__pdf-btn">
                                         {{ labels.download_pdf }}
                                     </a>
                                 </div>
@@ -159,7 +142,7 @@
                                                 <label class="quote-show__label form-label">{{ labels.optional_note }}</label>
                                                 <textarea v-model="acceptForm.response_note" rows="3" class="quote-show__input"></textarea>
                                             </div>
-                                            <button type="submit" class="thm-btn" :disabled="acceptForm.processing">
+                                            <button type="submit" class="btn btn-dark" :disabled="acceptForm.processing">
                                                 {{ labels.confirm_accept }}
                                             </button>
                                         </form>
@@ -203,6 +186,7 @@
 import {computed} from 'vue';
 import {Head, Link, useForm, usePage} from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/App.vue';
+import PageHeader from '@/Components/PageHeader.vue';
 
 const props = defineProps({
     quote: {type: Object, required: true},
@@ -214,6 +198,7 @@ const props = defineProps({
 });
 
 const page = usePage();
+const trans = (key) => page.props.translations?.[key] || key;
 const locale = computed(() => page.props.locale || 'en');
 const asset_path = computed(() => page.props.asset_path || '/');
 const flashSuccess = computed(() => page.props.flash?.success || null);
@@ -267,16 +252,14 @@ function submitReject() {
 <style scoped>
 .quote-show {
     padding: 60px 0 90px;
-    background: #0b1220;
+    background: #f7f7f7;
 }
 
 .quote-show__card {
-    background: linear-gradient(180deg, #121a2b 0%, #0f1624 100%);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    border-radius: 18px;
+    background: #fff;
+    border: 1px solid #eee;
     padding: 2rem;
-    color: #e2e8f0;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    color: #222;
 }
 
 .quote-show__header {
@@ -298,7 +281,7 @@ function submitReject() {
 .quote-show__number,
 .quote-show__value,
 .quote-show__section-title {
-    color: #f8fafc;
+    color: #111;
 }
 
 .quote-show__muted,
@@ -332,7 +315,7 @@ function submitReject() {
     margin-top: 0.75rem;
     font-size: 2rem;
     font-weight: 700;
-    color: #f8fafc;
+    color: #111;
 }
 
 .quote-show__pdf-btn {
@@ -344,7 +327,7 @@ function submitReject() {
 .quote-show__table {
     width: 100%;
     border-collapse: collapse;
-    color: #e2e8f0;
+    color: #222;
 }
 
 .quote-show__table th,
@@ -368,25 +351,23 @@ function submitReject() {
 }
 
 .quote-show__grand td {
-    color: #f8fafc !important;
+    color: #111 !important;
     font-weight: 700;
     font-size: 1.05rem;
     padding-top: 1rem;
 }
 
 .quote-show__panel {
-    background: rgba(15, 23, 42, 0.65);
-    border: 1px solid rgba(148, 163, 184, 0.16);
-    border-radius: 14px;
+    background: #fafafa;
+    border: 1px solid #eee;
     padding: 1.25rem;
 }
 
 .quote-show__input {
     width: 100%;
-    background: #0b1220;
-    border: 1px solid rgba(148, 163, 184, 0.25);
-    color: #f1f5f9;
-    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #222;
     padding: 0.7rem 0.85rem;
 }
 

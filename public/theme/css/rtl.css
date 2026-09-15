@@ -1,0 +1,219 @@
+/* Concept RTL overrides for Arabic */
+html[dir="rtl"] body {
+    font-family: "Cairo", Montserrat, sans-serif;
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .navbar-custom,
+html[dir="rtl"] .navbar-custom a,
+html[dir="rtl"] .navbar-custom .nav li a,
+html[dir="rtl"] .navbar-custom .navbar-brand,
+html[dir="rtl"] .navbar-custom .dropdown-menu li a {
+    font-family: "Cairo", sans-serif !important;
+    text-transform: none;
+}
+
+@media (min-width: 768px) {
+    html[dir="rtl"] .navbar-nav {
+        float: right;
+    }
+
+    html[dir="rtl"] .navbar-nav > li {
+        float: right;
+    }
+
+    html[dir="rtl"] .navbar-nav.pull-right,
+    html[dir="rtl"] .navbar-nav.navbar-right {
+        float: left !important;
+    }
+
+    html[dir="rtl"] .navbar-nav.pull-right > li,
+    html[dir="rtl"] .navbar-nav.navbar-right > li {
+        float: left;
+    }
+}
+
+html[dir="rtl"] .navbar-brand {
+    float: right;
+}
+
+html[dir="rtl"] .navbar-toggle {
+    float: left;
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+html[dir="rtl"] .dropdown-menu {
+    text-align: right;
+    right: 0;
+    left: auto;
+}
+
+html[dir="rtl"] .col-md-offset-1,
+html[dir="rtl"] .col-lg-offset-1 {
+    margin-left: 0;
+    margin-right: 8.33333333%;
+}
+html[dir="rtl"] .col-lg-offset-2 {
+    margin-left: 0;
+    margin-right: 16.66666667%;
+}
+html[dir="rtl"] .col-md-offset-3 {
+    margin-left: 0;
+    margin-right: 25%;
+}
+html[dir="rtl"] .col-md-offset-4 {
+    margin-left: 0;
+    margin-right: 33.33333333%;
+}
+
+html[dir="rtl"] .text-right {
+    text-align: left;
+}
+
+html[dir="rtl"] .text-left {
+    text-align: right;
+}
+
+html[dir="rtl"] .float-right {
+    float: left !important;
+}
+
+html[dir="rtl"] .pull-right {
+    float: left !important;
+}
+
+html[dir="rtl"] .pull-left {
+    float: right !important;
+}
+
+html[dir="rtl"] .carousel-control.left {
+    right: 0;
+    left: auto;
+}
+
+html[dir="rtl"] .carousel-control.right {
+    left: 0;
+    right: auto;
+}
+
+html[dir="rtl"] .breadcrumb {
+    text-align: right;
+    float: none;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+html[dir="rtl"] .list-inline > li {
+    padding-right: 0;
+    padding-left: 5px;
+}
+
+html[dir="rtl"] .intro-body,
+html[dir="rtl"] .offcet-art,
+html[dir="rtl"] .offcet-art-dark,
+html[dir="rtl"] .offcet-art-right,
+html[dir="rtl"] .footer-menu {
+    text-align: right;
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .intro.introhalf .intro-body,
+html[dir="rtl"] .intro.introhalf .intro-body .container,
+html[dir="rtl"] .intro.introhalf .page-header-copy,
+html[dir="rtl"] .intro.introhalf h1,
+html[dir="rtl"] .intro.introhalf .page-breadcrumb {
+    text-align: center !important;
+}
+
+html[dir="rtl"] .intro.introhalf .page-header-copy {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100%;
+    float: none;
+}
+
+@media (min-width: 992px) {
+    html[dir="rtl"] .offcet-art,
+    html[dir="rtl"] .offcet-art-dark {
+        left: auto;
+        right: -195px;
+        text-align: right;
+    }
+
+    html[dir="rtl"] .offcet-art-right {
+        right: auto;
+        left: -195px;
+        text-align: right;
+    }
+
+    html[dir="rtl"] #action-slider .row {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    html[dir="rtl"] #action-slider .carousel-item,
+    html[dir="rtl"] #action-slider .carousel-item-text {
+        float: none;
+        display: block;
+    }
+
+    html[dir="rtl"] #action-slider .col-lg-offset-1 {
+        margin-right: 0;
+        margin-left: 8.33333333%;
+    }
+}
+
+html[dir="rtl"] .portfolio-overlay .caption {
+    text-align: right;
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] #news h3,
+html[dir="rtl"] #news h4 {
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] #contact-home h2,
+html[dir="rtl"] #contact-home p,
+html[dir="rtl"] #services h4,
+html[dir="rtl"] #gallery h2 {
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] #contact-home .form-control {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    html[dir="rtl"] [class*="col-sm-"],
+    html[dir="rtl"] [class*="col-md-"],
+    html[dir="rtl"] [class*="col-lg-"],
+    html[dir="rtl"] [class*="col-xl-"] {
+        float: right;
+    }
+}
+
+html[dir="rtl"] .action .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+html[dir="rtl"] .action .row > [class*="col-"] {
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+html[dir="rtl"] .action h2,
+html[dir="rtl"] .action p {
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .footer-menu ul {
+    padding-right: 0;
+    padding-left: 0;
+}

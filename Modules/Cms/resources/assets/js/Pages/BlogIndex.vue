@@ -1,6 +1,5 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -17,28 +16,14 @@
         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
-        <section class="page-header">
-            <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/blogs-bg.jpg)`}">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ trans("Our Blogs") }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link>
-                            </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans("Blogs") }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <PageHeader
+            :title="trans('Our Blogs')"
+            :subtitle="trans('News & Blog')"
+            :background="asset_path + 'theme/img/main/43.jpg'"
+        />
 
         <!--Blog Page Start-->
-        <section class="blog-page">
+        <section class="section-small" id="news">
             <div class="blog-page__shape-1"></div>
             <div class="blog-page__shape-2"></div>
             <div class="container">
@@ -110,6 +95,7 @@ import {usePage, Link, Head} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
 import HomeBlogCard from '@/Components/HomeBlogCard.vue'
 import CtaTwo from '@/Components/CtaTwo.vue'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;

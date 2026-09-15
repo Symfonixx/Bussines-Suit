@@ -20,85 +20,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="theme-color" content="#2189ca">
     <title>{{ $title }} | {{ config('app.name', 'Symfonix') }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/error.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/compat.css') }}">
     @if ($isRtl)
-        <link rel="stylesheet" href="{{ asset('site/css/rtl.css') }}">
+        <link rel="stylesheet" href="{{ asset('theme/css/rtl.css') }}">
     @endif
 </head>
-<body>
-    <div class="page-wrapper" style="padding-top: 0;">
-        <section class="page-header" style="padding-top: 140px;">
-            <div
-                class="page-header__bg"
-                style="background-image: url({{ asset('images/contact-header-bg.jpg') }});"
-            ></div>
+<body class="top" id="page-top">
+    <header class="intro intro-fullscreen" style="background-image: url({{ asset('theme/img/main/55.jpg') }});">
+        <div class="overlay"></div>
+        <div class="intro-body">
+            <h1 class="big light">{{ $status }}</h1>
             <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ $title }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li>
-                                <a href="{{ $homeUrl }}">
-                                    <i class="fas fa-home"></i>{{ __('Home') }}
-                                </a>
-                            </li>
-                            <li>
-                                <span class="icon-{{ $isRtl ? 'left' : 'right' }}-arrow-1"></span>
-                            </li>
-                            <li>{{ $title }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="error-page">
-            <div class="container">
-                <div class="error-page__inner text-center">
-                    @if ($showImage)
-                        <div class="error-page__img float-bob-y">
-                            <img
-                                src="{{ asset('site/images/resources/error-page-img1.png') }}"
-                                alt="{{ $title }}"
-                                width="620"
-                                height="420"
-                                decoding="async"
-                            >
-                        </div>
-                    @else
-                        <div class="error-page__code float-bob-y" aria-hidden="true">{{ $status }}</div>
-                    @endif
-                    <div class="error-page__content">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
                         <h2>{{ $heading }}</h2>
-                        <p>{{ $message }}</p>
-                        <div class="btn-box">
+                        <h3>{{ $message }}</h3>
+                        <p>
                             @if (! empty($showLogin))
-                                <a class="thm-btn error-page__btn-secondary" href="{{ $loginUrl }}">
-                                    Login
-                                    <span class="icon-{{ $isRtl ? 'left' : 'right' }}-arrow"></span>
-                                </a>
+                                <a class="btn btn-gray btn-lg" href="{{ $loginUrl }}">Login</a>
                             @endif
-                            <a class="thm-btn" href="{{ $homeUrl }}">
-                                {{ __('Back To Home') }}
-                                <span class="icon-{{ $isRtl ? 'left' : 'right' }}-arrow"></span>
-                            </a>
-                        </div>
+                            <a class="btn btn-dark btn-lg" href="{{ $homeUrl }}">{{ __('Back To Home') }}</a>
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </header>
 </body>
 </html>

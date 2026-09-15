@@ -1,25 +1,12 @@
-<template>
+﻿<template>
     <Head :title="metaTitle">
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
     </Head>
     <AppLayout>
-        <section class="page-header">
-            <div class="page-header__bg" :style="{backgroundImage: `url(${asset_path}images/backgrounds/our-team-bg.jpg)`}"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1>{{ position.title }}</h1>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li><Link :href="route('home')"><i class="fas fa-home"></i>{{ trans('Home') }}</Link></li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li><Link :href="route('jobs.index')">{{ trans('Careers') }}</Link></li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ position.title }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <PageHeader
+            :title="position.title"
+            :subtitle="trans('Careers')"
+            :background="asset_path + 'theme/img/main/30.jpg'"
+        />
 
         <section class="job-detail py-5">
             <div class="container">
@@ -84,9 +71,8 @@
                                 <div class="form-text">{{ trans('Accepted file types: PDF, DOC, DOCX. Maximum size: 5 MB.') }}</div>
                                 <div class="invalid-feedback">{{ form.errors.resume }}</div>
                             </div>
-                            <button class="thm-btn" type="submit" :disabled="form.processing">
+                            <button class="btn btn-dark" type="submit" :disabled="form.processing">
                                 {{ form.processing ? trans('Submitting...') : trans('Submit Application') }}
-                                <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
                             </button>
                         </form>
                     </div>
@@ -100,6 +86,7 @@
 import {computed, ref} from 'vue'
 import {Head, Link, useForm, usePage} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
+import PageHeader from '@/Components/PageHeader.vue'
 
 const props = defineProps({position: {type: Object, required: true}})
 const page = usePage()
@@ -121,22 +108,16 @@ const submit = () => form.post(route('jobs.apply', props.position.slug), {
 </script>
 
 <style scoped>
-.job-detail { background: #101a2f; color: #f4f7fb; }
+.job-detail { background: #f7f7f7; color: #222; }
 .job-detail h2,
 .job-detail h3,
-.job-detail .form-label { color: #fff; }
-.job-detail :deep(.text-muted),
-.job-detail :deep(.form-text) { color: #aab8d1 !important; }
-.job-content h3 { margin-top: 2rem; font-size: 1.3rem; }
-.job-department { color: var(--techguru-base, #5cb0e9); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; }
-.job-meta { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; color: #d3dded; }
-.job-meta span { display: inline-flex; align-items: center; gap: .45rem; }
-.job-form { background: #17233d; border: 1px solid #2a3c60; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 24px rgba(0, 0, 0, .2); }
-.job-form__title { margin-bottom: 2rem; }
+.job-detail .form-label { color: #111; }
+.job-content h3 { margin-top: 24px; font-size: 1.2rem; }
+.job-department { font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; }
+.job-meta { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+.job-form { background: #fff; border: 1px solid #eee; padding: 24px; }
+.job-form__title { margin-bottom: 24px; }
 .required-mark { color: #ef4444; font-weight: 700; }
-.job-form :deep(.form-control) { background: #0f1930; border-color: #34486d; color: #f4f7fb; }
-.job-form :deep(.input-group-text) { background: #243552; border-color: #34486d; color: #f4f7fb; }
-.job-form :deep(.form-control:focus) { background: #0f1930; border-color: var(--techguru-base, #5cb0e9); color: #fff; }
 .job-rich-content :deep(p),
 .job-rich-content :deep(ul),
 .job-rich-content :deep(ol) { margin-bottom: 1rem; }
