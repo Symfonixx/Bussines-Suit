@@ -2,7 +2,7 @@
 
 namespace Modules\Testimonial\Listeners;
 
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\Testimonial\Events\TestimonialSubmitted;
 use Modules\Testimonial\Notifications\NewTestimonialAdminNotification;
 use Modules\Testimonial\Support\TestimonialNotificationRecipients;
@@ -22,6 +22,6 @@ class NotifyAdminsOfNewTestimonial
             return;
         }
 
-        Notification::send($recipients, new NewTestimonialAdminNotification($event));
+        SafeNotification::send($recipients, new NewTestimonialAdminNotification($event));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Modules\Support\app\Listeners;
 
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\Support\app\Events\TicketCreated;
 use Modules\Support\app\Notifications\NewTicketAdminNotification;
 use Modules\Support\app\Support\TicketNotificationRecipients;
@@ -19,6 +19,6 @@ class NotifyAdminsOfNewTicket
             return;
         }
 
-        Notification::send($recipients, new NewTicketAdminNotification($event));
+        SafeNotification::send($recipients, new NewTicketAdminNotification($event));
     }
 }

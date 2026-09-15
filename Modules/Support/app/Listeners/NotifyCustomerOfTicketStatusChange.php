@@ -2,7 +2,7 @@
 
 namespace Modules\Support\app\Listeners;
 
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\Support\app\Events\TicketStatusChanged;
 use Modules\Support\app\Notifications\TicketStatusChangedCustomerNotification;
 
@@ -26,6 +26,6 @@ class NotifyCustomerOfTicketStatusChange
             return;
         }
 
-        Notification::send($customer, new TicketStatusChangedCustomerNotification($event));
+        SafeNotification::send($customer, new TicketStatusChangedCustomerNotification($event));
     }
 }

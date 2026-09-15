@@ -2,7 +2,7 @@
 
 namespace Modules\Support\app\Listeners;
 
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\Support\app\Events\TicketReplied;
 use Modules\Support\app\Notifications\TicketReplyAdminNotification;
 use Modules\Support\app\Notifications\TicketReplyCustomerNotification;
@@ -21,11 +21,11 @@ class NotifyOfTicketReply
         }
 
         if ($event->replier->isAdmin()) {
-            Notification::send($recipients, new TicketReplyCustomerNotification($event));
+            SafeNotification::send($recipients, new TicketReplyCustomerNotification($event));
 
             return;
         }
 
-        Notification::send($recipients, new TicketReplyAdminNotification($event));
+        SafeNotification::send($recipients, new TicketReplyAdminNotification($event));
     }
 }

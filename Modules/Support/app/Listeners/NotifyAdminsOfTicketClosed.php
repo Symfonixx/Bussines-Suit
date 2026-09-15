@@ -2,7 +2,7 @@
 
 namespace Modules\Support\app\Listeners;
 
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\Support\app\Events\TicketClosed;
 use Modules\Support\app\Notifications\TicketClosedAdminNotification;
 use Modules\Support\app\Support\TicketNotificationRecipients;
@@ -27,6 +27,6 @@ class NotifyAdminsOfTicketClosed
             return;
         }
 
-        Notification::send($recipients, new TicketClosedAdminNotification($event));
+        SafeNotification::send($recipients, new TicketClosedAdminNotification($event));
     }
 }

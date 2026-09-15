@@ -12,10 +12,6 @@ class MultiCurrencyTransactionSeeder extends Seeder
 {
     public function run(): void
     {
-        if (JournalEntry::query()->where('description', 'USD brand film deposit')->exists()) {
-            return;
-        }
-
         $finance = app(FinanceService::class);
         $projects = Project::query()->orderBy('id')->get();
         $expenseCategory = ExpenseCategory::query()->orderBy('id')->first();
@@ -30,6 +26,10 @@ class MultiCurrencyTransactionSeeder extends Seeder
         ];
 
         foreach ($samples as $index => $sample) {
+            if (JournalEntry::query()->where('description', $sample['description'])->exists()) {
+                continue;
+            }
+
             $project = $projects[$index % max($projects->count(), 1)] ?? null;
 
             $payload = [

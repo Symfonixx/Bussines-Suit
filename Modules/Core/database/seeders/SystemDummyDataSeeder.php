@@ -5,6 +5,7 @@ namespace Modules\Core\Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Cms\Models\Blog;
@@ -20,7 +21,10 @@ use Modules\CRM\Models\Lead;
 use Modules\CRM\Models\MarketingCampaign;
 use Modules\CRM\Models\PipelineStage;
 use Modules\CRM\Models\Subscription;
+use Modules\Finance\Database\Seeders\CurrencySettingsSeeder;
 use Modules\Finance\Database\Seeders\ExpenseCategorySeeder;
+use Modules\Finance\Database\Seeders\MultiCurrencyTransactionSeeder;
+use Modules\Finance\Services\CurrencyService;
 use Modules\Product\Database\Seeders\MediaProductSeeder;
 use Modules\Product\Database\Seeders\ProductCategorySeeder;
 use Modules\Product\Database\Seeders\ProductSaleScenarioSeeder;
@@ -52,23 +56,32 @@ class SystemDummyDataSeeder extends Seeder
 
     public function run(): void
     {
-        $this->images = new DummyImageGenerator;
+        $previousMailer = config('mail.default');
+        config(['mail.default' => 'array']);
+        Mail::purge();
 
-        $this->seedReferenceData();
-        $this->seedUsersAndHr();
-        $this->seedCustomers();
-        $this->seedTeam();
-        $this->seedCms();
-        $this->seedServices();
-        $this->seedProducts();
-        $this->seedCrm();
-        $this->seedProjects();
-        $this->seedTestimonials();
-        $this->seedSupport();
-        $this->seedProductSales();
-        $this->seedMultiCurrencyFinance();
+        try {
+            $this->images = new DummyImageGenerator;
 
-        $this->command?->info('All modules seeded with media-company dummy data and stock images.');
+            $this->seedReferenceData();
+            $this->seedUsersAndHr();
+            $this->seedCustomers();
+            $this->seedTeam();
+            $this->seedCms();
+            $this->seedServices();
+            $this->seedProducts();
+            $this->seedCrm();
+            $this->seedProjects();
+            $this->seedTestimonials();
+            $this->seedSupport();
+            $this->seedProductSales();
+            $this->seedMultiCurrencyFinance();
+
+            $this->command?->info('All modules seeded with media-company dummy data and stock images.');
+        } finally {
+            config(['mail.default' => $previousMailer]);
+            Mail::purge();
+        }
     }
 
     private function seedReferenceData(): void
@@ -78,7 +91,7 @@ class SystemDummyDataSeeder extends Seeder
             TicketCategorySeeder::class,
             ProjectStatusSeeder::class,
             ExpenseCategorySeeder::class,
-            \Modules\Finance\Database\Seeders\CurrencySettingsSeeder::class,
+            CurrencySettingsSeeder::class,
         ]);
     }
 
@@ -658,7 +671,7 @@ class SystemDummyDataSeeder extends Seeder
         foreach ($projects as $index => $item) {
             $company = $companies[$index % $companies->count()];
             $status = $statuses[$index % $statuses->count()];
-            $currencyService = app(\Modules\Finance\Services\CurrencyService::class);
+            $currencyService = app(CurrencyService::class);
 
             $existing = Project::query()
                 ->where('title', $item['title'])
@@ -861,6 +874,6 @@ class SystemDummyDataSeeder extends Seeder
 
     private function seedMultiCurrencyFinance(): void
     {
-        $this->call(\Modules\Finance\Database\Seeders\MultiCurrencyTransactionSeeder::class);
+        $this->call(MultiCurrencyTransactionSeeder::class);
     }
 }

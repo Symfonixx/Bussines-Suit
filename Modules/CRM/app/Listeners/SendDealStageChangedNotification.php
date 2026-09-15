@@ -3,7 +3,7 @@
 namespace Modules\CRM\Listeners;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\CRM\Events\DealStageChanged;
 use Modules\CRM\Notifications\DealStageChangedNotification;
 use Modules\User\Support\EmployeeAccess;
@@ -37,6 +37,6 @@ class SendDealStageChangedNotification
             return;
         }
 
-        Notification::send($recipients, new DealStageChangedNotification($event));
+        SafeNotification::send($recipients, new DealStageChangedNotification($event));
     }
 }

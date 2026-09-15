@@ -2,7 +2,7 @@
 
 namespace Modules\Project\Listeners;
 
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\Project\Events\ProjectPaymentStatusChanged;
 use Modules\Project\Events\ProjectStatusChanged;
 use Modules\Project\Notifications\ProjectPaymentStatusChangedNotification;
@@ -20,7 +20,7 @@ class NotifyCustomerOfProjectChanges
             return;
         }
 
-        Notification::send($customer, new ProjectStatusChangedNotification($event));
+        SafeNotification::send($customer, new ProjectStatusChangedNotification($event));
     }
 
     public function handlePaymentStatusChanged(ProjectPaymentStatusChanged $event): void
@@ -33,6 +33,6 @@ class NotifyCustomerOfProjectChanges
             return;
         }
 
-        Notification::send($customer, new ProjectPaymentStatusChangedNotification($event));
+        SafeNotification::send($customer, new ProjectPaymentStatusChangedNotification($event));
     }
 }

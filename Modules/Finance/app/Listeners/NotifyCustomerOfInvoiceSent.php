@@ -2,7 +2,7 @@
 
 namespace Modules\Finance\Listeners;
 
-use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\SafeNotification;
 use Modules\Finance\Events\InvoiceSentToCustomer;
 use Modules\Finance\Notifications\InvoiceSentToCustomerNotification;
 
@@ -18,6 +18,6 @@ class NotifyCustomerOfInvoiceSent
             return;
         }
 
-        Notification::send($customer, new InvoiceSentToCustomerNotification($event));
+        SafeNotification::send($customer, new InvoiceSentToCustomerNotification($event));
     }
 }
