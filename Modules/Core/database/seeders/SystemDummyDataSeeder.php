@@ -637,7 +637,11 @@ class SystemDummyDataSeeder extends Seeder
         $companies = Company::query()->orderBy('id')->get();
         $statuses = ProjectStatus::query()->orderBy('sort_order')->get();
         $employees = Employee::query()->where('status', Employee::STATUS_ACTIVE)->orderBy('id')->get();
-        $deals = Deal::query()->orderBy('id')->get();
+        $availableDeals = Deal::query()
+            ->whereNotIn('id', Project::query()->whereNotNull('deal_id')->pluck('deal_id'))
+            ->orderBy('id')
+            ->get()
+            ->values();
 
         if ($companies->isEmpty() || $statuses->isEmpty()) {
             return;
@@ -654,8 +658,18 @@ class SystemDummyDataSeeder extends Seeder
         foreach ($projects as $index => $item) {
             $company = $companies[$index % $companies->count()];
             $status = $statuses[$index % $statuses->count()];
-            $deal = $deals->get($index);
             $currencyService = app(\Modules\Finance\Services\CurrencyService::class);
+
+            $existing = Project::query()
+                ->where('title', $item['title'])
+                ->where('company_id', $company->id)
+                ->first();
+
+            // projects.deal_id is unique — keep an existing link, otherwise take the next free deal.
+            $dealId = $existing?->deal_id;
+            if ($dealId === null && $availableDeals->isNotEmpty()) {
+                $dealId = $availableDeals->shift()->id;
+            }
 
             $project = Project::query()->updateOrCreate(
                 [
@@ -665,7 +679,7 @@ class SystemDummyDataSeeder extends Seeder
                 [
                     'description' => 'Seeded media production project for '.$company->name.'.',
                     'project_status_id' => $status->id,
-                    'deal_id' => $deal?->id,
+                    'deal_id' => $dealId,
                     'budget' => $item['budget'],
                     'currency' => $item['currency'],
                     'budget_exchange_rate' => $currencyService->snapshotRateToBase($item['currency']),
