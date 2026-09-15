@@ -52,6 +52,16 @@ mysql_tcp -e "CREATE DATABASE IF NOT EXISTS ${DB_TEST_NAME} CHARACTER SET utf8mb
 echo "==> Preparing .env"
 [ -f .env ] || cp .env.example .env
 
+echo "==> Ensuring Laravel storage/cache directories exist"
+# These are not tracked in git; Laravel needs them before artisan runs
+# (composer's post-autoload-dump invokes `artisan package:discover`).
+mkdir -p \
+  storage/framework/cache/data \
+  storage/framework/sessions \
+  storage/framework/views \
+  storage/framework/testing \
+  bootstrap/cache
+
 echo "==> Installing PHP dependencies"
 composer install --no-interaction --no-progress
 
