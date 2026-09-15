@@ -1621,7 +1621,7 @@ const _sfc_main$N = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<article${ssrRenderAttrs(mergeProps({
         class: ["use-case-card", [`use-case-card--${__props.variant}`, { "use-case-card--featured": __props.item.featured }]]
-      }, _attrs))} data-v-88308aa6><div class="use-case-card__glow" aria-hidden="true" data-v-88308aa6></div><header class="use-case-card__header" data-v-88308aa6>`);
+      }, _attrs))} data-v-0c9c4e06><div class="use-case-card__glow" aria-hidden="true" data-v-0c9c4e06></div><header class="use-case-card__header" data-v-0c9c4e06>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "use-case-card__avatar",
@@ -1629,7 +1629,7 @@ const _sfc_main$N = {
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", __props.item.image_link)}${ssrRenderAttr("alt", __props.item.title)} width="96" height="96" loading="lazy" decoding="async" data-v-88308aa6${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", __props.item.image_link)}${ssrRenderAttr("alt", __props.item.title)} width="96" height="96" loading="lazy" decoding="async" data-v-0c9c4e06${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
@@ -1645,7 +1645,7 @@ const _sfc_main$N = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="use-case-card__identity" data-v-88308aa6><h3 class="use-case-card__title" data-v-88308aa6>`);
+      _push(`<div class="use-case-card__identity" data-v-0c9c4e06><h3 class="use-case-card__title" data-v-0c9c4e06>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -1660,36 +1660,36 @@ const _sfc_main$N = {
       }, _parent));
       _push(`</h3>`);
       if (__props.item.client_name) {
-        _push(`<p class="use-case-card__subtitle" data-v-88308aa6>${ssrInterpolate(__props.item.client_name)}</p>`);
+        _push(`<p class="use-case-card__subtitle" data-v-0c9c4e06>${ssrInterpolate(__props.item.client_name)}</p>`);
       } else if (__props.item.category_tag) {
-        _push(`<p class="use-case-card__subtitle" data-v-88308aa6>${ssrInterpolate(__props.item.category_tag)}</p>`);
+        _push(`<p class="use-case-card__subtitle" data-v-0c9c4e06>${ssrInterpolate(__props.item.category_tag)}</p>`);
       } else {
         _push(`<!---->`);
       }
       _push(`</div></header>`);
       if (__props.item.summary && __props.variant !== "compact") {
-        _push(`<div class="use-case-card__section" data-v-88308aa6><div class="use-case-card__section-head" data-v-88308aa6><span class="use-case-card__section-icon" data-v-88308aa6><i class="fas fa-lightbulb" data-v-88308aa6></i></span><span class="use-case-card__section-label" data-v-88308aa6>${ssrInterpolate(trans("Overview"))}</span></div><p class="use-case-card__summary" data-v-88308aa6>${ssrInterpolate(truncate(__props.item.summary, __props.variant === "compact" ? 90 : 140))}</p></div>`);
+        _push(`<div class="use-case-card__section" data-v-0c9c4e06><div class="use-case-card__section-head" data-v-0c9c4e06><span class="use-case-card__section-icon" data-v-0c9c4e06><i class="fas fa-lightbulb" data-v-0c9c4e06></i></span><span class="use-case-card__section-label" data-v-0c9c4e06>${ssrInterpolate(trans("Overview"))}</span></div><p class="use-case-card__summary" data-v-0c9c4e06>${ssrInterpolate(truncate(__props.item.summary, __props.variant === "compact" ? 90 : 140))}</p></div>`);
       } else {
         _push(`<!---->`);
       }
       if (__props.item.category_tag || __props.item.technologies && __props.item.technologies.length) {
-        _push(`<div class="use-case-card__section use-case-card__section--tags" data-v-88308aa6><div class="use-case-card__section-head" data-v-88308aa6><span class="use-case-card__section-icon" data-v-88308aa6><i class="fas fa-code" data-v-88308aa6></i></span><span class="use-case-card__section-label" data-v-88308aa6>${ssrInterpolate(trans("Technologies"))}</span></div><div class="use-case-card__tags" data-v-88308aa6>`);
+        _push(`<div class="use-case-card__section use-case-card__section--tags" data-v-0c9c4e06><div class="use-case-card__section-head" data-v-0c9c4e06><span class="use-case-card__section-icon" data-v-0c9c4e06><i class="fas fa-code" data-v-0c9c4e06></i></span><span class="use-case-card__section-label" data-v-0c9c4e06>${ssrInterpolate(trans("Technologies"))}</span></div><div class="use-case-card__tags" data-v-0c9c4e06>`);
         if (__props.item.category_tag) {
-          _push(`<span class="use-case-card__tag use-case-card__tag--category" data-v-88308aa6>${ssrInterpolate(__props.item.category_tag)}</span>`);
+          _push(`<span class="use-case-card__tag use-case-card__tag--category" data-v-0c9c4e06>${ssrInterpolate(__props.item.category_tag)}</span>`);
         } else {
           _push(`<!---->`);
         }
         _push(`<!--[-->`);
         ssrRenderList((__props.item.technologies || []).slice(0, __props.variant === "compact" ? 2 : 4), (tech) => {
-          _push(`<span class="use-case-card__tag" data-v-88308aa6>${ssrInterpolate(tech)}</span>`);
+          _push(`<span class="use-case-card__tag" data-v-0c9c4e06>${ssrInterpolate(tech)}</span>`);
         });
         _push(`<!--]--></div></div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<footer class="use-case-card__footer" data-v-88308aa6>`);
+      _push(`<footer class="use-case-card__footer" data-v-0c9c4e06>`);
       if (__props.item.completed_year) {
-        _push(`<div class="use-case-card__pill" data-v-88308aa6><i class="far fa-calendar-alt" data-v-88308aa6></i><span data-v-88308aa6>${ssrInterpolate(__props.item.completed_year)}</span></div>`);
+        _push(`<div class="use-case-card__pill" data-v-0c9c4e06><i class="far fa-calendar-alt" data-v-0c9c4e06></i><span data-v-0c9c4e06>${ssrInterpolate(__props.item.completed_year)}</span></div>`);
       } else {
         _push(`<!---->`);
       }
@@ -1699,7 +1699,7 @@ const _sfc_main$N = {
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-88308aa6${_scopeId}>${ssrInterpolate(trans("View Case Study"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-88308aa6${_scopeId}></span>`);
+            _push2(`<span data-v-0c9c4e06${_scopeId}>${ssrInterpolate(trans("View Case Study"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-0c9c4e06${_scopeId}></span>`);
           } else {
             return [
               createVNode("span", null, toDisplayString(trans("View Case Study")), 1),
@@ -1721,7 +1721,7 @@ _sfc_main$N.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
   return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-88308aa6"]]);
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-0c9c4e06"]]);
 const _sfc_main$M = {
   __name: "ProductCard",
   __ssrInlineRender: true,
@@ -1766,7 +1766,7 @@ const _sfc_main$M = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<article${ssrRenderAttrs(mergeProps({
         class: ["product-card", [`product-card--${__props.variant}`, { "product-card--featured": __props.item.is_featured }]]
-      }, _attrs))} data-v-4a1b36ab><div class="product-card__glow" aria-hidden="true" data-v-4a1b36ab></div>`);
+      }, _attrs))} data-v-80e9306c><div class="product-card__glow" aria-hidden="true" data-v-80e9306c></div>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "product-card__media",
@@ -1774,9 +1774,9 @@ const _sfc_main$M = {
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} width="640" height="400" loading="lazy" decoding="async" data-v-4a1b36ab${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-4a1b36ab${_scopeId}></div>`);
+            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} width="640" height="400" loading="lazy" decoding="async" data-v-80e9306c${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-80e9306c${_scopeId}></div>`);
             if (__props.item.is_featured) {
-              _push2(`<span class="product-card__badge" data-v-4a1b36ab${_scopeId}><i class="fas fa-star" data-v-4a1b36ab${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
+              _push2(`<span class="product-card__badge" data-v-80e9306c${_scopeId}><i class="fas fa-star" data-v-80e9306c${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
             } else {
               _push2(`<!---->`);
             }
@@ -1806,13 +1806,13 @@ const _sfc_main$M = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="product-card__body" data-v-4a1b36ab>`);
+      _push(`<div class="product-card__body" data-v-80e9306c>`);
       if (__props.item.category) {
-        _push(`<p class="product-card__category" data-v-4a1b36ab>${ssrInterpolate(__props.item.category.name)}</p>`);
+        _push(`<p class="product-card__category" data-v-80e9306c>${ssrInterpolate(__props.item.category.name)}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<h3 class="product-card__title" data-v-4a1b36ab>`);
+      _push(`<h3 class="product-card__title" data-v-80e9306c>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -1827,18 +1827,18 @@ const _sfc_main$M = {
       }, _parent));
       _push(`</h3>`);
       if (__props.item.short_description && __props.variant !== "compact") {
-        _push(`<p class="product-card__summary" data-v-4a1b36ab>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
+        _push(`<p class="product-card__summary" data-v-80e9306c>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><footer class="product-card__footer" data-v-4a1b36ab>`);
+      _push(`</div><footer class="product-card__footer" data-v-80e9306c>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "product-card__pill product-card__pill--cta"
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-4a1b36ab${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-4a1b36ab${_scopeId}></span>`);
+            _push2(`<span data-v-80e9306c${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-80e9306c${_scopeId}></span>`);
           } else {
             return [
               createVNode("span", null, toDisplayString(trans("View Details")), 1),
@@ -1860,7 +1860,7 @@ _sfc_main$M.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
   return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
-const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__scopeId", "data-v-4a1b36ab"]]);
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__scopeId", "data-v-80e9306c"]]);
 const __default__$g = {
   components: {
     AppLayout: _sfc_main$O,
@@ -8891,55 +8891,55 @@ const _sfc_main$x = {
         "aria-hidden": "true",
         ref_key: "modalElement",
         ref: modalElement
-      }, _attrs))} data-v-c3837d91><div class="modal-dialog modal-dialog-centered modal-lg" data-v-c3837d91><div class="modal-content" data-v-c3837d91><div class="modal-header border-0 pb-0" data-v-c3837d91><h5 class="modal-title"${ssrRenderAttr("id", `${__props.modalId}Label`)} data-v-c3837d91>${ssrInterpolate(__props.title)}</h5><button type="button" class="btn-close" data-bs-dismiss="modal"${ssrRenderAttr("aria-label", trans("Close"))} data-v-c3837d91></button></div><div class="modal-body pt-2" data-v-c3837d91>`);
+      }, _attrs))} data-v-b7a5a2ac><div class="modal-dialog modal-dialog-centered modal-lg" data-v-b7a5a2ac><div class="modal-content" data-v-b7a5a2ac><div class="modal-header border-0 pb-0" data-v-b7a5a2ac><h5 class="modal-title"${ssrRenderAttr("id", `${__props.modalId}Label`)} data-v-b7a5a2ac>${ssrInterpolate(__props.title)}</h5><button type="button" class="btn-close" data-bs-dismiss="modal"${ssrRenderAttr("aria-label", trans("Close"))} data-v-b7a5a2ac></button></div><div class="modal-body pt-2" data-v-b7a5a2ac>`);
       if (__props.description) {
-        _push(`<p class="product-contact-modal__description mb-4" data-v-c3837d91>${ssrInterpolate(__props.description)}</p>`);
+        _push(`<p class="product-contact-modal__description mb-4" data-v-b7a5a2ac>${ssrInterpolate(__props.description)}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<form class="contact-one__form" data-v-c3837d91><div class="row" data-v-c3837d91><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Full Name"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-user-1" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`<form class="contact-one__form" data-v-b7a5a2ac><div class="row" data-v-b7a5a2ac><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Full Name"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-user-1" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.name) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Email"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-email" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).email)} type="email" name="email"${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`</div><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Email"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-email" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).email)} type="email" name="email"${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.email) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Phone Number"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-phone-call" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`</div><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Phone Number"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-phone-call" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.mobile) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Subject"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-edit" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).subject)} type="text" name="subject"${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`</div><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Subject"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-edit" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).subject)} type="text" name="subject"${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.subject) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-12 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Message"))}</h4><div class="contact-one__input-box text-message-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-edit" data-v-c3837d91></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Message"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+      _push(`</div><div class="col-12 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Message"))}</h4><div class="contact-one__input-box text-message-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-edit" data-v-b7a5a2ac></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Message"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
       if (unref(contactForm).errors.message) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
       } else {
         _push(`<!---->`);
       }
       _push(`</div></div>`);
       if (submitSuccess.value) {
-        _push(`<div class="alert alert-success" data-v-c3837d91>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div>`);
+        _push(`<div class="alert alert-success" data-v-b7a5a2ac>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="contact-one__btn-box" data-v-c3837d91><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} data-v-c3837d91>`);
+      _push(`<div class="contact-one__btn-box" data-v-b7a5a2ac><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} data-v-b7a5a2ac>`);
       if (unref(contactForm).processing) {
-        _push(`<span data-v-c3837d91>${ssrInterpolate(trans("Sending..."))}</span>`);
+        _push(`<span data-v-b7a5a2ac>${ssrInterpolate(trans("Sending..."))}</span>`);
       } else {
-        _push(`<span data-v-c3837d91>${ssrInterpolate(__props.submitLabel)}</span>`);
+        _push(`<span data-v-b7a5a2ac>${ssrInterpolate(__props.submitLabel)}</span>`);
       }
-      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-c3837d91></span></button></div></form></div></div></div></div>`);
+      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-b7a5a2ac></span></button></div></form></div></div></div></div>`);
     };
   }
 };
@@ -8949,7 +8949,7 @@ _sfc_main$x.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ContactRequestModal.vue");
   return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-c3837d91"]]);
+const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-b7a5a2ac"]]);
 const __default__$5 = {
   components: {
     AppLayout: _sfc_main$O,
@@ -9034,15 +9034,15 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-9b5c38f4${_scopeId}><title data-v-9b5c38f4${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-9b5c38f4${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-9b5c38f4${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-9b5c38f4${_scopeId}><meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-9b5c38f4${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-9b5c38f4${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-d44a9bac${_scopeId}><title data-v-d44a9bac${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-d44a9bac${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-d44a9bac${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-d44a9bac${_scopeId}><meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-d44a9bac${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-d44a9bac${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-9b5c38f4${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-d44a9bac${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="product" data-v-9b5c38f4${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-9b5c38f4${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-9b5c38f4${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-9b5c38f4${_scopeId}>`);
+            _push2(`<meta property="og:type" content="product" data-v-d44a9bac${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-d44a9bac${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-d44a9bac${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-d44a9bac${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-9b5c38f4${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-d44a9bac${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -9107,13 +9107,13 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
       _push(ssrRenderComponent(_sfc_main$O, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-9b5c38f4${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-9b5c38f4${_scopeId}></div><div class="container" data-v-9b5c38f4${_scopeId}><div class="page-header__inner" data-v-9b5c38f4${_scopeId}><h2 data-v-9b5c38f4${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-9b5c38f4${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-9b5c38f4${_scopeId}><li data-v-9b5c38f4${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-d44a9bac${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d44a9bac${_scopeId}></div><div class="container" data-v-d44a9bac${_scopeId}><div class="page-header__inner" data-v-d44a9bac${_scopeId}><h2 data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-d44a9bac${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d44a9bac${_scopeId}><li data-v-d44a9bac${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-9b5c38f4${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-d44a9bac${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -9123,7 +9123,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-9b5c38f4${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-9b5c38f4${_scopeId}></span></li><li data-v-9b5c38f4${_scopeId}>`);
+            _push2(`</li><li data-v-d44a9bac${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-d44a9bac${_scopeId}></span></li><li data-v-d44a9bac${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("product.index")
             }, {
@@ -9138,14 +9138,14 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-9b5c38f4${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-9b5c38f4${_scopeId}></span></li><li data-v-9b5c38f4${_scopeId}>${ssrInterpolate(product.value.name)}</li></ul></div></div></div></section><section class="blog-details products-page" data-v-9b5c38f4${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-9b5c38f4${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-9b5c38f4${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-9b5c38f4${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-9b5c38f4${_scopeId}></div></div><div class="container position-relative" data-v-9b5c38f4${_scopeId}><div class="row" data-v-9b5c38f4${_scopeId}><div class="col-xl-12" data-v-9b5c38f4${_scopeId}><article class="product-detail" data-v-9b5c38f4${_scopeId}><div class="product-detail__glow" aria-hidden="true" data-v-9b5c38f4${_scopeId}></div><header class="product-detail__header" data-v-9b5c38f4${_scopeId}><div class="product-detail__identity" data-v-9b5c38f4${_scopeId}>`);
+            _push2(`</li><li data-v-d44a9bac${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-d44a9bac${_scopeId}></span></li><li data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.name)}</li></ul></div></div></div></section><section class="blog-details products-page" data-v-d44a9bac${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-d44a9bac${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-d44a9bac${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-d44a9bac${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-d44a9bac${_scopeId}></div></div><div class="container position-relative" data-v-d44a9bac${_scopeId}><div class="row" data-v-d44a9bac${_scopeId}><div class="col-xl-12" data-v-d44a9bac${_scopeId}><article class="product-detail" data-v-d44a9bac${_scopeId}><div class="product-detail__glow" aria-hidden="true" data-v-d44a9bac${_scopeId}></div><header class="product-detail__header" data-v-d44a9bac${_scopeId}><div class="product-detail__identity" data-v-d44a9bac${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("product.index"),
               class: "product-detail__thumb"
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} loading="lazy" decoding="async" data-v-9b5c38f4${_scopeId2}>`);
+                  _push3(`<img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} loading="lazy" decoding="async" data-v-d44a9bac${_scopeId2}>`);
                 } else {
                   return [
                     createVNode("img", {
@@ -9159,17 +9159,17 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`<div class="product-detail__intro" data-v-9b5c38f4${_scopeId}>`);
+            _push2(`<div class="product-detail__intro" data-v-d44a9bac${_scopeId}>`);
             if (product.value.category) {
-              _push2(`<p class="product-detail__category" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(product.value.category.name)}</p>`);
+              _push2(`<p class="product-detail__category" data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.category.name)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<h1 class="product-detail__title" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(product.value.name)}</h1>`);
+            _push2(`<h1 class="product-detail__title" data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.name)}</h1>`);
             if (formattedPrice.value) {
-              _push2(`<p class="product-detail__price" data-v-9b5c38f4${_scopeId}><span class="product-detail__price-amount" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(formattedPrice.value)}</span>`);
+              _push2(`<p class="product-detail__price" data-v-d44a9bac${_scopeId}><span class="product-detail__price-amount" data-v-d44a9bac${_scopeId}>${ssrInterpolate(formattedPrice.value)}</span>`);
               if (billingLabel.value) {
-                _push2(`<span class="product-detail__price-billing" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(billingLabel.value)}</span>`);
+                _push2(`<span class="product-detail__price-billing" data-v-d44a9bac${_scopeId}>${ssrInterpolate(billingLabel.value)}</span>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -9178,20 +9178,20 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
               _push2(`<!---->`);
             }
             if (product.value.short_description) {
-              _push2(`<p class="product-detail__subtitle" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(product.value.short_description)}</p>`);
+              _push2(`<p class="product-detail__subtitle" data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.short_description)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="product-detail__actions" data-v-9b5c38f4${_scopeId}><div class="product-detail__share" data-v-9b5c38f4${_scopeId}><span class="product-detail__share-label" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="product-detail__share-links" data-v-9b5c38f4${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Facebook" data-v-9b5c38f4${_scopeId}><span class="icon-facebook" data-v-9b5c38f4${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Twitter" data-v-9b5c38f4${_scopeId}><span class="fab fa-twitter" data-v-9b5c38f4${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="LinkedIn" data-v-9b5c38f4${_scopeId}><span class="icon-linkedin" data-v-9b5c38f4${_scopeId}></span></a></div></div><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-9b5c38f4${_scopeId}></span></button></div></header>`);
+            _push2(`</div></div><div class="product-detail__actions" data-v-d44a9bac${_scopeId}><div class="product-detail__share" data-v-d44a9bac${_scopeId}><span class="product-detail__share-label" data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="product-detail__share-links" data-v-d44a9bac${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Facebook" data-v-d44a9bac${_scopeId}><span class="icon-facebook" data-v-d44a9bac${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Twitter" data-v-d44a9bac${_scopeId}><span class="fab fa-twitter" data-v-d44a9bac${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="LinkedIn" data-v-d44a9bac${_scopeId}><span class="icon-linkedin" data-v-d44a9bac${_scopeId}></span></a></div></div><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-d44a9bac${_scopeId}></span></button></div></header>`);
             if (product.value.category || product.value.is_featured) {
-              _push2(`<div class="product-detail__meta" data-v-9b5c38f4${_scopeId}>`);
+              _push2(`<div class="product-detail__meta" data-v-d44a9bac${_scopeId}>`);
               if (product.value.category) {
-                _push2(`<div class="product-detail__pill" data-v-9b5c38f4${_scopeId}><i class="fas fa-tag" data-v-9b5c38f4${_scopeId}></i><span data-v-9b5c38f4${_scopeId}>${ssrInterpolate(product.value.category.name)}</span></div>`);
+                _push2(`<div class="product-detail__pill" data-v-d44a9bac${_scopeId}><i class="fas fa-tag" data-v-d44a9bac${_scopeId}></i><span data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.category.name)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (product.value.is_featured) {
-                _push2(`<div class="product-detail__pill product-detail__pill--featured" data-v-9b5c38f4${_scopeId}><i class="fas fa-star" data-v-9b5c38f4${_scopeId}></i><span data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
+                _push2(`<div class="product-detail__pill product-detail__pill--featured" data-v-d44a9bac${_scopeId}><i class="fas fa-star" data-v-d44a9bac${_scopeId}></i><span data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -9199,25 +9199,25 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="product-detail__hero" data-v-9b5c38f4${_scopeId}><img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} loading="lazy" decoding="async" data-v-9b5c38f4${_scopeId}></div>`);
+            _push2(`<div class="product-detail__hero" data-v-d44a9bac${_scopeId}><img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} loading="lazy" decoding="async" data-v-d44a9bac${_scopeId}></div>`);
             if (product.value.short_description) {
-              _push2(`<div class="product-detail__section" data-v-9b5c38f4${_scopeId}><div class="product-detail__section-head" data-v-9b5c38f4${_scopeId}><span class="product-detail__section-icon" data-v-9b5c38f4${_scopeId}><i class="fas fa-lightbulb" data-v-9b5c38f4${_scopeId}></i></span><span class="product-detail__section-label" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("Overview"))}</span></div><p class="product-detail__text" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(product.value.short_description)}</p></div>`);
+              _push2(`<div class="product-detail__section" data-v-d44a9bac${_scopeId}><div class="product-detail__section-head" data-v-d44a9bac${_scopeId}><span class="product-detail__section-icon" data-v-d44a9bac${_scopeId}><i class="fas fa-lightbulb" data-v-d44a9bac${_scopeId}></i></span><span class="product-detail__section-label" data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("Overview"))}</span></div><p class="product-detail__text" data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.short_description)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (product.value.description) {
-              _push2(`<div class="product-detail__section" data-v-9b5c38f4${_scopeId}><div class="product-detail__section-head" data-v-9b5c38f4${_scopeId}><span class="product-detail__section-icon" data-v-9b5c38f4${_scopeId}><i class="fas fa-align-left" data-v-9b5c38f4${_scopeId}></i></span><span class="product-detail__section-label" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("Product Details"))}</span></div><div class="product-detail__content" data-v-9b5c38f4${_scopeId}>${product.value.description ?? ""}</div></div>`);
+              _push2(`<div class="product-detail__section" data-v-d44a9bac${_scopeId}><div class="product-detail__section-head" data-v-d44a9bac${_scopeId}><span class="product-detail__section-icon" data-v-d44a9bac${_scopeId}><i class="fas fa-align-left" data-v-d44a9bac${_scopeId}></i></span><span class="product-detail__section-label" data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("Product Details"))}</span></div><div class="product-detail__content" data-v-d44a9bac${_scopeId}>${product.value.description ?? ""}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<footer class="product-detail__footer" data-v-9b5c38f4${_scopeId}><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-9b5c38f4${_scopeId}></span></button>`);
+            _push2(`<footer class="product-detail__footer" data-v-d44a9bac${_scopeId}><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-d44a9bac${_scopeId}></span></button>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "product-detail__pill"
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-9b5c38f4${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-d44a9bac${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("Get in Touch")) + " ", 1),
@@ -9229,9 +9229,9 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
             }, _parent2, _scopeId));
             _push2(`</footer></article>`);
             if (relatedProducts.value.length) {
-              _push2(`<div class="products-related" data-v-9b5c38f4${_scopeId}><div class="products-related__head" data-v-9b5c38f4${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-9b5c38f4${_scopeId}><div class="section-title__tagline-shape-1" data-v-9b5c38f4${_scopeId}></div><span class="section-title__tagline" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("More Products"))}</span><div class="section-title__tagline-shape-2" data-v-9b5c38f4${_scopeId}></div></div><h3 class="products-related__title" data-v-9b5c38f4${_scopeId}>${ssrInterpolate(trans("Explore More Solutions"))}</h3></div><div class="row" data-v-9b5c38f4${_scopeId}><!--[-->`);
+              _push2(`<div class="products-related" data-v-d44a9bac${_scopeId}><div class="products-related__head" data-v-d44a9bac${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-d44a9bac${_scopeId}><div class="section-title__tagline-shape-1" data-v-d44a9bac${_scopeId}></div><span class="section-title__tagline" data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("More Products"))}</span><div class="section-title__tagline-shape-2" data-v-d44a9bac${_scopeId}></div></div><h3 class="products-related__title" data-v-d44a9bac${_scopeId}>${ssrInterpolate(trans("Explore More Solutions"))}</h3></div><div class="row" data-v-d44a9bac${_scopeId}><!--[-->`);
               ssrRenderList(relatedProducts.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-9b5c38f4${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-d44a9bac${_scopeId}>`);
                 _push2(ssrRenderComponent(ProductCard, {
                   item,
                   locale: locale.value,
@@ -9538,7 +9538,7 @@ _sfc_main$w.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductShow.vue");
   return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-9b5c38f4"]]);
+const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-d44a9bac"]]);
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductShow
@@ -11625,13 +11625,13 @@ const _sfc_main$p = {
       return `${text.slice(0, 75)}...`;
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-6efea832><div class="services-three__media" data-v-6efea832>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-037ec78e><div class="services-three__media" data-v-037ec78e>`);
       if (__props.image) {
-        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" width="640" height="420" loading="lazy" decoding="async" data-v-6efea832>`);
+        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" width="640" height="420" loading="lazy" decoding="async" data-v-037ec78e>`);
       } else {
-        _push(`<div class="services-three__image-placeholder" data-v-6efea832><span class="icon-technical-support" data-v-6efea832></span></div>`);
+        _push(`<div class="services-three__image-placeholder" data-v-037ec78e><span class="icon-technical-support" data-v-037ec78e></span></div>`);
       }
-      _push(`</div><h3 class="services-three__title" data-v-6efea832>`);
+      _push(`</div><h3 class="services-three__title" data-v-037ec78e>`);
       _push(ssrRenderComponent(unref(Link), { href: __props.link }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -11646,19 +11646,19 @@ const _sfc_main$p = {
       }, _parent));
       _push(`</h3>`);
       if (shortDescription.value) {
-        _push(`<p class="services-three__text" data-v-6efea832>${ssrInterpolate(shortDescription.value)}</p>`);
+        _push(`<p class="services-three__text" data-v-037ec78e>${ssrInterpolate(shortDescription.value)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (__props.readingTime) {
-        _push(`<p class="services-three__meta" data-v-6efea832><span class="far fa-clock mx-1" data-v-6efea832></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
+        _push(`<p class="services-three__meta" data-v-037ec78e><span class="far fa-clock mx-1" data-v-037ec78e></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (safeHighlights.value.length) {
-        _push(`<ul class="list-unstyled services-three__list" data-v-6efea832><!--[-->`);
+        _push(`<ul class="list-unstyled services-three__list" data-v-037ec78e><!--[-->`);
         ssrRenderList(safeHighlights.value, (item, index) => {
-          _push(`<li data-v-6efea832><div class="icon" data-v-6efea832><span class="icon-tick-inside-circle" data-v-6efea832></span></div><div class="text" data-v-6efea832><p data-v-6efea832>${ssrInterpolate(item)}</p></div></li>`);
+          _push(`<li data-v-037ec78e><div class="icon" data-v-037ec78e><span class="icon-tick-inside-circle" data-v-037ec78e></span></div><div class="text" data-v-037ec78e><p data-v-037ec78e>${ssrInterpolate(item)}</p></div></li>`);
         });
         _push(`<!--]--></ul>`);
       } else {
@@ -11671,7 +11671,7 @@ const _sfc_main$p = {
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(buttonText.value)} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-6efea832${_scopeId}></span>`);
+            _push2(`${ssrInterpolate(buttonText.value)} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-037ec78e${_scopeId}></span>`);
           } else {
             return [
               createTextVNode(toDisplayString(buttonText.value) + " ", 1),
@@ -11693,7 +11693,7 @@ _sfc_main$p.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
   return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-6efea832"]]);
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-037ec78e"]]);
 const __default__$2 = {
   components: {
     AppLayout: _sfc_main$O,
