@@ -24,8 +24,8 @@ class DummyImageGenerator
         'video' => [
             'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d',
             'https://images.unsplash.com/photo-1485846234645-a62644f84728',
-            'https://images.unsplash.com/photo-1572044162444-ad51f25f5a46',
-            'https://images.unsplash.com/photo-1536240478700-b869070f9279',
+            'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
+            'https://images.unsplash.com/photo-1478720568477-152d9b164e26',
         ],
         'photo' => [
             'https://images.unsplash.com/photo-1542038784456-1ea8e935640e',
@@ -34,7 +34,7 @@ class DummyImageGenerator
             'https://images.unsplash.com/photo-1516035069371-29a1b244cc32',
         ],
         'events' => [
-            'https://images.unsplash.com/photo-1459749411177-047147866c5c',
+            'https://images.unsplash.com/photo-1514525253161-7a46d19cd819',
             'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4',
             'https://images.unsplash.com/photo-1492684223066-81342ee5ff30',
             'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3',
@@ -42,7 +42,7 @@ class DummyImageGenerator
         'branding' => [
             'https://images.unsplash.com/photo-1561070791-2526d30994b5',
             'https://images.unsplash.com/photo-1558655146-d09347e92766',
-            'https://images.unsplash.com/photo-1626785774573-4b7993143464',
+            'https://images.unsplash.com/photo-1609921212029-bb5a28e60960',
             'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0',
         ],
         'blogs' => [
@@ -62,13 +62,13 @@ class DummyImageGenerator
         'services' => [
             'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d',
             'https://images.unsplash.com/photo-1542038784456-1ea8e935640e',
-            'https://images.unsplash.com/photo-1459749411177-047147866c5c',
+            'https://images.unsplash.com/photo-1514525253161-7a46d19cd819',
             'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04',
-            'https://images.unsplash.com/photo-1572044162444-ad51f25f5a46',
+            'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
             'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0',
         ],
         'service_categories' => [
-            'https://images.unsplash.com/photo-1536240478700-b869070f9279',
+            'https://images.unsplash.com/photo-1478720568477-152d9b164e26',
             'https://images.unsplash.com/photo-1452587925148-ce544e77e70d',
             'https://images.unsplash.com/photo-1558655146-d09347e92766',
             'https://images.unsplash.com/photo-1492684223066-81342ee5ff30',
@@ -77,8 +77,8 @@ class DummyImageGenerator
             'https://images.unsplash.com/photo-1516035069371-29a1b244cc32',
             'https://images.unsplash.com/photo-1478737270239-2f02b77fc618',
             'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04',
-            'https://images.unsplash.com/photo-1572044162444-ad51f25f5a46',
-            'https://images.unsplash.com/photo-1626785774573-4b7993143464',
+            'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
+            'https://images.unsplash.com/photo-1609921212029-bb5a28e60960',
             'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0',
         ],
         'project-use-cases' => [

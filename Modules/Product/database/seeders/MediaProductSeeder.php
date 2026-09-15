@@ -5,6 +5,7 @@ namespace Modules\Product\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Modules\Product\Models\Product;
+use Modules\Product\Models\ProductCategory;
 
 class MediaProductSeeder extends Seeder
 {

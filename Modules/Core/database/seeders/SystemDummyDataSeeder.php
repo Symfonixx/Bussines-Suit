@@ -654,7 +654,7 @@ class SystemDummyDataSeeder extends Seeder
         foreach ($projects as $index => $item) {
             $company = $companies[$index % $companies->count()];
             $status = $statuses[$index % $statuses->count()];
-            $deal = $deals[$index % max($deals->count(), 1)] ?? null;
+            $deal = $deals->get($index);
             $currencyService = app(\Modules\Finance\Services\CurrencyService::class);
 
             $project = Project::query()->updateOrCreate(
