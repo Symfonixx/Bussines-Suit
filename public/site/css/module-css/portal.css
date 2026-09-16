@@ -1548,3 +1548,273 @@ html[dir="rtl"] .portal-sidebar {
     padding: 12px 20px;
     font-size: 14px;
 }
+
+/*--------------------------------------------------------------
+# Customer Portal — New design override
+--------------------------------------------------------------*/
+body.portal-panel-active {
+    background: #f5f8ff;
+}
+
+body.portal-panel-active .page-wrapper,
+body.portal-panel-active #app {
+    background: #f5f8ff;
+}
+
+.portal-app {
+    --portal-bg: #f5f8ff;
+    color: #1f2937;
+    background: linear-gradient(180deg, #f9fbff 0%, #f2f6ff 100%);
+}
+
+.portal-sidebar {
+    background: #ffffff;
+    border-inline-end: 1px solid #e8edf7;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+}
+
+.portal-sidebar__brand,
+.portal-sidebar__footer {
+    border-color: #e8edf7;
+}
+
+.portal-sidebar__logo-text {
+    color: #111827;
+}
+
+.portal-sidebar__label,
+.portal-sidebar__user-meta span,
+.portal-sidebar__site-link,
+.portal-sidebar__logout {
+    color: #64748b;
+}
+
+.portal-sidebar__link {
+    color: #475569;
+}
+
+.portal-sidebar__link:hover {
+    color: #1d4ed8;
+    background: #eff6ff;
+}
+
+.portal-sidebar__link--active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.28);
+}
+
+.portal-sidebar__badge {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.portal-sidebar__avatar,
+.portal-topbar__avatar {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+
+.portal-sidebar__user-meta strong {
+    color: #0f172a;
+}
+
+.portal-sidebar__logout,
+.portal-sidebar__site-link {
+    border-color: #dbe4f2;
+    background: #ffffff;
+}
+
+.portal-sidebar__logout:hover {
+    color: #b91c1c;
+    border-color: #fecaca;
+    background: #fef2f2;
+}
+
+.portal-sidebar__site-link:hover {
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+    background: #eff6ff;
+}
+
+.portal-topbar {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e8edf7;
+}
+
+.portal-topbar__menu {
+    border-color: #dbe4f2;
+    background: #ffffff;
+    color: #334155;
+}
+
+.portal-topbar__menu:hover {
+    border-color: #93c5fd;
+    color: #1d4ed8;
+}
+
+.portal-topbar__crumbs li,
+.portal-topbar__crumbs a,
+.portal-topbar__subtitle {
+    color: #64748b;
+}
+
+.portal-topbar__crumbs [aria-current="page"] {
+    color: #334155;
+}
+
+.portal-topbar__crumbs a:hover {
+    color: #2563eb;
+}
+
+.portal-topbar__title {
+    color: #111827;
+}
+
+.portal-topbar__user {
+    border-color: #dbe4f2;
+    background: #ffffff;
+    color: #0f172a;
+}
+
+.portal-topbar__user:hover {
+    border-color: #93c5fd;
+    background: #eff6ff;
+}
+
+.portal-stat,
+.portal-panel,
+.portal-project-card,
+.portal-ticket-card,
+.portal-invoice-card,
+.portal-ticket-message {
+    background: #ffffff;
+    border: 1px solid #e5eaf4;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.portal-stat__label,
+.portal-empty,
+.portal-notification__time,
+.portal-billing-item__label,
+.portal-details__label {
+    color: #64748b;
+}
+
+.portal-stat__value,
+.portal-panel__title,
+.portal-project-card__title,
+.portal-table td,
+.portal-billing-item__value,
+.portal-details__value,
+.portal-ticket-card__title,
+.portal-invoice-card__number,
+.portal-ticket-message__header {
+    color: #0f172a;
+}
+
+.portal-panel__header {
+    background: #f8faff;
+    border-bottom: 1px solid #e8edf7;
+}
+
+.portal-panel__action {
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+    background: #eff6ff;
+}
+
+.portal-panel__action:hover {
+    color: #ffffff;
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.portal-table th {
+    color: #64748b;
+    border-bottom-color: #e8edf7;
+}
+
+.portal-table td {
+    border-bottom-color: #eef2f8;
+}
+
+.portal-table tr:hover td {
+    background: #f8faff;
+}
+
+.portal-notification {
+    border-bottom-color: #e8edf7;
+}
+
+.portal-notification__message,
+.portal-project-card__company,
+.portal-project-card__meta,
+.portal-ticket-card__meta span,
+.portal-invoice-card__meta-item span,
+.portal-ticket-message__body {
+    color: #64748b;
+}
+
+.portal-notification--unread .portal-notification__message {
+    color: #1e293b;
+}
+
+.portal-link-muted {
+    color: #1d4ed8;
+}
+
+.portal-link-muted:hover {
+    color: #1e40af;
+}
+
+.portal-empty i,
+.portal-empty__icon {
+    color: #3b82f6;
+    background: #dbeafe;
+}
+
+.portal-badge--neutral {
+    background: #e2e8f0 !important;
+    color: #475569 !important;
+}
+
+.portal-input,
+.portal-select__trigger,
+.portal-review-quote {
+    border: 1px solid #dbe4f2;
+    background: #ffffff;
+    color: #0f172a;
+}
+
+.portal-input::placeholder {
+    color: #94a3b8;
+}
+
+.portal-input:focus,
+.portal-select__trigger:focus {
+    border-color: #93c5fd;
+}
+
+.portal-select__value--placeholder,
+.portal-select__icon {
+    color: #94a3b8;
+}
+
+.portal-select__menu {
+    border-color: #dbe4f2;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+}
+
+.portal-select__option {
+    color: #334155;
+}
+
+.portal-select__option:hover,
+.portal-select__option--selected {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
