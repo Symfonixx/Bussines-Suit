@@ -390,7 +390,7 @@ const _sfc_main$R = {
     return (_ctx, _push, _parent, _attrs) => {
       if (!isPortalPage.value) {
         _push(`<nav${ssrRenderAttrs(mergeProps({
-          class: ["navbar navbar-Concept navbar-center navbar-custom navbar-fixed-top", { "nav-bright": isHome.value }]
+          class: ["navbar navbar-Concept navbar-custom navbar-fixed-top", { "nav-bright": isHome.value }]
         }, _attrs))} data-v-68da86ee><div class="container" data-v-68da86ee><div class="navbar-header" data-v-68da86ee><button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-main-collapse" data-v-68da86ee><span class="sr-only" data-v-68da86ee>${ssrInterpolate(trans("Toggle navigation"))}</span><span class="icon-bar" data-v-68da86ee></span><span class="icon-bar" data-v-68da86ee></span><span class="icon-bar" data-v-68da86ee></span></button>`);
         _push(ssrRenderComponent(unref(Link), {
           class: "navbar-brand page-scroll",

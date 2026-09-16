@@ -153,15 +153,84 @@
     border-radius: 2px;
 }
 
-.navbar-brand .logodark,
-.navbar-Concept.nav-bright .navbar-brand .logo {
+/* Keep the logo in the nav row (left), not absolutely centered under the menu */
+.navbar-Concept .navbar-brand,
+.navbar-center .navbar-brand {
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    float: left;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 8px 20px 8px 0;
+    margin-left: 0;
+}
+.navbar-Concept .navbar-brand img,
+.navbar-Concept .navbar-brand .logo,
+.navbar-Concept .navbar-brand .logodark {
+    max-height: 36px !important;
+    width: auto !important;
+    max-width: 180px;
+    object-fit: contain;
+}
+.navbar-Concept .navbar-brand-text {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    color: inherit;
+}
+
+.navbar-Concept.nav-bright .navbar-brand .logo,
+.navbar-Concept.top-nav-collapse .navbar-brand .logo {
+    display: none;
+}
+.navbar-Concept.nav-bright .navbar-brand .logodark,
+.navbar-Concept.top-nav-collapse .navbar-brand .logodark {
     display: inline-block;
 }
-.navbar-Concept .navbar-brand .logo { display: none; }
-.navbar-Concept.top-nav-collapse .navbar-brand .logo,
-.navbar-Concept:not(.nav-bright) .navbar-brand .logo { display: inline-block; }
-.navbar-Concept.top-nav-collapse .navbar-brand .logodark,
-.navbar-Concept:not(.nav-bright) .navbar-brand .logodark { display: none; }
+.navbar-Concept:not(.nav-bright):not(.top-nav-collapse) .navbar-brand .logo {
+    display: inline-block;
+}
+.navbar-Concept:not(.nav-bright):not(.top-nav-collapse) .navbar-brand .logodark {
+    display: none;
+}
+
+@media (min-width: 991px) {
+    .navbar-Concept.navbar-custom {
+        padding: 8px 30px;
+    }
+    .navbar-Concept.navbar-custom.top-nav-collapse {
+        padding: 0 30px;
+    }
+    .navbar-Concept > .container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .navbar-Concept .navbar-header {
+        float: none;
+        flex: 0 0 auto;
+    }
+    .navbar-Concept .navbar-collapse.collapse {
+        display: flex !important;
+        flex: 1 1 auto;
+        align-items: center;
+        justify-content: space-between;
+        height: auto !important;
+        overflow: visible !important;
+        padding-bottom: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    html[dir="rtl"] .navbar-Concept .navbar-brand,
+    html[dir="rtl"] .navbar-center .navbar-brand {
+        float: right;
+        padding: 8px 0 8px 20px;
+    }
+}
 
 .portfolio-item img { width: 100%; height: auto; display: block; }
 

@@ -1,7 +1,7 @@
 <template>
     <nav
         v-if="!isPortalPage"
-        class="navbar navbar-Concept navbar-center navbar-custom navbar-fixed-top"
+        class="navbar navbar-Concept navbar-custom navbar-fixed-top"
         :class="{ 'nav-bright': isHome }"
     >
         <div class="container">
@@ -20,7 +20,7 @@
                 <Link class="navbar-brand page-scroll" :href="route('home')" :aria-label="trans('Symfonix home page')">
                     <img v-if="logoSrc" class="logo" :src="logoSrc" :alt="brandName">
                     <img v-if="logoSrc" class="logodark" :src="logoSrc" :alt="brandName">
-                    <span v-if="!logoSrc" class="logodark">{{ brandName }}</span>
+                    <span v-if="!logoSrc" class="navbar-brand-text">{{ brandName }}</span>
                 </Link>
             </div>
             <div class="collapse navbar-collapse navbar-main-collapse">
@@ -60,9 +60,27 @@ const logoSrc = computed(() => {
 </script>
 
 <style scoped>
+.navbar-brand {
+    position: relative;
+    left: auto;
+    transform: none;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 8px 16px 8px 0;
+}
+
 .navbar-brand img {
     max-height: 36px;
     width: auto;
+}
+
+.navbar-brand-text {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    color: inherit;
 }
 
 :deep(.nav > li > a) {

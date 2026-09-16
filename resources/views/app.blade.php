@@ -544,7 +544,9 @@ Developed By: Hadi Hilal
     /* Show desktop nav earlier — theme default only kicks in at 1200px */
     @media (min-width: 992px) {
         .navbar-Concept .navbar-collapse.collapse {
-            display: block !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
             height: auto !important;
             padding-bottom: 0;
             overflow: visible !important;
