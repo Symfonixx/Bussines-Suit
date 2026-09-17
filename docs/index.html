@@ -394,6 +394,16 @@
               </thead>
               <tbody>
                 <tr>
+                  <td><strong>Core</strong></td>
+                  <td>Bootstrap</td>
+                  <td>Install command, shared services, helpers, and system bootstrap</td>
+                </tr>
+                <tr>
+                  <td><strong>Base</strong></td>
+                  <td>Foundation</td>
+                  <td>Settings, countries, branches, SEO, APIs, backups, file manager, humans.txt</td>
+                </tr>
+                <tr>
                   <td><strong>CRM</strong></td>
                   <td>Sales &amp; relationships</td>
                   <td>Leads, deals, companies, quotes, pipeline, subscriptions, activities, email/WhatsApp marketing, forecasts, dashboard</td>
@@ -424,6 +434,11 @@
                   <td>Pages, blog posts, FAQs, client logos, translatable content</td>
                 </tr>
                 <tr>
+                  <td><strong>Services</strong></td>
+                  <td>Offerings</td>
+                  <td>Service categories and public-facing agency or consultancy service pages</td>
+                </tr>
+                <tr>
                   <td><strong>Product</strong></td>
                   <td>Catalog</td>
                   <td>Product categories, catalog items, sales integration</td>
@@ -436,7 +451,22 @@
                 <tr>
                   <td><strong>Support</strong></td>
                   <td>Customer care</td>
-                  <td>Tickets, contact subscribers, complaints</td>
+                  <td>Tickets, subscribers, visitors, and complaint/contact workflows</td>
+                </tr>
+                <tr>
+                  <td><strong>Team</strong></td>
+                  <td>People content</td>
+                  <td>Public team member profiles and humans.txt visibility</td>
+                </tr>
+                <tr>
+                  <td><strong>Testimonial</strong></td>
+                  <td>Social proof</td>
+                  <td>Client testimonials for the public site</td>
+                </tr>
+                <tr>
+                  <td><strong>SearchEngine</strong></td>
+                  <td>Search insights</td>
+                  <td>Search keyword tracking and discovery analytics</td>
                 </tr>
               </tbody>
             </table>
@@ -807,7 +837,7 @@ npm install && npm run build</code></pre>
               <h4>Start the application</h4>
               <span class="code-label">Terminal</span>
               <pre><code>php artisan serve</code></pre>
-              <p>Visit <code>/admin</code> and sign in with the credentials displayed after installation. Documentation is available at <code>/docs</code> when <code>DOCS_ENABLED=true</code>.</p>
+              <p>Visit <code>/admin</code> and sign in with the credentials displayed after installation. Documentation is available at <code>/docs</code> when <code>DOCS_ENABLED=true</code>; PDF downloads are generated into <code>docs/pdf/</code> with <code>npm run docs:pdf</code>.</p>
             </li>
           </ol>
 

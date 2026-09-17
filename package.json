@@ -6,6 +6,7 @@
         "build": "vite build && vite build --ssr",
         "build:ssr": "vite build --ssr",
         "build:client": "vite build",
+        "docs:pdf": "node scripts/generate-docs-pdf.mjs",
         "test:e2e": "playwright test",
         "test:e2e:headed": "playwright test --headed"
     },

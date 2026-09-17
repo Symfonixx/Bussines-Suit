@@ -9,7 +9,7 @@ Symfonix is a modular Laravel 13 business management platform for agencies, comb
 
 ### Directory Map
 - `app/` — Global HTTP middleware, base console commands, framework bootstrap
-- `Modules/` — Modular domains (`CRM`, `Finance`, `Tax`, `Reporting`, `Project`, `User`, `Base`, `Cms`, `Product`, `Support`, `Team`, `Testimonial`, `SearchEngine`)
+- `Modules/` — Modular domains (`Core`, `Base`, `User`, `Cms`, `Services`, `CRM`, `Project`, `Finance`, `Product`, `Tax`, `Reporting`, `Support`, `Team`, `Testimonial`, `SearchEngine`)
   - `Modules/<Module>/app/Http/Controllers/` — Admin & API route controllers
   - `Modules/<Module>/app/Models/` — Eloquent models with relations & scopes
   - `Modules/<Module>/app/Repositories/` — Data access & query abstraction
@@ -18,6 +18,7 @@ Symfonix is a modular Laravel 13 business management platform for agencies, comb
   - `Modules/<Module>/routes/` — Module route definitions (`web.php`, `api.php`)
   - `Modules/<Module>/database/` — Module migrations and seeders
 - `config/` — System and package configuration files
+- `docs/` — Static multilingual documentation and generated PDFs
 - `resources/` — Global Blade layouts, components, and shared Vue shells
 
 ### Core Conventions & Patterns
@@ -35,9 +36,11 @@ Symfonix is a modular Laravel 13 business management platform for agencies, comb
 - **Migrations:** `php artisan migrate` or `php artisan module:migrate <Module>`
 - **Module Generator / Seed:** `php artisan module:seed <Module>` | `php artisan app:install`
 - **Build:** `npm run dev` | `npm run build`
+- **Docs:** `npm run docs:pdf` regenerates `docs/pdf/symfonix-docs-*.pdf` from the static HTML docs
 
 ### Cursor AI Rules & Token Optimization
 - **Be Concise:** No pleasantries, boilerplate conversational framing, or recap summaries.
 - **Targeted Diffs Only:** Do not reprint whole untouched files; output only modified functions, concise diffs, or newly created files.
 - **Module Respect:** Always place new domain logic, models, views, and migrations within the relevant `Modules/<Name>/` path instead of root `app/`.
 - **Follow Established Patterns:** Use existing Repository/Service structures and Spatie Data patterns when implementing module features.
+- **Docs Sync:** When changing shipped features, update `README.md`, `docs/*.html`, localized docs when relevant, and regenerate PDFs with `npm run docs:pdf`.

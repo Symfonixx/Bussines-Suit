@@ -131,7 +131,7 @@ Default credentials (if options are omitted): `admin@symfonix.com` / `password`.
 php artisan serve
 ```
 
-Visit `/admin` and sign in with the credentials shown after install. Built-in HTML documentation is served at `/docs` when `DOCS_ENABLED=true`.
+Visit `/admin` and sign in with the credentials shown after install. Built-in HTML documentation is served at `/docs` when `DOCS_ENABLED=true`; downloadable PDFs are generated into `docs/pdf/`.
 
 For queued work (marketing emails, WhatsApp campaigns, notifications, exchange-rate fetches):
 
@@ -225,6 +225,9 @@ php artisan test
 # Playwright E2E (requires a running app and E2E_* env vars — see tests/README.md)
 npm run test:e2e
 
+# Regenerate documentation PDFs from docs/*.html
+npm run docs:pdf
+
 # Clear caches
 php artisan optimize:clear
 ```
@@ -234,7 +237,7 @@ php artisan optimize:clear
 - **Telescope** — `php artisan telescope:install` (debugging)
 - **Pulse** — performance monitoring (tables created by migration)
 - **Chatbot** — BotMan web widget (optional Ollama integration)
-- **Docs** — static HTML at `/docs` (`DOCS_ENABLED=false` to disable)
+- **Docs** — static HTML at `/docs` (`DOCS_ENABLED=false` to disable), with PDFs in `docs/pdf/`
 
 ## Deployment notes
 
